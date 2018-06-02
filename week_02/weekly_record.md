@@ -157,6 +157,16 @@ You have options, use:
 [This place](https://css-tricks.com/snippets/css/complete-guide-grid/) is a good resource of information about the options and about what grid is capable of. I think i will end my relationships with frameworks like bootstrap and materialize after this.
 
 ### Media Queries
+Media Queries are used to show diferent content depending on the media that is been used. It can be used in CSS in this way:
+
+> @media media_type0 (option){}
+
+The options used typically are min-width/height, max-width/height  to specify breakpoints, which specify when you want the content of the page to change.
 
 ## Design Frameworks
+Frameworks helps make your life easier by doing a lot of work when you the design of your application. They have a lot of tools and custom page Elements that are already made and you can make changes to them to make them look like you wnat.
+
+This is not a person have to know exactly all components and layouts the famework offers, you just have know how to use them. The documentation is practically the only thing you need.
+
+Here is the documentation for [Bootstrap](https://getbootstrap.com/docs/4.1/getting-started/introduction/) and for [Material Design](https://material.io/design/).
 
