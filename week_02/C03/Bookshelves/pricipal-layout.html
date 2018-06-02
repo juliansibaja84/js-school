@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <title>Jobsity Bookshelves</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="header-main">
+                <div class="logotype"><a href=""><img src="./assets/images/logo.svg" alt=""></a><p>Jobsity Bookshelves</p></div>
+                <div class="user-dropdown">
+                    <div class="user">
+                        <i class="fas fa-user fa-2x"></i>
+                        <p>Someone</p>
+                    </div>
+                    <div class="user-dropdown-content">
+                            <a class="user-dropdown-content-item" href="">User Settings</a>
+                            <a class="user-dropdown-content-item" href="">Log Out</a>
+                    </div>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="">Digital</a></li>
+                    <li><a href="">Cartagena</a></li>
+                    <li><a href="">Medellín</a></li>
+                    <li><a href="">Quito</a></li>
+                    <li><a href="">My books</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            <div class="filter-bar">
+                <div class="select-style">
+                    <select>
+                            <option value="0">Categories</option>
+                            <option value="1">Javascript</option>
+                            <option value="2">Nodejs</option>
+                            <option value="3">Reactjs</option>
+                            <option value="4">Web Development</option>
+                            <option value="5">Frontend</option>
+                            <option value="6">Backend</option>
+                    </select>
+                </div>
+                <input type="text" Placeholder="Look for a name of a book">
+            </div>
+            <div class="bookshelf">
+                    <div><i class="fas fa-check tag"></i><a href="#popup1"><img src="./assets/images/books/b1.jpg" alt=""></a></div>
+                    <div><i class="fas fa-check tag"></i><a href="#"><img src="./assets/images/books/b2.jpg" alt=""></a></div>
+                    <div><i class="fas fa-check tag"></i><a href="#"><img src="./assets/images/books/b3.jpg" alt=""></a></div>
+                    <div><i class="fas fa-check tag"></i><a href="#"><img src="./assets/images/books/b4.jpg" alt=""></a></div>
+                    <div><i class="fas fa-check tag"></i><a href="#"><img src="./assets/images/books/b5.jpg" alt=""></a></div>
+                    <div><i class="fas fa-check tag"></i><a href="#"><img src="./assets/images/books/b6.jpg" alt=""></a></div>
+                    <div><i class="fas fa-check tag"></i><a href="#"><img src="./assets/images/books/b7.jpg" alt=""></a></div>
+                    <div><i class="fas fa-check tag"></i><a href="#"><img src="./assets/images/books/b8.jpg" alt=""></a></div>
+                    <div><i class="fas fa-check tag"></i><a href="#"><img src="./assets/images/books/b9.jpg" alt=""></a></div>
+                    <div><i class="fas fa-check tag"></i><a href="#"><img src="./assets/images/books/b10.jpg" alt=""></a></div>
+                    <div><i class="fas fa-check tag"></i><a href="#"><img src="./assets/images/books/b11.jpg" alt=""></a></div>
+                    <div><i class="fas fa-check tag"></i><a href="#"><img src="./assets/images/books/b12.jpg" alt=""></a></div>
+                    
+            </div>
+            <div id= "popup1" class="book-window-overlay">
+                <div class="book-window-popup">
+                    <div class="image-container">
+                    </div>
+                    <div>
+                        <h1>Machine Learning From Theory To Algorithms   </h1><h4>Available</h4>
+                        <div class="tags">
+                            <div>Machine learning</div>
+                        </div>
+                        <p><strong>Authors:</strong>  Shai Shalev-Shwartz and Shai Ben-David</p>
+                        <p><strong>Description:</strong> Machine learning is one of the fastest growing areas of computer science,
+                        with far-reaching applications. The aim of this textbook is to introduce
+                        machine learning, and the algorithmic paradigms it offers, in a principled
+                        way. The book provides an extensive theoretical account of the
+                        fundamental ideas underlying machine learning and the mathematical
+                        derivations that transform these principles into practical algorithms. Following
+                        a presentation of the basics of the field, the book covers a wide
+                        array of central topics that have not been addressed by previous textbooks.
+                        </p>
+                        <p> <strong>Download:</strong> <a href="https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf">Here</a></p>
+                        <a href="" class="btn">Reserve</a>
+                    </div>
+                    <a href="#" class="close">&times;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

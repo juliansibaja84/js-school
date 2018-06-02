@@ -1,0 +1,64 @@
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #FFFFFF;
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 400px;
+  height: 500px;
+  margin: 5% auto 0 auto;
+  background-color: #FFFFFF;
+  justify-content: center;
+  align-items: center;
+}
+.login-box > div form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login-box h2 {
+  margin-bottom: 10%;
+}
+
+.user-form {
+  box-sizing: border-box;
+  box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+  border-radius: 5%;
+  padding: 5% 20%;
+}
+
+.image {
+  padding: 1% 0 1% 0;
+  box-sizing: border-box;
+}
+.image i, .image img {
+  color: #009ddb;
+}
+
+.input-field {
+  margin: 10%;
+  padding: 5%;
+}
+
+.submit-button {
+  margin: 1% 0 0 0;
+  padding: 5%;
+  background-color: #333;
+  /* Green */
+  border-radius: 10%;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+/*# sourceMappingURL=styles0.css.map */
