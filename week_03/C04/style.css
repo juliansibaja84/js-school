@@ -1,0 +1,52 @@
+body {
+    margin: 5% auto 0 auto;
+    width: 60%;
+    text-align: center;
+}
+article {
+    width: auto;
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#piano {
+    flex:1;
+    height: inherit;
+    border: 0.1rem solid black;
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    padding: 0.5rem 1rem;
+    border-radius: 0 0 3% 3%;
+}
+.note {
+    float: left;
+    position: relative;
+    width: 14%;
+    background-color: white;
+    border: 0.01rem solid black;
+    border-radius: 0 0 3% 3%;
+}
+
+.sharp {
+    display: block;
+    position: relative;
+    float: left;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    z-index: 2;
+}
+.sharp::after {
+    width: 2rem;
+    height: 10rem;
+    content: "";
+    left: -1rem;
+    display: block;
+    position: absolute;
+    box-shadow: 1px 1px 0 #555, 2px 2px 0 #555;
+    background-color: black;
+    border-radius: 0 0 8% 8%;
+}
