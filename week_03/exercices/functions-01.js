@@ -9,7 +9,7 @@ const reverseArray = function (array) {
 /**
  * Callback function, it gets the array parameter from the html
  */
-const reverseFunctionCaller = function(){
+const reverseFunctionCaller = function () {
     let array = document.getElementById('reverse').value.split(';');
     if (array == '') {
         array = ['school', 'js', 'the', 'is', 'this'];

@@ -9,7 +9,7 @@ const orderNumbers = function (array) {
 /**
  * Callback function, it gets the array parameter from the html
  */
-const arrayFunctionCaller = function(){
+const arrayFunctionCaller = function () {
     let array = document.getElementById('array').value.split(';');
     if (array == '') {
         array = [1, 7, 0, 34, 23, 5, 2];

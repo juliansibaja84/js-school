@@ -12,14 +12,14 @@ const countDown = function (t) {
   let sTime = ['','',''];
 
   //  set dT using the dT passed -------------------------------  
-  if (t > 3600){
+  if (t > 3600) {
     dT[0] = Math.floor(t/3600);
     dT[1] = Math.floor((t%3600)/60);
     dT[2] = (t%3600)%60;
-  } else if (t > 59){
+  } else if (t > 59) {
     dT[1] = Math.floor(t/60);
     dT[2] = Math.floor(t%60);
-  } else{
+  } else {
     dT[2] = t;
   }
 
@@ -71,7 +71,7 @@ const countDown = function (t) {
 /**
  * Callback function, it gets the time parameter from the html
  */
-const counterFunctionCaller = function(){
+const counterFunctionCaller = function () {
   let time = document.getElementById('counter').value;
   if (!time) {
       time = 300;

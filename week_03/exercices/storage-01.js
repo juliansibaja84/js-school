@@ -20,7 +20,7 @@ const saveNote = function (note) {
 /**
  * Callback function, it gets the note parameter from the html
  */
-const notesFunctionCaller = function(){
+const notesFunctionCaller = function () {
   let note = document.getElementById('note').value;
   if (!note) {
       note = "I am JS";

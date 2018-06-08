@@ -12,7 +12,6 @@ const NOTE_AUDIO = {
     SG: new Audio('./assets/notes/note11s.mp3'),
     SA: new Audio('./assets/notes/note12s.mp3'),
 }
-//NOTE_SA.play();
 
 const NOTE = [
     document.getElementById('C'),
