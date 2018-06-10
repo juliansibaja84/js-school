@@ -28,7 +28,7 @@ const NOTE = [
     document.getElementById('SA'),
 ]
 
-const playNote = (ev) => {
+const playNote = ev => {
     if (ev.type === "keydown") {
         console.log(ev.key);
         if (ev.key === "a") NOTE_AUDIO['C'].play();
