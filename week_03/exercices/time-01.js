@@ -78,7 +78,7 @@ const counterFunctionCaller = function () {
   }
 
   countDown(time);
-}
+};
 
 // countDown(300);
 

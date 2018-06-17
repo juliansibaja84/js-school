@@ -23,7 +23,7 @@ const saveNote = function (note) {
 const notesFunctionCaller = function () {
   let note = document.getElementById('note').value;
   if (!note) {
-      note = "I am JS";
+      note = "JS Rules";
   }
 
   saveNote(note);

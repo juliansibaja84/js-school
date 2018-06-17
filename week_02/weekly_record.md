@@ -1,5 +1,13 @@
 # Week 2
-This is a register (kind of a summary) of what I've learned during the week.
+This is a register (kind of a summary) of what I've learned during the week. 
+
+### Content
+
++ [JSON](#json)
++ [REST API's](#rest_apis)
++ [HTML/CSS](#HTML/CSS)
++ [Design Frameworks](#Design_Frameworks)
+
 
 ## JSON
 We can store data , it is indeed:

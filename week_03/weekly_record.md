@@ -1,7 +1,7 @@
 # Week 3
 This is a register (kind of a summary) of what I've learned during the week.
 
-## Vanilla JS
+## VanillaJS
 
 ###  Comments
 There are two types of comments. The Single line comments:
@@ -350,52 +350,3 @@ There will be a time when is necessary to store data in the client side. There a
 
 ### Javascript selectors
 The document object have some methods to get the elements which are part of it, and _selectors_ can be passed to them to filter elements for id or for class o just a tag name. Some of these methods are getElementsByClassName, getElementByID, querySelector and querySelectorAll. When an element is selected it can be changed using other methods like innerHTML, className and classList.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

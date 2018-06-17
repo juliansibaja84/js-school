@@ -30,7 +30,6 @@ const NOTE = [
 
 const playNote = ev => {
     if (ev.type === "keydown") {
-        console.log(ev.key);
         if (ev.key === "a") NOTE_AUDIO['C'].play();
         if (ev.key === "s") NOTE_AUDIO['D'].play();
         if (ev.key === "d") NOTE_AUDIO['E'].play();

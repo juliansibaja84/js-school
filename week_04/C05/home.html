@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./styles/style.css">
+  <title>Jobsity Bookshelves</title>
+</head>
+<body>
+  <div class="container-fluid .wrapper">
+    <!--Nav bar-->
+    <nav class="navbar navbar-default row">
+      <div class="container-fluid">
+        <div class="navbar-header row">
+          <div class="logotype col-sm-2">
+            <a href=""><img src="./assets/images/logo.svg" alt=""></a>
+            <p>JOBSITY</p>
+          </div>
+          <div class="search col-sm-8">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search..." aria-describedby="basic-addon1">
+            </div>
+          </div>
+          <div class="logged col-sm-2">
+            <p>Julián Sibaja</p>
+            <a href=""><img src="./assets/images/perfil.jpg" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!--Content-->
+    <div class="row">
+      <div class="bookshelves-nav col-sm-2">
+        <div>
+          <p>Main</p>
+          <ul class="nav flex-column">
+            <li id="quito" class="nav-item"><a class="nav-link" href="#"><i class="fas fa-globe"></i>  Quito</a></li>
+            <li id="cartagena" class="nav-item"><a class="nav-link" href="#"><i class="fas fa-globe"></i>  Cartagena</a></li>
+            <li id="medellin" class="nav-item"><a class="nav-link"href="#"><i class="fas fa-globe"></i>  Medellín</a></li>
+            <li id="digital" class="nav-item"><a class="nav-link" href="#"><i class="fas fa-tablet-alt"></i>  Digital</a></li>
+            <li id="personalLoans" class="nav-item"><a class="nav-link" href="#"><i class="fas fa-user-tag"></i>  Personal Loans</a></li>
+            <li id="newReleases" class="nav-item"><a class="nav-link" href="#"><i class="fas fa-tags"></i>  New Releases</a></li>
+          </ul>
+        </div>
+        <div>
+            <p class="bold">Your Books</p>
+            <ul class="nav flex-column">
+              <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-book-open"></i>  Readings</a></li>
+              <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-history"></i>  History</a></li>
+              <li class="nav-item"><a class="nav-link" href="#"> <i class="fas fa-bookmark"></i>  Read Later</a></li>
+              <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-heart"></i>  favorites</a></li>
+            </ul>
+          </div>
+      </div>
+      <div class="books-grid col-sm-8">
+        <div class="bookshelf-header">
+          <h2 id=selectedBookshelf>New Releases</h2>
+          <span><i class="fas fa-th-large fa-lg" id="blocks"></i></span>
+          <span><i class="fas fa-th-list fa-lg" id="list"></i></span>
+        </div>
+        <div id="bookshelf row">
+          <div id="b0"></div>
+          <div id="b1"></div>
+          <div id="b2"></div>
+          <div id="b3"></div>
+          <div id="b4"></div>
+          <div id="b5"></div>
+          <div id="b6"></div>
+          <div id="b7"></div>
+          <div id="b8"></div>
+          <div id="b9"></div>
+          <div id="b10"></div>
+          <div id="b11"></div>
+          <div id="b12"></div>
+          <div id="b13"></div>
+          <div id="b14"></div>
+          <div id="b15"></div>
+          <div id="b16"></div>
+          <div id="b17"></div>
+          <div id="b18"></div>
+          <div id="b19"></div>
+        </div>
+      </div>
+      <div class="recent-books col-sm-2">
+        <p>Most Read Books</p>
+        <ol type="1">
+          <li><a href="#">Flask Web Development</a></li>
+          <li><a href="#">Collaborative Web Development</a></li>
+          <li><a href="#">MEAN Web Development</a></li>
+          <li><a href="#">Core Web Programming</a></li>
+        </ol>
+      </div>
+    </div>
+    <div class="book-window-overlay" id="popup"></div>
+  </div>
+  <script src="books.js"></script>
+</body>
+</html>
