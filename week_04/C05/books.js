@@ -259,6 +259,6 @@ for (let i = 0; i < bookList.length;i++) {
 }
 
 setBooks(0);
-//fetchBooks();
+fetchBooks();
 
 
