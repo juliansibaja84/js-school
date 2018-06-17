@@ -1,11 +1,12 @@
 @font-face {
   font-family: "fontawesome";
-  src: local("../fonts/HVD Fonts - PlutoSansBold.otf") format("opentype");
+  src: local("../fonts/HVD Fonts - PlutoSansBold.otf") url("../fonts/HVD Fonts - PlutoSansBold.otf") format("opentype");
 }
 html, body, .wrapper {
   height: 100%;
   margin: 0;
   background-color: #231F20;
+  font-family: "fontawesome";
 }
 
 .navbar {
