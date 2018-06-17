@@ -43,17 +43,23 @@ html, body, .wrapper {
   font-size: 2rem;
   margin-bottom: 0;
   padding-left: 1%;
-  font-weight: bold;
+  font-weight: bolder;
 }
 .navbar-header .search {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
-  height: 100%;
-  margin-top: 1.2%;
+  justify-content: space-between;
+  height: inherit;
+  margin-top: 1.4%;
 }
 .navbar-header .search .input-group {
-  flex-basis: 20%;
+  flex-basis: 30%;
+}
+.navbar-header .search p {
+  Margin: 0;
+  font-size: 150%;
+  flex-basis: 30%;
 }
 .navbar-header .logged {
   margin: 0 auto;
@@ -82,26 +88,39 @@ html, body, .wrapper {
   height: 100%;
   background-color: #231F20;
   padding: 2rem;
-  font-size: 90%;
+  padding-right: 0;
+  font-size: 100%;
 }
 .bookshelves-nav p {
   margin: 0;
   color: #FFF;
+  font-weight: bold;
 }
 .bookshelves-nav ul {
   padding: 0;
+  margin: 10% 0;
 }
 .bookshelves-nav li {
+  margin: 0;
   text-decoration: none;
   list-style: none;
-  display: flex;
   align-items: center;
   color: #6EC1E4;
 }
 .bookshelves-nav li > a {
+  padding: 0;
+  margin: 1rem 0;
   text-decoration: none;
   color: inherit;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
+}
+.bookshelves-nav li > a i {
+  flex-basis: 10%;
+}
+.bookshelves-nav li > a span {
+  flex-basis: 85%;
 }
 .bookshelves-nav li > a:hover {
   text-decoration: none;
@@ -149,6 +168,7 @@ html, body, .wrapper {
   height: 100%;
   display: flex;
   flex-wrap: wrap;
+  margin-top: 2%;
 }
 
 .thumbnail {
@@ -261,14 +281,22 @@ html, body, .wrapper {
   height: 100%;
   background-color: #231F20;
   padding: 2rem;
+  font-size: 100%;
 }
 .recent-books p {
   margin: 0;
   color: rgba(252, 248, 243, 0.7);
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+}
+.recent-books ol {
+  padding-left: 1.5rem;
 }
 .recent-books li {
   font-size: 1.2rem;
   color: rgba(252, 248, 243, 0.7);
+  margin: 1.5rem 0;
 }
 .recent-books a {
   text-decoration: none;
@@ -299,7 +327,7 @@ html, body, .wrapper {
 .book-window-overlay .book-window-popup .description-img {
   margin: 0;
   padding: 0;
-  height: 600px;
+  height: 450px;
 }
 .book-window-overlay .book-window-popup > div {
   height: 100%;
@@ -331,11 +359,11 @@ html, body, .wrapper {
   white-space: pre-line;
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 300px;
+  max-height: 140px;
 }
 .book-window-overlay .book-window-popup > div a {
   height: 6%;
-  width: 20%;
+  width: 10rem;
   margin: 1%;
   font-size: 1rem;
   padding: 0;
@@ -357,6 +385,12 @@ html, body, .wrapper {
   color: #231F20;
 }
 
+@media (max-width: 750px) {
+  .book-window-popup {
+    display: flex;
+    flex-direction: column;
+  }
+}
 @media (max-width: 900px) {
   .navbar .container-fluid .row {
     margin: 0;
@@ -374,10 +408,8 @@ html, body, .wrapper {
   .navbar .container-fluid .row .logged p {
     display: none;
   }
-
-  .book-window-popup {
-    display: flex;
-    flex-direction: column;
+  .navbar .container-fluid .row .search p {
+    display: none;
   }
 }
 
