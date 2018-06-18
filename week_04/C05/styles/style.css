@@ -1,11 +1,20 @@
 @font-face {
   font-family: "fontawesome";
-  src: local("../fonts/HVD Fonts - PlutoSansBold.otf") format("opentype");
+  src: url("../fonts/Font Awesome 5 Brands-Regular-400.otf") format("opentype");
+}
+@font-face {
+  font-family: "plutobold";
+  src: url("../fonts/HVD Fonts - PlutoSansBold.otf") format("opentype");
+}
+@font-face {
+  font-family: "pluto";
+  src: url("../fonts/HVD Fonts - PlutoSansLight.otf") format("opentype");
 }
 html, body, .wrapper {
   height: 100%;
   margin: 0;
   background-color: #231F20;
+  font-family: "pluto";
 }
 
 .navbar {
@@ -31,6 +40,7 @@ html, body, .wrapper {
   align-items: center;
   justify-content: center;
   padding: 0;
+  font-family: "pluto";
 }
 .navbar-header .logotype a {
   padding: 2%;

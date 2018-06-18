@@ -86,17 +86,19 @@ class Book {
 // CallBacks -------------------------------------------------------------------
 
 const changeTitle = ev => {
-  if(ev.path[1].id === 'quito') {
+  debugger
+  console.log(ev);
+  if(ev.path[2].id === 'quito') {
     document.getElementById('selectedBookshelf').innerHTML = 'Quito';
-  } else if (ev.path[1].id === 'medellin') {
+  } else if (ev.path[2].id === 'medellin') {
     document.getElementById('selectedBookshelf').innerHTML = 'Medellín';
-  } else if (ev.path[1].id === 'cartagena') {
+  } else if (ev.path[2].id === 'cartagena') {
     document.getElementById('selectedBookshelf').innerHTML = 'Cartagena';
-  } else if (ev.path[1].id === 'digital') {
+  } else if (ev.path[2].id === 'digital') {
     document.getElementById('selectedBookshelf').innerHTML = 'Digital';
-  } else if (ev.path[1].id === 'personalLoans') {
+  } else if (ev.path[2].id === 'personalLoans') {
     document.getElementById('selectedBookshelf').innerHTML = 'Personal Loans';
-  } else if (ev.path[1].id === 'newReleases') {
+  } else if (ev.path[2].id === 'newReleases') {
     document.getElementById('selectedBookshelf').innerHTML = 'New Releases';
   }
 };
