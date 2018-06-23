@@ -1,24 +1,22 @@
 # Week 4
 
-This is a register (kind of a summary) of what I've learned during the week. All the information here is for different sources.
+This is a register (kind of a summary) of what I've learned during the week.
+All the information here is for different sources.
 
 ## Content
 
 + [ES6](#ES6_/_ECMASCRIPT_2015)
   + [const](#const)
   + [Hoisting](#hoisting)
-  + [Dinamic Values](#Dinamic_Values)
-  + [Destructuring](#Destructuring)
+  + [Dinamic Values](#dinamic_Values)
+  + [Destructuring](#destructuring)
   + [Objects](#objects)
   + [Promises](#promises)
-  + [Async/Await](#Async/Await)
-  + []()
-  + []()
-  + []()
-  + []()
-  + []()
+  + [Async/Await](#async/Await)
+  + [Classes](#classes)
+  + [Maps](#maps)
+  + [Sets](#sets)
   + [Others](#others)
-
 
 ## ES6 / ECMASCRIPT 2015
 
@@ -194,7 +192,7 @@ Java syntax. This is showed next:
 class TheClass extends otherClass{
 
   constructor(var1, var2, ...args){
-    super(); // It is neeeded in order to this keyword to work when 
+    super(); // It is neeeded in order to this keyword to work when the class extends another
     this.attribute = var1;
   }
   
@@ -206,6 +204,97 @@ class TheClass extends otherClass{
   }
 }
 ```
+
+### Maps
+
+Maps are like dictionaries in Python and like maps(duuh) in Java. It is a set of
+pairs of keys and values, so values can be accessed by a key. The differences
+with objects are that the key can be whatever. The use of Maps is shown next:
+
+```js
+  let someMap = new Map([
+    ['greetings', 'Hello i\'m a map item'],
+    [1,{'somePropertyName': true}]
+  ]);
+
+  // The typic set, get and not that typical delete and clear
+  someMap.set([someVar,anotherVar]);
+  console.log(someMap.get('greetings'));
+  someMap.delete(1); // deletes a entry
+  someMap.clear(); // clear all the map
+
+  // For iteration purposes
+  for(let key of someMap.keys()){
+    console.log(key) // show the keys
+  }
+  for(let value of someMap.values()){
+    console.log(value) // show the value
+  }
+  for(let entry of someMap.entries()){
+    console.log(entry) // show the pair [key,value]
+  }
+```
+
+### Sets
+
+A set is a collection of not repeated values. It can be used to get the unique items inside an array. It is used in the following way:
+
+```js
+  let items = ['1',2,{},4,'5',5,5,'6','6']
+  const uniqueItems = new Set(items);
+  console.log(uniqueItems); // set = ['1',2,{},4,'5',5,'6']
+  uniqueItems.add(someVar);
+  uniqueItems.delete(someVar);
+```
+
+Sets also have the same methods of maps for iteration purposes values, keys and entries, but the last two do not make any sense at all.
+
+### Generators
+
+A function type that allows to pause execution of the code. The way it works is
+described next:
+
+```js
+  function* theGenerator(){
+    // execute this when the next method is called the first time
+    console.log('first time');
+
+    yield // This is used when a pause is needed
+    // Execute this when the next method is called the second time
+    console.log('second time');
+  }
+
+  let awesomeGenerator = theGenerator();
+  awesomeGenerator.next(); // {value: 'first time', done: false}
+  awesomeGenerator.next(); // {value: 'second time', done: false}
+  awesomeGenerator.next(); // {value: undefined, done: true}
+
+  function* groceryList(){
+    yield 'milk';
+    yield 'eggs';
+    yield 'cheese';
+  }
+
+  let shopping = groceryList();
+  shopping.next(); // returns {value: 'milk', done: false}
+  shopping.next(); // returns {value: 'eggs', done: false}
+  shopping.next().value; // 'cheese'
+  shopping.next(); // returns {value: undefined, done: true}
+
+  // another way to get the values is through iteration
+  for(let item of shopping){
+    console.log(item.value);
+  }
+```
+
+The generator object has a _done_ property that indicates if there is no more
+code to execute in the function.
+
+### Webpack
+
+It is a module bundler, it basicaly organize and let the use of modules to go
+smooth. The practice for the webpack is in my machine in
+_projects/other/webpack_.
 
 ### Others
 
