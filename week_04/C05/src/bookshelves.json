@@ -1,0 +1,268 @@
+{
+  "quito": [
+    {
+      "isbn": "1491991690",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "0201433311",
+      "lended": true,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1783983299",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "0130897930",
+      "lended": true,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "0133038637",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1491991690",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "0201433311",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1783983299",
+      "lended": true,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "0130897930",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "0133038637",
+      "lended": true,
+      "RecommendedBy": [],
+      "user": "" 
+    }
+  ],
+  "cartagena": [
+    {
+      "isbn": "0763734233",
+      "lended": true,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "0201433311",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1590590287",
+      "lended": true,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1849516375",
+      "lended": true,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "0131587382",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "0763734233",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "0201433311",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1590590287",
+      "lended": true,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1849516375",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "0131587382",
+      "lended": true,
+      "RecommendedBy": [],
+      "user": "" 
+    }
+  ],
+  "medellin": [
+    {
+      "isbn": "1491991690",
+      "lended": true,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1785287451",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1430246235",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1846288630",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1410606384",
+      "lended": true,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1491991690",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1785287451",
+      "lended": true,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1430246235",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1846288630",
+      "lended": true,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1410606384",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    }
+  ],
+  "digital": [
+    {
+      "isbn": "1785280104",
+      "lended": true,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1849515735",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "020177061X",
+      "lended": true,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "0763714313",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "144712443X",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1785280104",
+      "lended": true,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "1849515735",
+      "lended": true,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "020177061X",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "0763714313",
+      "lended": true,
+      "RecommendedBy": [],
+      "user": "" 
+    },
+    {
+      "isbn": "144712443X",
+      "lended": false,
+      "RecommendedBy": [],
+      "user": "" 
+    }
+  ]
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

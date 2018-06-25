@@ -3,368 +3,547 @@ $dark:  #231F20;
 $shadow: rgba(19, 17, 17, 0.274);
 $blue: #6EC1E4;
 $blue-light: #F5F6F8;
-$gray: rgba(252, 248, 243, 0.7);
-$gray-darker: #383838;
-$gray-lighter: #9E9E9E;
+$gray: #D8D8D8;
+$gray-dark: #9E9E9E;
+$content-background: #F5F6F8;
 
 @font-face {
-  font-family: 'fontawesome';
-  src: URL('../fonts/Font Awesome 5 Brands-Regular-400.otf') format('opentype');
+  font-family: 'fontawesome_r';
+  src: URL('./fonts/Font\ Awesome\ 5\ Free-Regular-400.otf') format('opentype');
 }
 
 @font-face {
-  font-family: 'plutobold';
-  src: URL('../fonts/HVD\ Fonts\ -\ PlutoSansBold.otf') format('opentype');
+  font-family: 'fontawesome_s';
+  src: URL('./fonts/Font\ Awesome\ 5\ Free-Solid-900.otf') format('opentype');
 }
 
+@font-face {
+  font-family: 'fontawesome_b';
+  src: URL('./fonts/Font\ Awesome\ 5\ Brands-Regular-400.otf') format('opentype');
+}
 
 @font-face {
   font-family: 'pluto';
-  src: URL('../fonts/HVD\ Fonts\ -\ PlutoSansLight.otf') format('opentype');
+  src: URL('./fonts/HVD\ Fonts\ -\ PlutoSansRegular.otf') format('opentype');
 }
 
-html, body, .wrapper{
-  height:100%;
+@font-face {
+  font-family: 'pluto_m';
+  src: URL('./fonts/HVD\ Fonts\ -\ PlutoSansMedium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'pluto_b';
+  src: URL('./fonts/HVD\ Fonts\ -\ PlutoSansBold.otf') format('opentype');
+}
+
+
+@font-face {
+  font-family: 'pluto_bl';
+  src: URL('./fonts/HVD\ Fonts\ -\ PlutoSansBlack.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'pluto_h';
+  src: URL('./fonts/HVD\ Fonts\ -\ PlutoSansHeavy.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'pluto_l';
+  src: URL('./fonts/HVD\ Fonts\ -\ PlutoSansLight.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'pluto_el';
+  src: URL('./fonts/HVD\ Fonts\ -\ PlutoSansExtraLight.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'pluto_t';
+  src: URL('./fonts/HVD\ Fonts\ -\ PlutoSansThin.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'plutoc';
+  src: URL('./fonts/HVD\ Fonts\ -\ PlutoSansCondRegular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'plutoc_m';
+  src: URL('./fonts/HVD\ Fonts\ -\ PlutoSansCondMedium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'plutoc_b';
+  src: URL('./fonts/HVD\ Fonts\ -\ PlutoSansCondBold.otf') format('opentype');
+}
+
+
+@font-face {
+  font-family: 'plutoc_bl';
+  src: URL('./fonts/HVD\ Fonts\ -\ PlutoSansCondBlack.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'plutoc_h';
+  src: URL('./fonts/HVD\ Fonts\ -\ PlutoSansCondHeavy.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'plutoc_l';
+  src: URL('./fonts/HVD\ Fonts\ -\ PlutoSansCondLight.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'plutoc_el';
+  src: URL('./fonts/HVD\ Fonts\ -\ PlutoSansCondExLight.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'plutoc_t';
+  src: URL('./fonts/HVD\ Fonts\ -\ PlutoSansCondThin.otf') format('opentype');
+}
+
+
+
+html, body,{
+  height: 100%;
   margin: 0;
+  font-family: 'pluto';
   background-color: $dark;
-  font-family: "pluto";
 }
 
-// NAV BAR ---------------------------------------------------------------------
-
-.navbar{
-  margin-bottom: 0;
-  border:none;
-  border-bottom: 1px solid $blue;
-  border-radius: none;
-  .container-fluid{
-    padding:0;
-    height:100%;
-  }
+.fas {
+  font-family: 'fontawesome_s';
+}
+.far {
+  font-family: 'fontawesome_r';
+}
+.fab {
+  font-family: 'fontawesome_b';
 }
 
-.navbar-header {
+#wrapper {
+  height: 100%;
+}
+
+#header-bar {
   width: 100%;
-  height: 100%;
-  margin: 0%;
-
-  .logotype {
-    margin: 0 auto;
+  height: 5rem;
+  background-color: white;
+  border-bottom: 1px $blue solid;
+  display: flex;
+  #logo {
+    flex: 240;
     display: flex;
-    align-content: center;
     align-items: center;
     justify-content: center;
-    padding: 0;
-    font-family: "pluto";
-    a {
-      padding: 2%;
-      i {
-        height: 80%;
-        max-height: 3rem;
-      }
-    }
-    p {
-      font-size: 2rem;
-      margin-bottom: 0;
-      padding-left: 1%;
-      font-weight: bolder;
-    }
-  }
-
-  .search {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: space-between;
-    height: inherit;
-    margin-top: 1.4%;
-    .input-group {
-      flex-basis: 30%;
-    }
-    p {
-      Margin: 0;
-      font-size: 150%;
-      flex-basis: 30%
-    }
-  }
-
-  .logged {
-    margin: 0 auto;
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    height: inherit;
-    a {
-      padding: 2%;
-      img {
-        border-radius: 50%;
-        border: 2px solid $blue;
-        max-height: 5rem;
-      }
-    }
-    p {
-      font-size: 1vw;
-      margin-bottom: 0;
-      padding-right: 1%;
-    }
-  }
-}
-
-// Left navigation -------------------------------------------------------------
-
-.bookshelves-nav {
-  height: 100%;
-  background-color: $dark;
-  padding: 2rem;
-  padding-right: 0;
-  font-size: 100%;
-  p {
-    margin : 0;
-    color: $white;
-    font-weight: bold;
-  }
-  
-  ul {
-    padding: 0;
-    margin: 10% 0; 
-  }
-  
-  li {
-    margin:0;
-    text-decoration: none;
-    list-style: none;
-    align-items: center;
-    color: $blue;
-  }
-  
-  li > a {
-    padding: 0;
-    margin: 1rem 0;
-    text-decoration: none;
-    color: inherit;
-    display:flex;
-    justify-content: space-between;
-    width: 100%;
-    i {
-      flex-basis: 10%
-    }
-    span {
-      flex-basis: 85%
-    }
-  }
-  
-  li > a:hover {
-    text-decoration: none;
-    color: $white;
-    background-color: $dark;
-  }
-
-  li > a:focus {
-    color: $white;
-    background-color: $dark;
-  }
-
-}
-
-
-// Books grid ------------------------------------------------------------------
-.books-grid {
-  // grid-area: 'books-grid';
-  // grid-column: 1;
-  height: 100%;
-  flex-basis: 77.36%;
-  display:block;
-  background-color: $blue-light;
-}
-
-.bookshelf-header{
-  display: flex;
-  padding: 1rem 2rem 0 2rem;
-  align-content: center;
-  align-items: center;
-  span {
-    flex: 5%;
-    padding: 0 0.5%;
-    color: $blue;
-  }
-  span:hover{
-    padding: 0 0.5%;
-    color: $dark;
-  }
-  i{
-    color: inherit;
-  }
-}
-
-
-#selectedBookshelf {
-  flex: 90%;
-  color: $dark;
-}
-
-#bookshelf {
-  padding: 0 2rem;
-  height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 2%;
-}
-
-
-.thumbnail {
-  border: none;
-  height: 30rem;
-  background-color: $blue-light;
-}
-
-.book {
-  white-space: nowrap; 
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  img {
-    margin: 0 auto;
-    width: 100%;
-    height: 70%;
-    border-radius: 5%;
-    box-shadow: 2px 2px 2px $shadow;
-  }
-
-  .title {
-    color: $gray-darker;
-    font-size: 110%;
-    font-weight: bold;
-    
-  }
-
-  .authors {
-    color: $gray-lighter;
-  }
-  
-  .stars {
-    width: 100%;
-  }
-  
-  .stars i{
-    color: $blue;
-  }
-
-  .lended {
-    display: block;
-    position: relative;
-    float: right;
-    width: 0;
-    height: 0;
-    padding: 0;
-    margin: 0;
-    z-index: 2;
-
-  }
-  .lended::after {
-    width: 3rem;
-    height: 3rem;
-    content: "";
-    left: -2rem;
-    top: -15rem;
-    display: block;
-    position: absolute;
-    box-shadow: 1px 1px 0 #555, 2px 2px 0 #555;
-    color: $white;
-    background-color: $blue;
-    border-radius: 8% 0 8% 8%;
-  }
-}
-
-.book-list {
-  height:100%;
-  height: 30rem;
-  padding: 3%;
-  img {
-    margin: 0 auto;
-    padding: 0;
     height: 100%;
-    border-radius: 5%;
+    img {
+      height:58%;
+      padding-right: 0.7rem;
+    }
+    p {
+      color: $dark;
+      font-family: 'pluto_h';
+      font-size: 1.68em;
+      padding-top: 0.15rem;
+      margin-right:0.1rem
+    }
+  }
+  #search {
+    flex: 1160;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p {
+      font-size: 1.5em;
+      padding-left: 1.4rem;
+      font-family: "pluto";
+      padding-top: 0.1rem;
+    }
+    div {
+      position: relative;
+      margin-right: 1.47rem;
+      width: 25.7%;
+      height: 42%;
+      color: $dark;
+      i {
+        position: absolute;
+        top: 0.55rem;
+        left: 0.75rem;
+        font-size: 18px;
+        color: $dark;
+      }
+      input {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        text-indent: 2.27rem;
+        border-radius: 1.3rem 0.98rem 0.98rem 0.98rem;
+        border: 1px #6EC1E4 solid;
+        font-family: "pluto_l";
+        font-size: 0.87em;
+        &:focus{
+          outline: none;
+        }
+        &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+          color: $dark;
+          opacity: 1; /* Firefox */
+      }
+      }
+    }
+  }
+  #login-container {
+    flex: 240;
+    display: flex;
+    align-items: center;
+    #separator {
+      height: 62.5%;
+      width: 1px;
+      background-color: $gray;
+    }
+    #login {
+      flex-grow: 1;
+      display: flex;
+      flex-flow: row-reverse;
+      align-items: center;
+      height: 100%;
+      img {
+        height:44%;
+        width: 2.25rem;
+        margin-right: 1.2rem;
+        margin-top: 0.13rem;
+        border-radius: 50%;
+        border: 2px $blue solid;
+      }
+      i {
+        padding-right: 0.95rem;
+        color: $dark;
+        font-size: 0.9em;
+      }
+      p {
+        color: #231F20;
+        font-size: 0.77em;
+        padding-top: 0.14rem;
+        padding-right: 0.72rem;
+        font-family: "pluto_l";
+      }
+    }  
   }
 
-  > div {
-    height:100%;
-    .title {
-      color: $gray-darker;
-      font-size: 110%;
-      font-weight: bold;
-      margin: 0;
-    }
-  
-    .authors {
-      font-size: 100%;
-      color: $gray-lighter;
-      margin-bottom: 1%;
-    }
-    
-    span {
-      margin: 1% 0;
-    }
-  
-    .stars {
-      width: 100%;
-      margin-bottom: 1%;
-    }
-    
-    .stars i{
-      color: $blue;
-      margin-bottom: 1%;
-    }
-  
-    .description {
-      white-space: pre-line; 
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-height: 55%;
-    }
-    a {
-      height: 6%;
-      width: 20%;
-      margin: 1%;
-      font-size: 1rem;
-      padding:0;
-    }
-  } 
 }
 
-
-// Recent Books ----------------------------------------------------------------
-.recent-books {
+#content {
   height: 100%;
-  background-color: $dark;
-  padding: 2rem;
-  font-size: 100%;
-  p {
-    margin : 0;
-    color: $gray;
-    font-weight: bold;
-    padding:0;
-    margin:0;
+  display: flex;
+  background-color: $content-background;
+  #sidebar-left {
+    flex: 240;
+    height: 100%;
+    background-color: $dark;
+    padding-right: 0;
+    padding-top: 2.2rem;
+    font-size: 100%;
+    box-sizing: border-box;
+    font-family: "plutoc";
+    p {
+      margin : 0;
+      color: $white;
+      font-weight: bold;
+      font-size: 0.78em;
+      padding-left: 2.425rem;
+    }
+    
+    ul {
+      padding: 0;
+      margin: 8.35% 0 23% 0;
+      padding-left: 2.425rem;
+    }
+    
+    li {
+      margin:0;
+      text-decoration: none;
+      list-style: none;
+      align-items: center;
+      color: $blue;
+      font-size: 0.75em;
+      padding-left: 0.1rem;
+      margin-bottom: 1.35rem;
+    }
+    
+    li > a {
+      padding: 0;
+      text-decoration: none;
+      color: inherit;
+      display:flex;
+      justify-content: space-between;
+      width: 100%;
+      i {
+        flex-basis: 10%;
+        font-size: 1.25em;
+        padding-top: 0.07rem;
+      }
+      span {
+        flex-basis: 85%;
+        line-height: 1.2rem;
+        font-size: 1.2em;
+        vertical-align: middle;
+        padding-left: 0.75rem;
+      }
+    }
+    
+    li > a:hover {
+      text-decoration: none;
+      color: $white;
+      background-color: $dark;
+    }
+
+    li > a:focus {
+      color: $white;
+      background-color: $dark;
+    }
   }
-  ol {
-    padding-left: 1.5rem;
-  }
-  li {
-    font-size: 1.2rem;
-    color: $gray;
-    margin: 1.5rem 0;
+    
+  #content-main {
+    flex: 1160;
+    height: 100%;
+    background-color: white;
+    #bookshelf-header{
+      display: flex;
+      padding: 0.22rem 2rem 0 2rem;
+      align-content: center;
+      align-items: center;
+      font-family: "plutoc_t";
+      font-size: 1.21em;
+      div {
+        display: flex;
+        padding-right: 2.99rem;
+      }
+      span {
+        color: $blue;
+        padding-left: 0.45rem;
+        padding-bottom: 0.1rem;
+      }
+      span:hover{
+        color: $dark;
+      }
+      i{
+        color: inherit;
+        font-size: 95%;
+      }
+    }
+
+    #selectedBookshelf {
+      flex: 90%;
+      color: $dark;
+      padding-left: 3.11rem;
+      margin-bottom: 1.665rem;
+    }
+
+    #bookshelf {
+      display: grid;
+      grid-gap:0px;
+      grid-template-columns: repeat(5,1fr);
+      padding: 0 4.06rem;
+      background-color: $content-background;
+      .book-container {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+        margin-bottom: 2.99rem;
+        .image-container {
+          flex: 1;
+          width: 176px;
+          height: 250px;
+          img {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            border-radius: 2%;
+          }
+        }
+        .caption {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          width: 176px;
+          white-space: nowrap; 
+          overflow: hidden;
+          text-overflow: ellipsis;
+          .title {
+            width: 100%;
+            font-size: 0.819em;
+            margin: 0;
+            margin-top: 14.1px;         
+            color: $dark;
+          }
+          .authors {
+            color: $gray-dark;
+            width: 100%;
+            margin: 0;
+            color: #9E9E9E;
+            font-size: 0.819rem;
+            font-family: "plutoc";
+            margin-top: 3px;
+
+          }
+          .stars {
+            width: 100%;
+            margin: 0;
+            margin-top: 5px;
+            font-size: 0.69em;
+            color: $blue;
+          }
+        }
+      }
+      .book-container-list{
+        grid-column: 1/6;
+        width:100%;
+        display: flex;
+        margin-bottom: 2.99rem;
+        .image-container {
+          flex-basis:20%;
+          width: 176px;
+          height: 250px;
+          img {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            border-radius: 2%;
+          }
+        }
+        .caption {
+          padding-left: 3rem;
+          flex-basis:80%;
+          display: flex;
+          flex-direction: column;
+          width: auto;
+          height: 250px;
+          
+          .title {
+            width: 100%;
+            font-size: 1.2em;
+            margin: 0;
+            margin-top: 14.1px;         
+            color: $dark;
+          }
+          .authors {
+            color: $gray-dark;
+            width: 100%;
+            margin: 0;
+            color: #9E9E9E;
+            font-size: 0.819rem;
+            font-family: "plutoc";
+            margin-top: 3px;
+          }
+          .stars {
+            width: 100%;
+            margin: 0;
+            margin-top: 5px;
+            font-size: 0.69em;
+            color: $blue;
+          }
+          .description {
+            white-space: pre-line; 
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-height: 60px;
+          }
+          .available {
+            color: $blue;
+            margin: 5px 0;
+          }
+          .not-available {
+            color: $dark;
+            margin: 5px 0;
+          }
+          .btn {
+            background-color: $dark;
+            background-color: $blue;
+            width: 20%;
+            border-color: white;
+            color: white;
+          }
+          .pagination {
+            color: $gray-dark;
+            width: 100%;
+            margin: 0;
+            color: #9E9E9E;
+            font-size: 0.819rem;
+            margin-top: 3px;
+
+          }
+        }
+      }
+    }
+    .lended {
+      display: block;
+      position: relative;
+      float: right;
+      width: 0;
+      height: 0;
+      padding: 0;
+      margin: 0;
+      z-index: 2;
+  
+    }
+    .lended-i {
+      position: absolute;
+      z-index: 3;
+      left: 3.82rem;
+      top: -13.24rem;
+      color: white;
+    }
+    .lended::after {
+      width: 3.3rem;
+      height: 2.48rem;
+      content: "";
+      left: 2.6rem;
+      top: -13.7rem;
+      display: block;
+      position: absolute;
+      color: #FFF;
+      background-image: url(../assets/images/Available.svg);
+    }
   }
   
-  a {
-    text-decoration: none;
-    color: inherit;
-    
+  #sidebar-right {
+    flex: 240;
+    height: 100%;
+    background-color: $dark;
+    font-size: 100%;
+    p {
+      margin : 0;
+      color: $gray;
+      font-weight: bold;
+      padding:0;
+      margin:0;
+      padding: 2.28rem 0 0 2.1rem;
+      font-size: 0.8em;
+      font-family: "plutoc";
+    }
+    ol {
+      padding-left: 2.878rem;
+      padding-top: 0.8rem;
+      font-size: 0.82em;
+      font-family: "plutoc";
+    }
+    li {
+      color: $gray;
+      margin-bottom: 1.63rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      
+    }
   }
 }
 
-// POP-UP Window ---------------------------------------------------------------
-
+// POPUP Window
 .book-window-overlay{
   position: absolute;
   top: 0;
@@ -378,108 +557,167 @@ html, body, .wrapper{
       opacity: 1;
   }
   .book-window-popup{
-    margin: 5rem 5rem;
-    background: $white;
-    border: 1px solid #666;
-    box-shadow: 0 0 50px rgba(0,0,0,0.5);
-    position: relative;
-    z-index: 3;
-    .description-img{
-      margin: 0;
-      padding: 0;
-      height: 450px;
-    }
-    > div {
-      height:100%;
-      padding : 4%;
-      .title {
-        color: $gray-darker;
-        font-size: 110%;
-        font-weight: bold;
-        margin: 0;
-      }
-    
-      .authors {
-        font-size: 100%;
-        color: $gray-lighter;
-        margin-bottom: 1%;
-      }
-      
-      span {
-        margin: 1% 0;
-      }
-    
-      .stars {
-        width: 100%;
-        margin-bottom: 1%;
-      }
-      
-      .stars i{
-        color: $blue;
-        margin-bottom: 1%;
-      }
-    
-      .description {
-        white-space: pre-line; 
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-height: 140px;
-      }
-      a {
-        height: 6%;
-        width: 10rem;
-        margin: 1%;
-        font-size: 1rem;
+      display:flex;
+      margin: 5rem 5rem;
+      background: #fff;
+      border: 1px solid #666;
+      box-shadow: 0 0 50px rgba(0,0,0,0.5);
+      position: relative;
+      z-index:4;
+      .image-container{
+        flex-basis:30%;
+        background-image: url(../assets/images/books/b1.jpg);
+        background-size: auto;
+        background-position: center;
+        min-height: 350px;
         padding:0;
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
-    } 
-  } 
+      .caption {
+        flex-basis:70%;
+        display: inline;
+        background-color: $white;
+        font-size: 100%;
+        padding: 2%;
+        .title {
+          width: 100%;
+          font-size: 1.2em;
+          margin: 0;
+          margin-top: 14.1px;         
+          color: $dark;
+        }
+        .authors {
+          color: $gray-dark;
+          width: 100%;
+          margin: 0;
+          color: #9E9E9E;
+          font-size: 1.2rem;
+          font-family: "plutoc";
+          margin-top: 3px;
+        }
+        .stars {
+          width: 100%;
+          margin: 10px 0;
+          margin-top: 5px;
+          font-size: 0.69em;
+          color: $blue;
+        }
+        .description {
+          white-space: pre-line; 
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-height: 400px;
+        }
+        .available {
+          color: $blue;
+          margin: 5px 0;
+        }
+        .not-available {
+          color: $dark;
+          margin: 5px 0;
+        }
+        .btn {
+          background-color: $dark;
+          background-color: $blue;
+          width: 20%;
+          border-color: white;
+          color: white;
+        }
+        .pagination {
+          color: $gray-dark;
+          width: 100%;
+          margin: 0;
+          color: #9E9E9E;
+          font-size: 1em;
+          margin-top: 3px;
+
+        }
+      }
+  }
+  
 }
 
 .close {
   position: absolute;
-  margin: 0;
-  width: 2rem;
-  height: 2rem;
+  width: 1rem;
+  height: 1rem;
+  top: 0rem;
+  right: 0.7rem;
   opacity: 0.8;
-  right: 1rem;
-  top: 0.7rem;
-  z-index: 4;
   transition: all 200ms;
   font-weight: bold;
-  font-size: 3vw;
+  font-size: 2em;
   text-decoration: none;
-  color: $dark;
+  color: $gray-dark;
 }
-
-// Media Queries ---------------------------------------------------------------
 
 @media(max-width:750px){
   .book-window-popup {
     display: flex;
     flex-direction: column;
   }
+  
 }
 
 @media(max-width:900px){
-  .navbar .container-fluid .row{
+
+  #header-bar {
     margin: 0;
-    .logotype p{
+    
+    #logo {
+      p{
       display:none
-    }
-    .search {
-      align-items: center;
-      justify-content: center;
-      .input-group {
-        flex-basis: 100%;
+      }
+      img{
+        padding:0;
+        margin-right: 0 0.5rem;
       }
     }
-    .logged p{
-      display: none;
+    #search {
+      align-items: center;
+      justify-content: center;
+      div {
+        flex-basis: 100%;
+      }
+      p {
+        display: none;
+      }
     }
-    .search p {
-      display: none;
+    #login-container {
+      #separator {
+        display:  none;
+      }
+    }
+    #login {
+      p, i, div{
+        display: none;
+      }
+      img {
+        margin:0;
+      }
+    }
+  }
+  #content {
+    flex-direction: column;
+    #left-sidebar {
+      flex-basis:100%;
+      height: auto;
+    }
+    #content-main {
+      flex-basis:100%;
+      height: auto;
+    }
+    #right-sidebar {
+      flex-basis:auto;
     }
   }
 }
 
+@media(max-width:1350px){
+  #content #content-main #bookshelf {
+    grid-template-columns: repeat(auto-fit,minmax(176px,1fr))
+  } 
+}
