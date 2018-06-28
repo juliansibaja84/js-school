@@ -33,7 +33,6 @@ function putBooksInThePageBookshelf(layoutType = selectedLayout) {
       document.getElementById(`b${book.isbn}`).addEventListener('click', generatePopUp);
     });
   } else if (layoutType === 'list') {
-
     bookList[selectedBookshelf].forEach((book) => {
       let lended = '<span class="available">Available</span>';
       let buttom = '<button href="#" class="btn" disabled>Borrow The Book</button>';
