@@ -1,0 +1,35 @@
+#content-main {
+  flex: 1160;
+  height: 100%;
+  background-color: #F5F6F8;
+}
+#content-main #bookshelf-header {
+  display: flex;
+  padding: 0.22rem 2rem 0 2rem;
+  align-content: center;
+  align-items: center;
+  font-family: "plutoc_t";
+  font-size: 1.21em;
+}
+#content-main #bookshelf-header div {
+  display: flex;
+  padding-right: 2.99rem;
+}
+#content-main #bookshelf-header span {
+  color: #6EC1E4;
+  padding-left: 0.45rem;
+  padding-bottom: 0.1rem;
+}
+#content-main #bookshelf-header span:hover {
+  color: #231F20;
+}
+#content-main #bookshelf-header i {
+  color: inherit;
+  font-size: 95%;
+}
+#content-main #selectedBookshelf {
+  flex: 90%;
+  color: #231F20;
+  padding-left: 3.11rem;
+  margin-bottom: 1.665rem;
+}

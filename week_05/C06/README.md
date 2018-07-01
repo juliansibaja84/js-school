@@ -1,10 +1,18 @@
 # Challenge 06
 
-For this challenge a restful API using Node, mongoDB and express was constructed, the API is inside the bookshelves folder. To run the API a few requirements
-are needed. [Node](https://nodejs.org/en/) and [MongoDB](https://www.mongodb.com/)
-need to be installed.
+For this challenge a restful API using Node, mongoDB and express was constructed
+, the API is inside the bookshelves folder. To run the API a few requirements
+are needed. [Node](https://nodejs.org/en/) and [MongoDB community](https://www.mongodb.com/download-center?jmp=nav#community) need to be installed.
 
 Run ```npm install``` inside the bookshelves folder to update the dependecies.
+
+It is also needed to start the service of mongoDB, that can be done by running
+the following command (tested in debian):
+
+    sudo service mongodb start
+
+For other distros of linux or SO read the documentation [here](https://docs.mongodb.com/manual/administration/install-community/).
+
 
 ## Populate the db
 

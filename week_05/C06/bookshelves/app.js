@@ -9,10 +9,17 @@ const { User } = require('./models/user');
 mongoose.connect('mongodb://localhost/bookshelves');
 
 const app = express();
-const PORT = 3000;
+const PORT = 5001;
 const secret = 'TheDragonAllwaysHasAhidenTrick';
 
 app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Methods', '*');
+  next();
+});
 
 app.use((req, res, next) => {
   if (req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0] === 'JWT') {
@@ -51,26 +58,37 @@ app.post('/api/books/', User.loginRequired, (req, res) => {
   });
 });
 
+// Get all the books
+app.get('/api/books/all', User.loginRequired, (req, res) => {
+  Book.getBooks((err, books) => {
+    if (err) {
+      throw err;
+    }
+    res.json(books);
+  },
+  (req.query.BS) ? { bookshelf: req.query.BS } : {});
+});
+
+// Get all the books that match the title, description and isbn with the string passed
+app.post('/api/books/all/search', User.loginRequired, (req, res) => {
+  Book.searchBooks(req.body, (err, books) => {
+    if (err) {
+      res.status(400).json(err.message);
+      throw err;
+    }
+    res.json(books);
+  },
+  (req.query.BS) ? { bookshelf: req.query.BS } : {});
+});
+
 // Get one book if the id is passed or all if the id is 'all'
 app.get('/api/books/:_id', User.loginRequired, (req, res) => {
-  if (req.params._id === 'all') {
-    Book.getBooks(
-      (err, books) => {
-        if (err) {
-          throw err;
-        }
-        res.json(books);
-      },
-      (req.query.BS) ? { bookshelf: req.query.BS } : {},
-    );
-  } else {
-    Book.getBook(req.params._id, (err, book) => {
-      if (err) {
-        res.status(404).json(err);
-      }
-      res.json(book);
-    });
-  }
+  Book.getBook(req.params._id, (err, book) => {
+    if (err) {
+      res.status(404).json(err);
+    }
+    res.json(book);
+  });
 });
 
 // Delete a Book

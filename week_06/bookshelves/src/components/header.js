@@ -8,7 +8,7 @@ class Search extends Component {
     return (
       <div>
         <a href=""><i className="fas fa-search"></i></a> 
-        <input type="text" placeholder="Search..."></input>
+        <input onChange={(evt) => this.props.onChangeSearchInput(evt.target.value)} type="text" placeholder="Search..."></input>
       </div>
     );
   }
@@ -24,13 +24,13 @@ export default class Header extends Component {
         </div>
         <div id="search">
           <p>Bookshelf</p>
-          <Search />
+          <Search onChangeSearchInput={this.props.onChangeSearchInput}/>
         </div>
         <div id="login-container">
           <div id="separator"></div>
           <div id="login">
             <img src={profile} alt=""/>
-            <i class="fas fa-angle-down"></i>
+            <i className="fas fa-angle-down"></i>
             <p>Jakob Treml</p> 
           </div>
         </div>

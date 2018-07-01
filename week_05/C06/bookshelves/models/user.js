@@ -23,6 +23,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+userSchema.index({ full_name: 'text' });
 userSchema.methods.comparePassword = function comparePassword(password) {
   return bcrypt.compareSync(password, this.hash_password);
 };

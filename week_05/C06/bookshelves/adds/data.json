@@ -12,188 +12,294 @@
   ],
   "books": [
     {
-      "title": "Steve Jobs",
-      "authors": [
-        "Walter Isaacson"
-      ],
-      "image": "http://books.google.com/books/content?id=8U2oAAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-      "description": "Draws on more than forty interviews with Steve Jobs, as well as interviews with family members, friends, competitors, and colleagues to offer a look at the co-founder and leading creative force behind the Apple computer company.",
-      "rating": 5,
-      "publishedDate": 2011,
-      "pageCount": 630,
-      "lended": false,
-      "bookshelf": "quito",
-      "printType": "BOOK",
-      "user": ""
+      "isbn": "1491991690",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "quito" 
     },
     {
-      "title": "Flask Web Development",
-      "authors": [
-        "Miguel Grinberg"
-      ],
-      "image": "http://books.google.com/books/content?id=cVlPDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-      "description": "If you have Python experience, this book shows you how to take advantage of the creative freedom Flask provides.",
-      "rating": 4,
-      "publishedDate": 2018,
-      "pageCount": 316,
-      "lended": false,
-      "bookshelf": "quito",
-      "printType": "BOOK",
-      "user": ""
+      "isbn": "0201433311",
+      "lent": true,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "quito" 
     },
     {
-      "title": "Collaborative Web Development",
-      "authors": [
-        "Jessica R. Burdman"
-      ],
-      "image": "http://books.google.com/books/content?id=GteVGSDixUUC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-      "description": "Written by a leader in Web development methodologies and processes, Collaborative Web Development brings structure and sanity to what is often an overwhelming and chaotic process.",
-      "rating": 3,
-      "publishedDate": 1999,
-      "pageCount": 251,
-      "lended": false,
-      "bookshelf": "cartagena",
-      "printType": "BOOK",
-      "user": ""
+      "isbn": "1783983299",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "quito" 
     },
     {
-      "title": "MEAN Web Development",
-      "authors": [
-        "Amos Q. Haviv"
-      ],
-      "image": "http://books.google.com/books/content?id=FpifBAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-      "description": "If you are a web or a full-stack JavaScript developer who is interested in learning how to build modern web applications using the MEAN stack, this book is for you.",
-      "rating": 5,
-      "publishedDate": 2014,
-      "pageCount": 354,
-      "lended": false,
-      "bookshelf": "cartagena",
-      "printType": "BOOK",
-      "user": ""
+      "isbn": "0130897930",
+      "lent": true,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "quito" 
     },
     {
-      "title": "Core Web Programming",
-      "authors": [
-        "Marty Hall",
-       "Larry Brown"
-      ],
-      "image": "http://books.google.com/books/content?id=q45_UDI77PoC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-      "description": "Offers real-world examples demonstrating a variety of Web development programming languages and tools, covering HTML 3.2, Netscape and Internet Explorer extensions, CGI programming, and Java.",
-      "rating": 3,
-      "publishedDate": 2001,
-      "pageCount": 1398,
-      "lended": true,
-      "bookshelf": "medellin",
-      "printType": "BOOK",
-      "user": ""
+      "isbn": "0133038637",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "quito" 
     },
     {
-      "title": "PHP and MySQL Web Development",
-      "authors": [
-        "Luke Welling",
-        "Laura Thomson"
-      ],
-      "image": "http://books.google.com/books/content?id=dgInDQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-      "description": "The final part of this book describes how to approach real-world projects and takes the reader through the design, planning, and building of several projects, including: User authentication and personalization Web-based email Social media ...",
-      "rating": 3,
-      "publishedDate": 2016,
-      "pageCount": 688,
-      "lended": true,
-      "bookshelf": "medellin",
-      "printType": "BOOK",
-      "user": ""
+      "isbn": "1491991690",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "quito" 
     },
     {
-      "title": "Java Web Development Illuminated",
-      "authors": [
-        "Kai Qian"
-      ],
-      "image": "http://books.google.com/books/content?id=oY9fShrQyUgC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-      "description": "This text introduces students to the concepts of building Web-distributed applications and helps develop the necessary skills through numerous examples, projects, case studies and hands-on examples.",
-      "rating": 2,
-      "publishedDate": 2007,
-      "pageCount": 702,
-      "lended": false,
+      "isbn": "0201433311",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "quito" 
+    },
+    {
+      "isbn": "1783983299",
+      "lent": true,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "quito" 
+    },
+    {
+      "isbn": "0130897930",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "quito" 
+    },
+    {
+      "isbn": "0133038637",
+      "lent": true,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "quito" 
+    },
+    {
+      "isbn": "0763734233",
+      "lent": true,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "cartagena" 
+    },
+    {
+      "isbn": "0201433311",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "cartagena" 
+    },
+    {
+      "isbn": "1590590287",
+      "lent": true,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "cartagena" 
+    },
+    {
+      "isbn": "1849516375",
+      "lent": true,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "cartagena" 
+    },
+    {
+      "isbn": "0131587382",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "cartagena" 
+    },
+    {
+      "isbn": "0763734233",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "cartagena" 
+    },
+    {
+      "isbn": "0201433311",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "cartagena" 
+    },
+    {
+      "isbn": "1590590287",
+      "lent": true,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "cartagena" 
+    },
+    {
+      "isbn": "1849516375",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "cartagena" 
+    },
+    {
+      "isbn": "0131587382",
+      "lent": true,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "cartagena" 
+    },
+    {
+      "isbn": "1491991690",
+      "lent": true,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "medellin" 
+    },
+    {
+      "isbn": "1785287451",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "medellin" 
+    },
+    {
+      "isbn": "1430246235",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "medellin" 
+    },
+    {
+      "isbn": "1846288630",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "medellin" 
+    },
+    {
+      "isbn": "1410606384",
+      "lent": true,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "medellin" 
+    },
+    {
+      "isbn": "1491991690",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "medellin" 
+    },
+    {
+      "isbn": "1785287451",
+      "lent": true,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "medellin" 
+    },
+    {
+      "isbn": "1430246235",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "medellin" 
+    },
+    {
+      "isbn": "1846288630",
+      "lent": true,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "medellin" 
+    },
+    {
+      "isbn": "1410606384",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "medellin" 
+    },
+    {
+      "isbn": "1785280104",
+      "lent": true,
+      "RecommendedBy": [],
+      "user": "",
       "bookshelf": "digital",
-      "printType": "BOOK",
-      "user": ""
+      "downloadLink": "" 
     },
     {
-      "title": "Web Development with MongoDB and NodeJS",
-      "authors": [
-        "Mithun Satheesh",
-        "Bruno Joseph D'mello",
-        "Jason Krol"
-      ],
-      "image": "http://books.google.com/books/content?id=4QKACwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-      "description": "Build an interactive and full-featured web application from scratch using Node.js and MongoDB About This Book Configure your development environment to use Node.js and MongoDB Use Node.js to connect to a MongoDB database and perform data ...",
-      "rating": 3,
-      "publishedDate": 2015,
-      "pageCount": 300,
-      "lended": false,
+      "isbn": "1849515735",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
       "bookshelf": "digital",
-      "printType": "BOOK",
-      "user": ""
+      "downloadLink": "" 
     },
     {
-      "title": "Beginning JSP, JSF and Tomcat",
-      "authors": [
-        "Giulio Zambon"
-      ],
-      "image": "http://books.google.com/books/content?id=LosBKAJypAkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-      "description": "En 1987, una bomba del Ejército Republicano Irlandés enterró a Gordon Wilson y a su hija de veintiún años bajo metro y medio de escombros. Sólo Gordon sobrevivió. Y perdonó. De los que pusieron la bomba, dijo: \"He perdido a mi hija, pero no les guardo rencor...Esta noche, y todas las noches voy a orar para que Dios los perdone.\" Sus palabras captaron la atención de los medios de información, y en el dolor de un hombre, el mundo pudo captar un destello de la gracia. En este libro el galardonado escritor Philip Yancey explora la gracia al nivel de la calle. Si el amor de Dios es para quienes no merecen la gracia, entonces, pregunta, ¿qué aspecto tiene cuando actúa? Y si los cristianos son los únicos que la pueden distribuir, ¿cuán efectiva es la labor que hacemos para derramar gracia sobre un mundo que conoce muchísimo más de crueldad y de falta de perdón, que de misericordia? La gracia no excusa el pecado, dice Yancey, pero valora al pecador. La gracia genuina es sorprendente y escandalosa. Sacude nuestras ideas convenciéndoles con su insistencia en acercarse a los pecadores para tocarlos con la misericordia y la esperanza.",
-      "rating": 3,
-      "publishedDate": 2013,
-      "pageCount": 436,
-      "lended": false,
-      "bookshelf": "quito",
-      "printType": "JOURNAL",
-      "user": ""
-    },
-    {
-      "title": "Web Development with Java",
-      "authors": [
-        "Tim Downey"
-      ],
-      "image": "http://books.google.com/books/content?id=Lq1BKNCW9-wC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-      "description": "This book jumps to the 'good stuff' from the outset, allowing students to quickly start writing real applications. It introduces readers to a 3-tiered, Model-View-Controller architecture by using Hibernate, JSPs, and Java Servlets. This book uses existing powerful technologies such as JSP, JavaBeans, Annotations, JSTL, Java 1.5, Hibernate, Apache Velocity and Tomcat. It also presents Model 1 architectures using Servlets and JSP as alternatives to Perl and PHP. Written for novice developers, this book provides an introductory course in web development for undergraduates as well as web developers.",
-      "rating": 2,
-      "publishedDate": 2008,
-      "pageCount": 288,
-      "lended": false,
-      "bookshelf": "cartagena",
-      "printType": "PAPER",
-      "user": ""
-    },
-    {
-      "title": "Human Factors and Web Development",
-      "authors": [
-        "Julie Ratner"
-      ],
-      "image": "http://books.google.com/books/content?id=sKvi5fVL-uAC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-      "description": "Due to the ever-changing technological landscape and the global integration of the Internet in schools, libraries, homes, and businesses, the content of this second edition changed significantly. Since many computer users are connected at both home and work, the Web has transformed communication; consumption patterns; and access to business, politicians, and neighbors halfway around the world. With numerous books on user-friendly Web sites, the editor's challenge was to deliver a volume with a radically different snapshot of the research being conducted at the beginning of the 21st century. The chapters in this book provide many answers to critical questions and propose thought-provoking research ideas for the future. Corporate and academic practitioners, as well as their doctoral fellows and graduate students from around the globe contributed their time, expertise, and unique research practices. Together, they collectively provide another comprehensive resource that the growing community of human factors and Web development experts can share. The editor's hope is that this book will inspire leading-edge research on accessible Web applications or other topics in the coming years.",
-      "rating": 1,
-      "publishedDate": 2002,
-      "pageCount": 352,
-      "lended": false,
-      "bookshelf": "medellin",
-      "printType": "JOURNAL",
-      "user": ""
-    },
-    {
-      "title": "D Web Development",
-      "authors": [
-        "Kai Nacke"
-      ],
-      "image": "http://books.google.com/books/content?id=Ml4dDAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-      "description": "Leverage the power of D and the vibe.d framework to develop web applications that are incredibly fast About This Book Utilize the elegant vibe.d framework to build web applications easily and REST backends with the D programming language Learn about all components of vibe.d to enhance your web development with D A hands-on guide to the vibe.d framework; from static web pages to template-based, interactive and localized web applications with database access and REST backends Who This Book Is For Whether you are new to the world of D, or already have developed applications in D, or if you want to leverage the power of D for web development, then this book is ideal for you. Basic knowledge of core web technologies like HTML 5 is helpful but not required. This book explains the difficult details to speed your web development. What You Will Learn Create amazingly fast web applications with D Use Diet templates to easily create a web user interface Utilize the web framework for interactive applications with input validation and internationalization Access a database to provide persistent storage for your application Extend your application with a REST interface and access other applications via REST Understand vibe.d's fiber-based approach to asynchronous I/O and use it for integration of existing components Create GUI applications with vibe.d In Detail D is a programming language with C-like syntax and static typing. The vibe.d framework builds on powerful D concepts like template meta-programming and compile-time function execution to provide an easy-to-use environment for web applications. The combination of a feature-rich web programming framework with a language compiling to native code solves two common issues in web development today: it accelerates your development and it results in fast, native web applications. Learning the vibe.d framework before you start your application will help you to choose the right features to reach your goal. This book guides you through all aspects of web development with D and the vibe.d framework. Covering the popular operating systems today, this guide starts with the setup of your development system. From the first Hello World-style application you will move on to building static web pages with templates. The concise treatment of web forms will give you all the details about form handling and web security. Using the abstractions of the web framework you will learn how to easily validate user input. Next, you will add database access to your application, providing persistent storage for your data. Building on this foundation, you will expose your component and integrate other components via REST. Learning about the internals of vibe.d you will be able to use low-level techniques such as raw TCP access. The vibe.d concepts can also be used for GUI clients, which is the next topic that you will learn. vibe.d is supported by an active community, which adds new functionality. This comprehensive guide concludes with an overview of the most useful vibe.d extensions and where to find them. It also shows you how to integrate these extensions in your application. The concepts are always illustrated with source code, giving you an insight into how to apply them in your application. Style and approach A tutorial-style guide to develop web applications with D and the vibe.d framework. Each topic is explained in detail and illustrated with source code, providing you with hands-on assistance for your application.",
-      "rating": 2,
-      "publishedDate": 2016,
-      "pageCount": 196,
-      "lended": false,
+      "isbn": "020177061X",
+      "lent": true,
+      "RecommendedBy": [],
+      "user": "",
       "bookshelf": "digital",
-      "printType": "PAPER",
-      "user": ""
+      "downloadLink": "" 
+    },
+    {
+      "isbn": "0763714313",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "digital",
+      "downloadLink": "" 
+    },
+    {
+      "isbn": "144712443X",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "digital",
+      "downloadLink": "" 
+    },
+    {
+      "isbn": "1785280104",
+      "lent": true,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "digital",
+      "downloadLink": "" 
+    },
+    {
+      "isbn": "1849515735",
+      "lent": true,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "digital",
+      "downloadLink": "" 
+    },
+    {
+      "isbn": "020177061X",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "digital",
+      "downloadLink": "" 
+    },
+    {
+      "isbn": "0763714313",
+      "lent": true,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "digital",
+      "downloadLink": "" 
+    },
+    {
+      "isbn": "144712443X",
+      "lent": false,
+      "RecommendedBy": [],
+      "user": "",
+      "bookshelf": "digital",
+      "downloadLink": "" 
     }
   ]
 }

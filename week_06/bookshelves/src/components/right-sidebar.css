@@ -1,0 +1,31 @@
+#sidebar-right {
+  flex: 240;
+  height: 100%;
+  background-color: #231F20;
+  font-size: 100%;
+}
+#sidebar-right p {
+  margin: 0;
+  color: #D8D8D8;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+  padding: 2.28rem 0 0 2.1rem;
+  font-size: 0.8em;
+  font-family: "plutoc";
+}
+#sidebar-right ol {
+  padding-left: 2.878rem;
+  padding-top: 0.8rem;
+  font-size: 0.82em;
+  font-family: "plutoc";
+}
+#sidebar-right li {
+  color: #D8D8D8;
+  margin-bottom: 1.63rem;
+  cursor: pointer;
+}
+#sidebar-right a {
+  text-decoration: none;
+  color: inherit;
+}

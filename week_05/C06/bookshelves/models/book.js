@@ -5,6 +5,10 @@ const bookSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  isbn: {
+    type: String,
+    required: true,
+  },
   authors: {
     type: Array,
     required: true,
@@ -22,7 +26,7 @@ const bookSchema = new mongoose.Schema({
     required: true,
   },
   publishedDate: {
-    type: Number,
+    type: String,
     required: true,
   },
   pageCount: {
@@ -37,11 +41,7 @@ const bookSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  created: {
-    type: Date,
-    default: Date.now,
-  },
-  lended: {
+  lent: {
     type: Boolean,
     default: false,
   },
@@ -49,8 +49,21 @@ const bookSchema = new mongoose.Schema({
     type: String,
     default: '',
   },
+  recommendedBy: {
+    type: Array,
+    default: [],
+  },
+  downloadLink: {
+    type: String,
+    default: '',
+  },
+  created: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
+bookSchema.index({ title: 'text', authors: 'text', description: 'text' });
 const Book = mongoose.model('Book', bookSchema);
 
 // Get Books
@@ -77,8 +90,14 @@ Book.deleteBook = (id, callback) => {
 // Lend a book
 Book.lendBook = (id, userId, callback) => {
   const query = { _id: id };
-  const update = { $set: { lended: true, user: userId } };
-  Book.update(query, update, callback);
+  const update = { $set: { lent: true, user: userId } };
+  Book.update(query, update, () => {
+    Book.find(query, callback);
+  });
+};
+
+Book.searchBooks = (stringToMatch, callback) => {
+  Book.find({ $text: { $search: stringToMatch.searchString } }, callback);
 };
 
 module.exports.Book = Book;
