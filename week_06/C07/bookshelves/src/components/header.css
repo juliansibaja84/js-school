@@ -106,3 +106,47 @@
   font-family: "pluto_l";
 }
 
+@media (max-width: 900px) {
+  #header-bar {
+    margin: 0;
+  }
+  #header-bar #logo p {
+    display: none;
+  }
+  #header-bar #logo img {
+    padding: 0;
+    margin: 0 0.5rem;
+  }
+  #header-bar #search {
+    align-items: center;
+    justify-content: center;
+  }
+  #header-bar #search div {
+    flex-basis: 90%;
+    margin: 0;
+    padding: 0;
+  }
+  #header-bar #search p {
+    display: none;
+  }
+  #header-bar #login-container #separator {
+    display: none;
+  }
+  #header-bar #login p, #header-bar #login i, #header-bar #login div {
+    display: none;
+  }
+}
+
+@media (max-width: 1250px) {
+  #header-bar #login p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 10px;
+  }
+  #header-bar #login {
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+  }
+
+}

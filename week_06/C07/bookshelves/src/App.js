@@ -86,6 +86,7 @@ class App extends Component {
             bookList={this.state.bookList}
             apiInstance={this.state.apiInstance}
             setBook={this.setBook}
+            selectedBookshelf={this.state.selectedBookshelf}
           />
           <RightSideBar />
         </div>

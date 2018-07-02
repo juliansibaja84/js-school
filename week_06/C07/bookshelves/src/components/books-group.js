@@ -181,7 +181,7 @@ class Popup extends React.Component {
           <div className="caption">
             <p className="title">{this.props.book.title} <small>{this.props.book.publishedDate}</small></p>
             <p className="authors">{this.props.book.authors}</p>
-            <p className="pagination">{this.props.book.pageCount}</p>
+            <p className="pagination">{this.props.book.pageCount} pages</p>
             <div className="stars">
               <Stars rating={this.props.book.rating} />
             </div>
@@ -190,7 +190,6 @@ class Popup extends React.Component {
           </div>
           {button}
           <a onClick={this.props.closePopup} className="close">&times;</a>
-          {/* <button onClick={this.props.closePopup}>close me</button> */}
         </div>
       </div>
     );

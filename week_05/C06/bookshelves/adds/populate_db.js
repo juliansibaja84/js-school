@@ -107,7 +107,6 @@ const saveData = {
   books: (data, callback) => {
     db.createCollection('books');
     const promisesList = [];
-    const bookArray = [];
     data.forEach((bookInfo) => {
       let book;
       const bookPromise = new Promise((resolve) => {
@@ -133,19 +132,14 @@ const saveData = {
               recommendedBy: bookInfo.recommendedBy,
               downloadLink: (bookInfo.downloadLink) ? bookInfo.downloadLink : '',
             };
-            bookArray.push(book);
+            Book.create(book);
             resolve();
           });
         });
       });
       promisesList.push(bookPromise);
-      return book;
     });
-    Promise.all(promisesList).then(() => {
-      bookArray.forEach((book) => {
-        Book.create(book);
-      });
-    });
+    Promise.all(promisesList).then(() => callback());
   },
   users: (data, callback) => {
     User.create(data, callback);
@@ -163,6 +157,6 @@ fs.readFile('data.json', 'utf8', (err, data) => {
   if (err) throw err;
   // saveData(JSON.parse(data).books, 'books');
   // saveData(JSON.parse(data).users, 'users');
-  //saveData.users(JSON.parse(data).users, () => mongoose.disconnect());
+  saveData.users(JSON.parse(data).users);
   saveData.books(JSON.parse(data).books, () => mongoose.disconnect());
 });

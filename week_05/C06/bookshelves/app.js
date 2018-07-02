@@ -69,7 +69,7 @@ app.get('/api/books/all', User.loginRequired, (req, res) => {
   (req.query.BS) ? { bookshelf: req.query.BS } : {});
 });
 
-// Get all the books that match the title, description and isbn with the string passed
+// Get all the books that match the title, description and authors with the string passed
 app.post('/api/books/all/search', User.loginRequired, (req, res) => {
   Book.searchBooks(req.body, (err, books) => {
     if (err) {

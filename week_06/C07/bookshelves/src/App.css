@@ -101,7 +101,6 @@
 }
 
 html, body {
-  width: 1640px;
   height: 100vh;
   margin: 0;
   font-family: "pluto";
@@ -122,4 +121,11 @@ html, body {
 
 #wrapper {
   height: 100%;
+}
+
+
+@media (max-width: 700px) {
+  .App >div {
+    flex-direction: column;
+  }
 }

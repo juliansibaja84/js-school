@@ -67,7 +67,12 @@
   flex-basis: 20%;
   width: 176px;
   height: 250px;
-  
+}
+#bookshelf .book-container-list .image-container img {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  border-radius: 2%;
 }
 #bookshelf .book-container-list .caption {
   padding-left: 3rem;
@@ -181,6 +186,7 @@
   background: white;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
 }
 
 .popup_inner .image-container {
@@ -219,14 +225,14 @@
   width: 100%;
   margin: 10px 0;
   margin-top: 5px;
-  font-size: 0.69em;
+  font-size: 1em;
   color: #6EC1E4;
 }
 .popup_inner .caption .description {
   white-space: pre-line;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-height: 400px;
+  max-height: 300px;
 }
 .popup_inner .caption .available {
   color: #6EC1E4;
@@ -268,4 +274,28 @@
   text-decoration: none;
   color: #9E9E9E;
   cursor: pointer;
+}
+
+@media (max-width: 1500px) {
+  #bookshelf {
+    grid-template-columns: repeat(auto-fit, minmax(196px, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  #bookshelf .book-container-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  #bookshelf .book-container-list .caption{
+    flex-direction: column;
+    padding: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .popup_inner .image-container,
+  .popup_inner .caption{
+    grid-column: 1/11;
+  }
 }
