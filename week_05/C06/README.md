@@ -24,7 +24,7 @@ using the API endpoints.
 
 The server can be started running ```node app.js``` inside the bookshelves folder,
 another way to do it is to use the nodemon package. The server will run by default
-in the port 3000.
+in the port 5001.
 
 ## Endpoints
 

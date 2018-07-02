@@ -11,4 +11,5 @@ made. The explanation to get the server of the REST API running is inside the
 _/week_05/C06_ folder.
 
 Once the REST API Server is prepared, run ```npm start``` inside the _bookshelves_
-folder in the current directory.
+folder in the current directory. The DB server will be running in the port 5001 and
+the application in the 3000. 
