@@ -1,0 +1,78 @@
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  min-height: 500px;
+  margin: 3% auto 0 auto;
+  background-color: #FFFFFF;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1%;
+}
+.user-form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5% 20%;
+}
+.login-box h2 {
+  margin-bottom: 10%;
+}
+
+.user-form {
+  box-sizing: border-box;
+  box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+  border-radius: 5%;
+  width: 22rem;
+}
+
+.image {
+  padding: 1% 0 1% 0;
+  box-sizing: border-box;
+}
+.image i, .image img {
+  color: #009ddb;
+}
+
+.input-field {
+  margin: 10%;
+  padding: 5%;
+  border: 1px #6EC1E4 solid;
+}
+
+.input-field:focus {
+  outline: none;
+}
+
+.submit-button {
+  margin: 1% 0 0 0;
+  padding: 5%;
+  background-color: #333;
+  border-radius: 10%;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#errors {
+  width: 100%;
+}
+#errors ul{
+  list-style: none;
+  padding: 0 5%;
+}
+#errors li:first-child {
+  border-top: 1px solid #FF0000;
+}
+#errors li{
+  box-sizing: border-box;
+  background: #ffeeee;
+  color: #ff0000;
+  font-size: 0.7em;
+  padding: 2% 2% 3% 2%;
+}

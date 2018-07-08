@@ -16,7 +16,7 @@ export default class Bookshelf extends Component {
     return (
       <div id="content-main">
         <div id="bookshelf-header">
-          <h4 id="selectedBookshelf">{BOOKSHELF[this.props.selectedBookshelf]}</h4>
+          <h4 id="selectedBookshelf">{getFormatedBookshelfName(this.props.selectedBookshelf)}</h4>
           <div id="filter">
             <p id="release-date">Release Date</p>
             <div id="separator"></div>
@@ -36,4 +36,11 @@ export default class Bookshelf extends Component {
       </div>
     );
   }
+}
+
+function getFormatedBookshelfName(bookshelf) {
+  if (BOOKSHELF.hasOwnProperty(bookshelf)) {
+    return BOOKSHELF[bookshelf];
+  }
+  return `Search result of: ${bookshelf}`;
 }

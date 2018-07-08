@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/header';
 import LeftSideBar from './components/left-sidebar';
 import RightSideBar from './components/right-sidebar';
-import Bookshelf from './components/bookshelf'
+import Bookshelf from './components/bookshelf';
 import axios from 'axios';
 import './App.css';
 
@@ -19,7 +19,7 @@ class App extends Component {
     this.setInitialConf = this.setInitialConf.bind(this);
     this.setBook = this.setBook.bind(this);
   }
-  
+
   setInitialConf(callback){
     getJWT( (token) => {
       this.setState({
@@ -45,7 +45,8 @@ class App extends Component {
   searchBooks(searchString){
     this.state.apiInstance.post('/books/all/search', {'searchString': searchString}).then((response) => {
       this.setState({
-        bookList: response.data
+        bookList: response.data,
+        selectedBookshelf: searchString
       });
     });
   }
@@ -67,11 +68,11 @@ class App extends Component {
   }
 
   handleChangeBookshelf(bookshelf){
-    this.fetchBooks(bookshelf)
+    this.fetchBooks(bookshelf);
   }
 
   handleSearch(searchString) {
-    this.searchBooks(searchString)
+    this.searchBooks(searchString);
   }
 
   render() {
@@ -80,7 +81,7 @@ class App extends Component {
         <Header onChangeSearchInput={(searchString) => this.handleSearch(searchString)}/>
         <div style={{height: '100%', display: 'flex', backgroundColor: '#231F20'}}>
           <LeftSideBar onClickBookshelf={(bookshelf) => this.handleChangeBookshelf(bookshelf)}/>
-          <Bookshelf 
+          <Bookshelf
             layoutMode={this.state.layoutMode}
             onClickLayout={(layoutMode) => this.handleChangeLayoutMode(layoutMode)}
             bookList={this.state.bookList}
@@ -99,7 +100,7 @@ export default App;
 
 
 async function getJWT(callback) {
-  let token = await axios.post(
+  let response = await axios.post(
     'http://127.0.0.1:5001/api/auth/login', 
     {
       "email" : "admin@auth.com",
@@ -111,7 +112,7 @@ async function getJWT(callback) {
       }
     }
   )
-  token = 'JWT ' + token.data.token;
+  const token = 'JWT ' + response.data.token;
   sessionStorage.setItem('token', token);
   callback(token)
 }

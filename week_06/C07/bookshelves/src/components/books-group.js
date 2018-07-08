@@ -140,28 +140,30 @@ function Stars(props) {
 
 function setBooksInBlocksMode(bookList,apiInstance,setBook) {
   let books = [];
-  bookList.forEach( (book,index) => books.push(<BlocksBook 
-    key={book._id}
-    book={book}
-    apiInstance={apiInstance}
-    setBook={setBook}
-    index={index}/>
+  bookList.forEach( (book,index) => books.push(
+    <BlocksBook 
+      key={book._id}
+      book={book}
+      apiInstance={apiInstance}
+      setBook={setBook}
+      index={index}/>
   ));
   return books;
 }
 
 function setBooksInListMode(bookList, apiInstance, setBook) {
   let books = [];
-  bookList.forEach( (book,index) => books.push(<ListBook 
-    key={book._id}
-    book={book}
-    apiInstance={apiInstance}
-    setBook={setBook}
-    index={index}/>
+  bookList.forEach( (book,index) => books.push(
+    <ListBook 
+      key={book._id}
+      book={book}
+      apiInstance={apiInstance}
+      setBook={setBook}
+      index={index}
+    />
   ));
   return books;
 }
-
 
 class Popup extends React.Component {
   render() {

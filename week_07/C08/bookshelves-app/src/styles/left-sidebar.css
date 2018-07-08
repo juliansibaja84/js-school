@@ -1,0 +1,62 @@
+#sidebar-left {
+  flex: 240;
+  height: 100%;
+  background-color: #231F20;
+  padding-right: 0;
+  padding-top: 2.2rem;
+  font-size: 100%;
+  box-sizing: border-box;
+  font-family: "plutoc";
+}
+#sidebar-left p {
+  margin: 0;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 0.83em;
+  padding-left: 15.98%;
+}
+#sidebar-left ul {
+  padding: 0;
+  margin: 7.63% 0 23% 0;
+  padding-left: 16.5%;
+}
+#sidebar-left li {
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  align-items: center;
+  color: #6EC1E4;
+  font-size: 0.734em;
+  padding-left: 0.1rem;
+  margin-bottom: 1.35rem;
+  cursor: pointer;
+}
+#sidebar-left li > a {
+  padding: 0;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+#sidebar-left li > a i {
+  flex-basis: 10%;
+  font-size: 1.25em;
+  padding-top: 0.1rem;
+}
+#sidebar-left li > a span {
+  flex-basis: 85%;
+  line-height: 1.2rem;
+  font-size: 1.2em;
+  vertical-align: middle;
+  padding-left: 0.75rem;
+}
+#sidebar-left li > a:hover {
+  text-decoration: none;
+  color: #FFF;
+  background-color: #231F20;
+}
+#sidebar-left li > a:focus {
+  color: #FFF;
+  background-color: #231F20;
+}
