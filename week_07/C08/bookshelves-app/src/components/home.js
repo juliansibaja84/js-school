@@ -37,7 +37,6 @@ export default class Home extends Component {
     let ENDPOINT = `/books/all?BS=${bookshelf}`;
     if ( bookshelf === 'personal-loans') ENDPOINT = `/books/lent?userid=${this.state.userInfo._id}`
     this.state.apiInstance.get(ENDPOINT).then((response) => {
-      console.log(response);
       this.setState({
         selectedBookshelf: bookshelf,
         bookList: response.data

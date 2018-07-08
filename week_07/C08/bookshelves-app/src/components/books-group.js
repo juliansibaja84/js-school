@@ -12,7 +12,9 @@ export default class BooksGroup extends Component {
     const books = setBooks[this.props.layoutMode](
       this.props.bookList,
       this.props.apiInstance,
-      this.props.setBook);
+      this.props.setBook,
+      this.props.selectedBookshelf
+    );
     if(this.props.bookList === []) {
       return (
         <div id="bookshelf">
@@ -54,9 +56,10 @@ class BlocksBook extends Component {
   }
 
   render() {
-    const lent = (this.props.book.status.lent)
+    let lent = (this.props.book.status.lent)
       ? <div className="lent"><i className="lent-i fas fa-user-check"></i></div> 
       : '';
+    if (this.props.book.bookshelf === 'digital') lent = null;
     return (
       <div className="book-container">
         <div className="image-container">
@@ -76,6 +79,7 @@ class BlocksBook extends Component {
             book={this.props.book}
             closePopup={() => this.togglePopup()}
             lendBook={() => this.lendBook()}
+            selectedBookshelf={this.props.selectedBookshelf}
           />
           : null
         }
@@ -97,13 +101,17 @@ class ListBook extends Component {
   }
 
   render() {
+    console.log(this.props.selectedBookshelf);
     let lent = (!this.props.book.status.lent) 
       ? <span className="available">Available</span> 
       : <span className="not-available">Lent</span>;
     let button = (!this.props.book.status.lent) 
       ? <a onClick={() => this.lendBook()} className="btn">Borrow</a>
-      : '';
-    if (this.props.book.downloadLink) {
+      : null;
+    const lentDate = (this.props.selectedBookshelf === 'personal-loans')
+      ? <p className="borrowDate">Borrowed at: {this.props.book.status.lentDate.split('T')[0]}</p>
+      : null;
+    if (this.props.book.bookshelf === 'digital') {
       lent = null;
       button = <a href={this.props.book.downloadLink} className="btn">Download</a>
     }
@@ -117,7 +125,7 @@ class ListBook extends Component {
           <p className="authors">{this.props.book.authors}</p>
           <p className="pagination">{this.props.book.pageCount} pages</p>
           <Stars rating={this.props.book.rating} />
-          {lent}
+          {lentDate || lent}
           <p className="description">{this.props.book.description}</p>
           {button}
         </div>
@@ -142,7 +150,7 @@ function Stars(props) {
 }
 
 
-function setBooksInBlocksMode(bookList,apiInstance,setBook) {
+function setBooksInBlocksMode(bookList, apiInstance, setBook, selectedBookshelf) {
   let books = [];
   bookList.forEach( (book,index) => books.push(
     <BlocksBook 
@@ -150,12 +158,14 @@ function setBooksInBlocksMode(bookList,apiInstance,setBook) {
       book={book}
       apiInstance={apiInstance}
       setBook={setBook}
-      index={index}/>
+      index={index}
+      selectedBookshelf={selectedBookshelf}
+    />
   ));
   return books;
 }
 
-function setBooksInListMode(bookList, apiInstance, setBook) {
+function setBooksInListMode(bookList, apiInstance, setBook, selectedBookshelf) {
   let books = [];
   bookList.forEach( (book,index) => books.push(
     <ListBook 
@@ -164,6 +174,7 @@ function setBooksInListMode(bookList, apiInstance, setBook) {
       apiInstance={apiInstance}
       setBook={setBook}
       index={index}
+      selectedBookshelf={selectedBookshelf}
     />
   ));
   return books;
@@ -175,8 +186,15 @@ class Popup extends React.Component {
       ? <span className="available">Available</span> 
       : <span className="not-available">Lent</span>;
     let button = (!this.props.book.status.lent)
-      ? <div onClick={() => this.props.lendBook()} className="btn">Borrow</div>
+      ? <a onClick={() => this.props.lendBook()} className="btn">Borrow</a>
       : '';
+    if (this.props.book.bookshelf === 'digital') {
+      lent = null;
+      button = <a href={this.props.book.downloadLink} className="btn">Download</a>
+    }
+    const lentDate = (this.props.selectedBookshelf === 'personal-loans')
+      ? <p className="borrowDate">Borrowed at: {this.props.book.status.lentDate.split('T')[0]}</p>
+      : null;
     return (
       <div className='popup'>
         <div className='popup_inner'>
@@ -191,7 +209,7 @@ class Popup extends React.Component {
             <div className="stars">
               <Stars rating={this.props.book.rating} />
             </div>
-            {lent}
+            {lentDate || lent}
             <p className="description">{this.props.book.description}</p>
             {button}
           </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import '../styles/unauthorized.css';
 import logo from '../assets/images/logo.svg';
 

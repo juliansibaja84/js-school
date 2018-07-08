@@ -98,6 +98,13 @@
   font-family: "plutoc";
   margin-top: 3px;
 }
+
+#bookshelf .book-container-list .borrowDate {
+  margin: 0;
+  font-size: 0.9em;
+  margin-top: 2px;
+}
+
 #bookshelf .book-container-list .caption .stars {
   width: 100%;
   margin: 0;
@@ -120,7 +127,6 @@
   margin: 5px 0;
 }
 #bookshelf .book-container-list .caption .btn {
-  background-color: #231F20;
   background-color: #6EC1E4;
   width: 20%;
   border-color: white;
@@ -249,14 +255,15 @@
 }
 .popup_inner .caption .btn {
   background-color: #231F20;
-  grid-column: 1/11;
+  text-decoration: none;
   height: 2rem;
+  width: 6rem;
+  padding: 0.5rem;
   color: #FFFFFF;
   cursor: pointer;
   text-align: center;
   vertical-align: middle;
   line-height: 2rem;
-  
 }
 
 .popup_inner .caption .pagination {
@@ -300,8 +307,10 @@
   }
 }
 
-@media (max-width: 500px) {
-  .popup_inner .image-container,
+@media (max-width: 900px) {
+  .popup_inner .image-container {
+    display: none;
+  }
   .popup_inner .caption{
     grid-column: 1/11;
   }

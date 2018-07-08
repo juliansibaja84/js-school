@@ -33,6 +33,7 @@ export default class Bookshelf extends Component {
           layoutMode={this.props.layoutMode}
           apiInstance={this.props.apiInstance}
           setBook={this.props.setBook}
+          selectedBookshelf={this.props.selectedBookshelf}
         />
       </div>
     );
