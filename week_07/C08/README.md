@@ -1,7 +1,7 @@
 # Challenge 8
 
 For this challenge, a login page was added to the main application. Next is a
-documentation on how to set up both the rest api ann the web application.
+documentation on how to set up both the rest api and the web application.
 
 ## REST API
 
