@@ -26,17 +26,17 @@ using the API endpoints.
 
 ### Run the server
 
-The server can be started running ```node app.js``` inside the bookshelves folder,
+The server can be started running ```node server.js``` inside the _rest-api_ folder,
 another way to do it is to use the _nodemon_ package. The server will run by default
 in the port 5001.
 
 ## Web application
 
-Once the REST API Server is prepared, run ```npm start``` inside the _bookshelves_
+Once the REST API Server is prepared, run ```npm start``` inside the _bookshelves-app_
 folder in the current directory. The DB server will be running in the port 5001 and
 the application in the 3000.
 
-**Note**: May be needed to run ```npm install``` inside the _bookshelves_ if some
+**Note**: May be needed to run ```npm install``` inside the _bookshelves-app_ if some
 package is missing.
 
 The emails *admin@auth.com* and *jusiba84@gmail.com* can be used to log into the app.
