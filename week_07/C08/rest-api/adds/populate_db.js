@@ -116,6 +116,7 @@ const User = mongoose.model('User', userSchema);
 const saveData = {
   books: (data, callback) => {
     const promisesList = [];
+    const bookList = [];
     data.forEach((bookInfo) => {
       let book;
       const bookPromise = new Promise((resolve) => {
@@ -143,6 +144,7 @@ const saveData = {
               },
               downloadLink: (bookInfo.downloadLink) ? bookInfo.downloadLink : '',
             };
+            bookList.push(book);
             Book.find({ isbn: bookInfo.isbn }, (err, result) => {
               if (!result[0]) {
                 Book.create(book, () => resolve());

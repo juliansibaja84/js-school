@@ -16,6 +16,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
+          <Route path="/" exact component={() => <Redirect to="/login" />}/>
           <PrivateRoute path="/home" exact component={Home} />
           <Route path="/login" exact component={Login} />
           <Route path="/unauthorized" exact component={Unauthorized} />

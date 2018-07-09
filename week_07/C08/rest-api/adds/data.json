@@ -13,14 +13,6 @@
   ],
   "books": [
     {
-      "isbn": "1491991690",
-      "bookshelf": "quito" 
-    },
-    {
-      "isbn": "0201433311",
-      "bookshelf": "quito" 
-    },
-    {
       "isbn": "1783983299",
       "bookshelf": "quito" 
     },
@@ -31,46 +23,6 @@
     {
       "isbn": "0133038637",
       "bookshelf": "quito" 
-    },
-    {
-      "isbn": "1491991690",
-      "bookshelf": "quito" 
-    },
-    {
-      "isbn": "0201433311",
-      "bookshelf": "quito" 
-    },
-    {
-      "isbn": "1783983299",
-      "bookshelf": "quito" 
-    },
-    {
-      "isbn": "0130897930",
-      "bookshelf": "quito" 
-    },
-    {
-      "isbn": "0133038637",
-      "bookshelf": "quito" 
-    },
-    {
-      "isbn": "0763734233",
-      "bookshelf": "cartagena" 
-    },
-    {
-      "isbn": "0201433311",
-      "bookshelf": "cartagena" 
-    },
-    {
-      "isbn": "1590590287",
-      "bookshelf": "cartagena" 
-    },
-    {
-      "isbn": "1849516375",
-      "bookshelf": "cartagena" 
-    },
-    {
-      "isbn": "0131587382",
-      "bookshelf": "cartagena" 
     },
     {
       "isbn": "0763734233",
@@ -111,51 +63,6 @@
     {
       "isbn": "1410606384",
       "bookshelf": "medellin" 
-    },
-    {
-      "isbn": "1491991690",
-      "bookshelf": "medellin" 
-    },
-    {
-      "isbn": "1785287451",
-      "bookshelf": "medellin" 
-    },
-    {
-      "isbn": "1430246235",
-      "bookshelf": "medellin" 
-    },
-    {
-      "isbn": "1846288630",
-      "bookshelf": "medellin" 
-    },
-    {
-      "isbn": "1410606384",
-      "bookshelf": "medellin" 
-    },
-    {
-      "isbn": "1785280104",
-      "bookshelf": "digital",
-      "downloadLink": "http://www.edu.xunta.gal/centros/iesfelixmuriel/system/files/4-elctri_repaso.pdf" 
-    },
-    {
-      "isbn": "1849515735",
-      "bookshelf": "digital",
-      "downloadLink": "http://www.edu.xunta.gal/centros/iesfelixmuriel/system/files/4-elctri_repaso.pdf" 
-    },
-    {
-      "isbn": "020177061X",
-      "bookshelf": "digital",
-      "downloadLink": "http://www.edu.xunta.gal/centros/iesfelixmuriel/system/files/4-elctri_repaso.pdf" 
-    },
-    {
-      "isbn": "0763714313",
-      "bookshelf": "digital",
-      "downloadLink": "http://www.edu.xunta.gal/centros/iesfelixmuriel/system/files/4-elctri_repaso.pdf" 
-    },
-    {
-      "isbn": "144712443X",
-      "bookshelf": "digital",
-      "downloadLink": "http://www.edu.xunta.gal/centros/iesfelixmuriel/system/files/4-elctri_repaso.pdf" 
     },
     {
       "isbn": "1785280104",

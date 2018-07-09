@@ -6,11 +6,12 @@
 #content-main #bookshelf-header {
   display: flex;
   justify-content: space-between;
-  padding: 0.22rem 2rem 0 2rem;
+  padding: 0.1rem 2rem 0 2rem;
   align-content: center;
   align-items: center;
   font-family: "plutoc_t";
   font-size: 1.21em;
+  height: 79.63px;
 }
 #content-main #bookshelf-header div{
   display: flex;
@@ -71,5 +72,8 @@
 @media (max-width: 700px) {
   #content-main #bookshelf-header #filter {
     display: none;
+  }
+  #content-main #selectedBookshelf {
+    padding: 0;
   }
 }

@@ -1,7 +1,6 @@
 # Week 7
 
 This is a register (kind of a summary) of what I've learned during the week.
-The 
 All the information here is for different sources.
 
 ## React (Medium level)
