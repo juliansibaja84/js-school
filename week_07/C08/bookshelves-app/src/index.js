@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
+        <div style={{height: "100%"}}>
           <Route path="/" exact component={() => <Redirect to="/login" />}/>
           <PrivateRoute path="/home" exact component={Home} />
           <Route path="/login" exact component={Login} />

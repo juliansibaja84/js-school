@@ -101,7 +101,6 @@ class ListBook extends Component {
   }
 
   render() {
-    console.log(this.props.selectedBookshelf);
     let lent = (!this.props.book.status.lent) 
       ? <span className="available">Available</span> 
       : <span className="not-available">Lent</span>;

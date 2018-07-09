@@ -1,11 +1,10 @@
 #bookshelf {
-  height: calc(100%-79.63px);
   display: grid;
   grid-gap: 0px;
   grid-template-columns: repeat(5, 1fr);
   padding: 0 4.06rem;
   background-color: #F5F6F8;
-  height: -webkit-fill-available;
+  height: 100%;
 }
 #bookshelf .book-container {
   display: flex;

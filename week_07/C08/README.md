@@ -38,3 +38,6 @@ the application in the 3000.
 
 **Note**: May be needed to run ```npm install``` inside the _bookshelves_ if some
 package is missing.
+
+The emails *admin@auth.com* and *jusiba84@gmail.com* can be used to log into the app.
+Both of them have the password **1234**.

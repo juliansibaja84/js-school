@@ -69,7 +69,7 @@ class LoginForm extends Component {
         callback();
       }
     }).catch((error) => {
-      if (error.response.status === 401) {
+      if (error.response.status === 401 && this.state.errors.indexOf(error.response.data.message) === -1) {
         let newErrorsArray = [...this.state.errors];
         newErrorsArray.push(error.response.data.message)
         this.setState({errors: newErrorsArray});
