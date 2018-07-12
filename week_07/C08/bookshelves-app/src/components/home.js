@@ -85,7 +85,7 @@ export default class Home extends Component {
           onChangeSearchInput={(searchString) => this.handleSearch(searchString)}
           userInfo={this.state.userInfo}
         />
-        <div style={{height: '100%', display: 'flex', backgroundColor: '#231F20'}}>
+        <div className="content">
           <LeftSideBar onClickBookshelf={(bookshelf) => this.handleChangeBookshelf(bookshelf)}/>
           <Bookshelf
             layoutMode={this.state.layoutMode}

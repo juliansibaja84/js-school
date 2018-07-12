@@ -15,15 +15,6 @@ export default class LeftSideBar extends Component {
             <li onClick={() => this.props.onClickBookshelf('personal-loans')}><a><i className="fas fa-user-tag"></i><span>Personal Loans</span></a></li>
           </ul>
         </div>
-        <div>
-          <p>YOUR BOOKS</p>
-          <ul>
-            <li><a><i className="fas fa-book-open"></i><span>Readings</span></a></li>
-            <li><a><i className="fas fa-history"></i><span>History</span></a></li>
-            <li><a> <i className="fas fa-bookmark"></i><span>Read Later</span></a></li>
-            <li><a><i className="fas fa-heart"></i><span>favorites</span></a></li>
-          </ul>
-        </div>
       </div>
     );
   }
