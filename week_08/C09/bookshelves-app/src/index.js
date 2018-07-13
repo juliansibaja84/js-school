@@ -3,25 +3,23 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Redirect } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 import registerServiceWorker from './registerServiceWorker';
-import './styles/index.css';
 
 // Components
-import Home from './components/home';
-import Login from './components/login';
+import Home from './components/home/home';
+import Login from './components/login/login';
 import Unauthorized from './components/unauthorized';
 
 class App extends Component {
-
   render() {
     return (
-      <BrowserRouter>
-        <div style={{height: "100%"}}>
-          <Route path="/" exact component={() => <Redirect to="/login" />}/>
-          <PrivateRoute path="/home" exact component={Home} />
-          <Route path="/login" exact component={Login} />
-          <Route path="/unauthorized" exact component={Unauthorized} />
-        </div>
-      </BrowserRouter>
+        <BrowserRouter >
+          <div style={{height: "100%"}}>
+            <Route path="/" exact component={() => <Redirect to="/login" />} />
+            <PrivateRoute path="/home" exact component={Home} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/unauthorized" exact component={Unauthorized} />
+          </div>
+        </BrowserRouter >
     );
   }
 }

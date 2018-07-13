@@ -1,41 +1,73 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
 import axios from 'axios';
-import '../styles/login.css';
-import logo from '../assets/images/logo.svg';
 
 // config settings
-import config from '../config';
+import config, { theme } from '../../config';
 
-export default class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      logged: false,
-    };
-  }
+// Styles
+import jss from 'jss';
+import preset from 'jss-preset-default';
+import nested from 'jss-nested';
 
-  handleChangeLoginStatus() {
-    this.setState({
-      logged: !this.state.logged,
-    });
-  }
+jss.use(nested(),preset());
 
-  render() {
-    if (this.state.logged) {
-      return <Redirect to="/home/" />
+const styles = {
+  userForm: {
+    'box-sizing': 'border-box',
+    'box-shadow': '0 1px 5px rgba(104, 104, 104, 0.8)',
+    'border-radius': '5%',
+    width: '22rem',
+    '&>form': {
+      display: 'flex',
+      'flex-direction': 'column',
+      'justify-content': 'center',
+      'align-items': 'center',
+      padding: '5% 20%',
     }
-    return (
-      <div className="login-box">
-      <div className="image"><img src={logo} alt=""/></div>
-      <h2>Jobsity Login</h2>
-      <LoginForm  changeLoginStatus={() => this.handleChangeLoginStatus()}/>
-      </div>
-    );
+  },
+  inputField: {
+    margin: '10%',
+    padding: '5%',
+    border: `1px ${theme.colors.primary} solid`,
+    '&>:focus': {
+      outline: 'none',
+    }
+  },
+  submitButton: {
+    margin: '1% 0 0 0',
+    padding: '5%',
+    'background-color': theme.colors.darken,
+    'border-radius': '10%',
+    border: 'none',
+    color: 'white',
+    'text-align': 'center',
+    'text-decoration': 'none',
+    display: 'inline-block',
+    'font-size': '16px',
+  },
+  errors: {
+    width: '100%',
+    '&>ul': {
+      'list-style': 'none',
+      padding: '0 5%',
+      '&>li': {
+        'box-sizing': 'border-box',
+        background: theme.colors.errorBg,
+        color: theme.colors.errorPrimary,
+        'font-size': '0.7em',
+        padding: '2% 2% 3% 2%',
+        '&:first-child': {
+          'border-top': `1px solid ${theme.colors.errorPrimary}`,
+        }
+      }
+    }
   }
-}
+};
 
-class LoginForm extends Component {
+const {classes} = jss.createStyleSheet(styles).attach();
+
+
+export default class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -47,7 +79,6 @@ class LoginForm extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.getJWT = this.getJWT.bind(this);
   }
-  
 
   getJWT(callback) {
     axios.post(
@@ -92,11 +123,11 @@ class LoginForm extends Component {
 
   render() {
     const errorsList = this.state.errors.map((error,index) => {
-      return <li key={index} className="error">{error}</li>
+      return <li key={index} className={classes.error}>{error}</li>
     });
     return (
-      <div className="user-form">
-        <div id="errors">
+      <div className={classes.userForm}>
+        <div className={classes.errors}>
           <ul>
             {errorsList}
           </ul>
@@ -104,7 +135,7 @@ class LoginForm extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>Email</label>
           <input
-            className="input-field"
+            className={classes.inputField}
             name="email"
             type="text"
             value={this.state.email}
@@ -113,14 +144,14 @@ class LoginForm extends Component {
           />
           <label>Password</label>
           <input
-            className="input-field"
+            className={classes.inputField}
             name="password"
             type="text"
             value={this.state.password}
             onChange={this.handleChange}
             placeholder="***********"
           />
-          <button className="submit-button" type="submit">Submit</button>
+          <button className={classes.submitButton} type="submit">Submit</button>
         </form>
       </div>
     );
