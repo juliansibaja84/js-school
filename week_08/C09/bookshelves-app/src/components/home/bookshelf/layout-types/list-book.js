@@ -48,6 +48,9 @@ const styles = {
     margin: 0,
     'margin-top': '14.1px',
     color: theme.colors.darken,
+    '&>small': {
+      'font-size': '0.6em'
+    }
   },
   authors: {
     color: theme.colors.dark,
@@ -68,6 +71,7 @@ const styles = {
     overflow: 'hidden',
     'text-overflow': 'ellipsis',
     'max-height': '60px',
+    margin: '0 0 1rem 0',
     '@media (max-width: 700px)': {
       display: 'none',
     },
@@ -81,14 +85,23 @@ const styles = {
     margin: '5px 0',
   },
   btn: {
-    'background-color': theme.colors.primary,
-    width: '20%',
-    'border-color': 'white',
-    color: 'white',
+    'background-color': theme.colors.light2,
+    width: '4rem',
+    padding: '0.7rem',
+    'font-size': '0.8em',
+    'font-weight': 'bold',
+    color: theme.colors.darken,
     'text-decoration': 'none',
     'text-align': 'center',
+    margin: '4px 2px',
+    'border-radius': '4px',
+    cursor: 'pointer',
+    border: `2px solid ${theme.colors.darken}`,
+    '-webkit-transition-duration': '0.4s', 
+    'transition-duration': '0.4s',
     '&:hover': {
-      cursor: 'pointer',
+      'background-color': theme.colors.darken,
+      color: 'white'
     },
     '@media (max-width: 700px)': {
       'align-self': 'center',

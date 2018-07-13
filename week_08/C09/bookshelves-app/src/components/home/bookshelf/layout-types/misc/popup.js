@@ -56,6 +56,9 @@ const styles = {
     margin: 0,
     'margin-top': '14.1px',
     color: theme.colors.darken,
+    '&>small': {
+      'font-size': '0.6em'
+    }
   },
   authors: {
     color: theme.colors.dark,
@@ -81,16 +84,24 @@ const styles = {
     margin: '5px 0',
   },
   btn: {
-    'background-color': theme.colors.darken,
     'text-decoration': 'none',
     height: '2rem',
     width: '6rem',
-    padding: '0.5rem',
-    color: 'white',
+    padding: '0.6rem',
+    color: theme.colors.darken,
     cursor: 'pointer',
     'text-align': 'center',
     'vertical-align': 'middle',
     'line-height': '2rem',
+    margin: '4px 2px',
+    'border-radius': '4px',
+    border: `2px solid ${theme.colors.darken}`,
+    '-webkit-transition-duration': '0.4s', 
+    'transition-duration': '0.4s',
+    '&:hover': {
+      'background-color': theme.colors.darken,
+      color: 'white'
+    }
   },
   
   pagination: {

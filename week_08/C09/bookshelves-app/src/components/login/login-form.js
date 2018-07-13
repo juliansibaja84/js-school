@@ -146,7 +146,7 @@ export default class LoginForm extends Component {
           <input
             className={classes.inputField}
             name="password"
-            type="text"
+            type="password"
             value={this.state.password}
             onChange={this.handleChange}
             placeholder="***********"

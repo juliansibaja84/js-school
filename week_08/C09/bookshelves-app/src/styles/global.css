@@ -96,17 +96,19 @@
 }
 
 html, body {
-  height: '100%';
+  width: 1640px;
+  height: 100%;
   margin: 0;
-  font-family: "'pluto'";
+  font-family: "pluto";
   background-color: #231F20;
 }
-fas {
+
+.fas {
   font-family: "fontawesome_s";
 }
-far {
+.far {
   font-family: "fontawesome_r";
 }
-fab {
+.fab {
   font-family: "fontawesome_b";
 }

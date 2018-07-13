@@ -17,7 +17,8 @@ const styles = {
   content: {
     display: 'flex',
     'background-color': theme.colors.darken,
-    'align-content': 'stretch',
+    height: '100%',
+    'align-items': 'stretch',
     '@media (max-width: 700px)': {
       'flex-direction': 'column',
     },

@@ -16,7 +16,8 @@ const styles = {
     'grid-template-columns': 'repeat(5, 1fr)',
     padding: '0 4.06rem',
     'background-color': theme.colors.light2,
-    height: '100%',
+    'height': 'fit-content',
+    'min-height': '100%',
     '@media (max-width: 1500px)': {
       'grid-template-columns': 'repeat(auto-fit, minmax(196px, 1fr))',
     },

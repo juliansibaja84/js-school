@@ -8,7 +8,7 @@ jss.use(nested(),preset());
 
 const styles = {
   leftSidebar: {
-    flex: 240,
+    'flex-basis': '14.6341463%',
     height: '100%',
     'background-color': theme.colors.darken,
     'padding-right': 0,
