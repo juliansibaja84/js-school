@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
-// Assets
+import { connect } from 'react-redux';
 import logo from '../../../assets/images/logo.svg';
 import loadingImg from '../../../assets/images/loading.gif';
-
-// Styles
 import jss from 'jss';
 import preset from 'jss-preset-default';
 import nested from 'jss-nested';
 import { theme } from '../../../config'
-
-// Components
 import Search from './search';
 
 jss.use(nested(),preset());
@@ -28,7 +23,7 @@ const styles = {
     },
   },
   logo: {
-    flex: 240,
+    'flex-basis': '14.6341463%',
     display: 'flex',
     'align-items': 'center',
     'justify-content': 'center',
@@ -53,7 +48,7 @@ const styles = {
     }
   },
   loginContainer: {
-    flex: 240,
+    'flex-basis': '14.6341463%',
     display: 'inline-block',
     'align-items': 'center',
     position:'relative',
@@ -124,29 +119,29 @@ const styles = {
     'z-index': 1,
     width: '100%',
     padding: 0,
-  },
-  ul: {
-    'list-style': 'none',
-    padding: 0,
-    margin: 0,
+    '&>ul': {
+      'list-style': 'none',
+      padding: 0,
+      margin: 0,
+      '&>li': {
+        padding: '4%',
+        '&:hover': {
+          color: theme.colors.light1,
+          'background-color': theme.colors.darken,
+          cursor: 'pointer',
+        },
+        '&>a': {
+          'text-decoration': 'none',
+          color:'inherit',
+        }
+      },
+    },
   },
   
-  li: {
-    padding: '4%',
-    '&:hover': {
-      color: theme.colors.light1,
-      'background-color': theme.colors.darken,
-      cursor: 'pointer',
-    },
-    a: {
-      'text-decoration': 'none',
-      color:'inherit',
-    }
-  },
 };
 const {classes} = jss.createStyleSheet(styles).attach();
 
-export default class Header extends Component {
+class Header extends Component {
   constructor(props) {
     super(props);
     this.state = ({
@@ -174,7 +169,7 @@ export default class Header extends Component {
     let dropdown = null;
     if (this.state.showDropDown) {
       dropdown =
-        <div className="dropdown">
+        <div className={classes.dropdown}>
           <ul>
             <li name="logout" onClick={this.handleListClick}><Link to="/login">Log Out</Link></li>
           </ul>
@@ -186,9 +181,7 @@ export default class Header extends Component {
           <img src={logo} alt=""/>
           <p><span>JOBSITY</span></p>
         </div>
-        
-        <Search onChangeSearchInput={this.props.onChangeSearchInput}/>
-        
+        <Search />
         <div className={classes.loginContainer} onMouseLeave={this.handleOnMouseLeaveLogin}>
           <div className={classes.separator}></div>
           <div className={classes.login} onClick={this.handleOnClickDropdown}>
@@ -203,3 +196,10 @@ export default class Header extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    userInfo: state.booksApi.user,
+  };
+}
+
+export default connect(mapStateToProps)(Header);

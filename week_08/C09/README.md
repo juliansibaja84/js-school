@@ -1,6 +1,6 @@
-# Challenge 8
+# Challenge 9
 
-For this challenge, a login page was added to the main application. Next is a
+For this challenge, Redux and JSS are implemented within the application. Next is a
 documentation on how to set up both the rest api and the web application.
 
 ## REST API
@@ -32,12 +32,11 @@ in the port 5001.
 
 ## Web application
 
+Run ```npm install``` inside the bookshelves folder to update the dependecies.
+
 Once the REST API Server is prepared, run ```npm start``` inside the _bookshelves-app_
 folder in the current directory. The DB server will be running in the port 5001 and
 the application in the 3000.
-
-**Note**: May be needed to run ```npm install``` inside the _bookshelves-app_ if some
-package is missing.
 
 The emails *admin@auth.com* and *jusiba84@gmail.com* can be used to log into the app.
 Both of them have the password **1234**.

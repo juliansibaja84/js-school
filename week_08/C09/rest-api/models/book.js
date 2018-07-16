@@ -99,7 +99,7 @@ Book.lendBook = (id, userId, callback) => {
 };
 
 Book.searchBooks = (stringToMatch, callback) => {
-  Book.find({ $text: { $search: stringToMatch.searchString } }, callback);
+  Book.find({ $or: [{ 'title': { '$regex': stringToMatch.searchString } }, { 'authors': { '$regex': stringToMatch.searchString } }] }, callback);
 };
 
 Book.getBorrowedBooks = (userId, callback) => {

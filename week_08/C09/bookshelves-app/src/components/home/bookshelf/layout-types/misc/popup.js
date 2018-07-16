@@ -4,6 +4,8 @@ import jss from 'jss';
 import preset from 'jss-preset-default';
 import nested from 'jss-nested';
 import { theme } from '../../../../../config';
+import { connect } from 'react-redux';
+import { borrowBook } from '../../../../../actions/borrow-book-action';
 
 jss.use(nested(),preset());
 
@@ -18,6 +20,9 @@ const styles = {
     bottom: 0,
     margin: 'auto',
     'z-index': 4,
+    '@media (max-width: 900px)': {
+      position: 'absolute'
+    }
   },
   popupInner: {
     position: 'relative',
@@ -27,6 +32,13 @@ const styles = {
     display: 'grid',
     'grid-template-columns': 'repeat(10, 1fr)',
     'box-shadow': '0 0 50px rgba(0, 0, 0, 0.5)',
+    'text-align': 'justify',
+    '@media (max-width: 900px)': {
+      'grid-column': '1/11',
+      height: '100%',
+      width: ' 100%',
+      margin: 0,
+    }
   },
   
   imageContainer: {
@@ -36,8 +48,9 @@ const styles = {
     'background-repeat': 'no-repeat',
     'background-origin': 'border-box',
     'background-size': 'cover',
+    'background-position': 'center',
     '@media (max-width: 900px)': {
-      display: 'none',
+      'grid-column': '1/11',
     }
   },
   caption: {
@@ -86,8 +99,9 @@ const styles = {
   btn: {
     'text-decoration': 'none',
     height: '2rem',
-    width: '6rem',
-    padding: '0.6rem',
+    width: '7rem',
+    padding: '0.7rem',
+    'font-size': '1em',
     color: theme.colors.darken,
     cursor: 'pointer',
     'text-align': 'center',
@@ -130,13 +144,20 @@ const styles = {
 
 const {classes} = jss.createStyleSheet(styles).attach();
 
-export default class Popup extends Component {
+class Popup extends Component {
   render() {
     let lent = (!this.props.book.status.lent) 
       ? <span className={classes.available}>Available</span> 
       : <span className={classes.notAvailable}>Lent</span>;
     let button = (!this.props.book.status.lent)
-      ? <a onClick={() => this.props.lendBook()} className={classes.btn}>Borrow</a>
+      ? <a
+          onClick={() => {
+            if (window.confirm("Are you sure about to borrow the book?")) {
+              this.props.dispatch(borrowBook(this.props.book._id,this.props.booksList,this.props.index, this.props.apiInstance));
+            }
+          }}
+          className={classes.btn}
+        >Borrow</a>
       : '';
     if (this.props.book.bookshelf === 'digital') {
       lent = null;
@@ -167,3 +188,15 @@ export default class Popup extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    booksList: state.bookshelf.booksList,
+    uloading: state.bookshelf.loading,
+    uerror: state.bookshelf.error,
+    apiInstance: state.booksApi.api.apiInstance,
+    selectedBookshelf: state.bookshelf.bookshelf
+  };
+}
+
+export default connect(mapStateToProps) (Popup)

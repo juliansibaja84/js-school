@@ -95,15 +95,7 @@ export default class BlocksBook extends Component {
     this.state = {
       showPopup: false
     };
-    this.lendBook = this.lendBook.bind(this);
   }
-  
-  lendBook(){
-    this.props.apiInstance.put(`/books/${this.props.book._id}/lend/`).then((response) => {
-      this.props.setBook(response.data[0], this.props.index);
-    });
-  }
-  
   togglePopup() {
     this.setState({
       showPopup: !this.state.showPopup
@@ -133,8 +125,7 @@ export default class BlocksBook extends Component {
           <Popup
             book={this.props.book}
             closePopup={() => this.togglePopup()}
-            lendBook={() => this.lendBook()}
-            selectedBookshelf={this.props.selectedBookshelf}
+            index={this.props.index}
           />
           : null
         }

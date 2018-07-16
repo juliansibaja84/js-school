@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import jss from 'jss';
 import preset from 'jss-preset-default';
 import nested from 'jss-nested';
 import { theme } from '../../config'
+
+import { connect } from 'react-redux';
 
 jss.use(nested(),preset());
 
 const styles = {
   leftSidebar: {
     'flex-basis': '14.6341463%',
-    height: '100%',
+    'min-height': 'fit-content',
     'background-color': theme.colors.darken,
     'padding-right': 0,
     'padding-top': '2.2rem',
@@ -73,20 +76,32 @@ const styles = {
 
 const {classes} = jss.createStyleSheet(styles).attach();
 
-export default class LeftSideBar extends Component {
+class LeftSideBar extends Component {
   render() {
     return (
       <div className={classes.leftSidebar}>
           <p>MAIN</p>
           <ul>
-            <li onClick={() => this.props.onClickBookshelf('quito')}><a><i className="fas fa-globe"></i><span>Quito</span></a></li>
-            <li onClick={() => this.props.onClickBookshelf('cartagena')}><a><i className="fas fa-globe"></i><span>Cartagena</span></a></li>
-            <li onClick={() => this.props.onClickBookshelf('medellin')}><a><i className="fas fa-globe"></i><span>Medellín</span></a></li>
-            <li onClick={() => this.props.onClickBookshelf('digital')}><a><i className="fas fa-tablet-alt"></i><span>Digital</span></a></li>
-            <li onClick={() => this.props.onClickBookshelf('personal-loans')}><a><i className="fas fa-user-tag"></i><span>Personal Loans</span></a></li>
+            <li>
+            <Link to="/home/quito"><i className="fas fa-globe"></i><span>Quito</span></Link>
+            </li>
+            <li>
+            <Link to="/home/cartagena"><i className="fas fa-globe"></i><span>Cartagena</span></Link>
+            </li>
+            <li>
+            <Link to="/home/medellin"><i className="fas fa-globe"></i><span>Medellín</span></Link>
+            </li>
+            <li>
+            <Link to="/home/digital"><i className="fas fa-tablet-alt"></i><span>Digital</span></Link>
+            </li>
+            <li>
+            <Link to="/home/personal-loans"><i className="fas fa-user-tag"></i><span>Personal Loans</span></Link>
+            </li>
           </ul>
       </div>
     );
   }
 }
 
+
+export default connect() (LeftSideBar);

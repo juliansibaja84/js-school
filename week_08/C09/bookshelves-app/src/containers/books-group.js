@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import loadingImg from '../../../assets/images/loading.gif';
-import BlocksBook from './layout-types/blocks-book';
-import ListBook from './layout-types/list-book';
+import loadingImg from '../assets/images/loading.gif';
+import BlocksBook from '../components/home/bookshelf/layout-types/blocks-book';
+import ListBook from '../components/home/bookshelf/layout-types/list-book';
 import jss from 'jss';
 import preset from 'jss-preset-default';
 import nested from 'jss-nested';
-import { theme } from '../../../config';
+import { theme } from '../config';
+import { connect } from 'react-redux';
 
 jss.use(nested(),preset());
 
@@ -18,6 +19,10 @@ const styles = {
     'background-color': theme.colors.light2,
     'height': 'fit-content',
     'min-height': '100%',
+    '&>p': {
+      'grid-column': '1/6',
+      'text-align': 'center',
+    },
     '@media (max-width: 1500px)': {
       'grid-template-columns': 'repeat(auto-fit, minmax(196px, 1fr))',
     },
@@ -56,25 +61,17 @@ const BookType = {
   list: ListBook,
 };
 
-export default class BooksGroup extends Component {
-  getBooksInSelectedLayout() {
+class BooksGroup extends Component {
+  render() {
     let books = [];
     let BookStyleToShow = BookType[this.props.layoutMode];
-    this.props.bookList.forEach( (book,index) => books.push(
+    if (this.props.booksList) this.props.booksList.forEach( (book,index) => books.push(
       <BookStyleToShow
         key={book._id}
         book={book}
-        apiInstance={this.props.apiInstance}
-        setBook={this.props.setBook}
         index={index}
-        selectedBookshelf={this.props.selectedBookshelf}
       />
     ));
-    return books;
-  }
-
-  render() {
-    const books = this.getBooksInSelectedLayout();
     if(this.props.bookList === []) {
       return (
         <div className={classes.booksGroup}>
@@ -88,8 +85,20 @@ export default class BooksGroup extends Component {
     }
     return (
       <div className={classes.booksGroup}>
-        {books}
+        {(this.props.error) ? <p>{'Oops, something went wrong with the request to the API, please wait until the API is working again, we apologize for the inconveniences caused by this problem'}</p> : books}
       </div>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    booksList: state.bookshelf.booksList,
+    loading: state.bookshelf.loading,
+    error: state.bookshelf.error,
+    layoutMode: state.bookshelf.layoutMode,
+    selectedBookshelf: state.bookshelf.bookshelf
+  };
+}
+
+export default connect(mapStateToProps)(BooksGroup);

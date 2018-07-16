@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-
-// Styles
+import { Redirect } from 'react-router';
 import jss from 'jss';
 import preset from 'jss-preset-default';
 import nested from 'jss-nested';
 import { theme } from '../../../config'
+import { connect } from 'react-redux';
 
 jss.use(nested(),preset());
 
 const styles = {
   search: {
-    flex: 1160,
+    'flex-basis': '70.7317073%',
     display: 'flex',
     'justify-content': 'space-between',
     'align-items': 'center',
@@ -68,16 +68,57 @@ const styles = {
 
 const {classes} = jss.createStyleSheet(styles).attach();
 
-export default class Search extends Component {
+class Search extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirect: false,
+      str: '',
+    }
+    this.handleKeyPressed = this.handleKeyPressed.bind(this);
+    this.handleOnChange = this.handleOnChange.bind(this);
+  }
+  
+  handleKeyPressed(evt){
+    if (evt.key === 'Enter') {
+      this.setState({
+        redirect: true,
+      });
+    }
+  }
+  handleOnChange(evt) {
+    this.setState({
+      str: evt.target.value,
+    });
+  }
   render() {
+    let redirect = null;
+    if (this.state.redirect) {
+        redirect = <Redirect to={`/home/search?str=${this.state.str}`} />
+        this.setState({redirect:false})
+    }
     return (
       <div className={classes.search}>
+        {redirect}
         <p>Bookshelf</p>
         <div>
           <a href=""><i className="fas fa-search"></i></a> 
-          <input onChange={(evt) => this.props.onChangeSearchInput(evt.target.value)} type="text" placeholder="Search..."></input>
+          <input 
+            onKeyPress={(evt) => this.handleKeyPressed(evt)}
+            onChange={(evt) => this.handleOnChange(evt)}
+            type="text"
+            placeholder="Search..."
+          />
         </div>
       </div>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    apiInstance: state.booksApi.api.apiInstance,
+  };
+}
+
+export default connect(mapStateToProps)(Search);

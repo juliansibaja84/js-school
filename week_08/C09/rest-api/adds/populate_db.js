@@ -166,17 +166,9 @@ const saveData = {
   },
 };
 
-// function saveData(data, collection, callback) {
-//  db.createCollection(collection, {}, () => {
-//    db.collection(collection).insert(data, callback);
-//  });
-// }
-
 // Read the data and save it into the db
 fs.readFile('data.json', 'utf8', (err, data) => {
   if (err) throw err;
-  // saveData(JSON.parse(data).books, 'books');
-  // saveData(JSON.parse(data).users, 'users');
   saveData.users(JSON.parse(data).users);
   saveData.books(JSON.parse(data).books, () => mongoose.disconnect());
 });

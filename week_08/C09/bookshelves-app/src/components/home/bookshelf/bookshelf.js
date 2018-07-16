@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import BooksGroup from './books-group';
+import BooksGroup from '../../../containers/books-group';
 import jss from 'jss';
 import preset from 'jss-preset-default';
 import nested from 'jss-nested';
 import { theme, BS } from '../../../config'
+import changeLayout from '../../../actions/change-layout';
+import { connect } from 'react-redux';
 
 jss.use(nested(),preset());
 
@@ -53,24 +55,18 @@ const styles = {
 
 const {classes} = jss.createStyleSheet(styles).attach();
 
-export default class Bookshelf extends Component {
+class Bookshelf extends Component {
   render() {
     return (
       <div className={classes.contentMain}>
         <div className={classes.bookshelfHeader}>
           <h4 className={classes.selectedBookshelf}>{getFormatedBookshelfName(this.props.selectedBookshelf)}</h4>
           <div className={classes.layoutModes}>
-              <span onClick={() => this.props.onClickLayout('list')}><i className= "fas fa-th-list" id="list"></i></span>
-              <span onClick={() => this.props.onClickLayout('blocks')}><i className= "fas fa-th-large" id="block"></i></span>
+              <span onClick={() => this.props.dispatch(changeLayout('list'))}><i className= "fas fa-th-list" id="list"></i></span>
+              <span onClick={() => this.props.dispatch(changeLayout('blocks'))}><i className= "fas fa-th-large" id="block"></i></span>
           </div>
         </div>
-        <BooksGroup 
-          bookList={this.props.bookList} 
-          layoutMode={this.props.layoutMode}
-          apiInstance={this.props.apiInstance}
-          setBook={this.props.setBook}
-          selectedBookshelf={this.props.selectedBookshelf}
-        />
+        <BooksGroup />
       </div>
     );
   }
@@ -80,5 +76,13 @@ function getFormatedBookshelfName(bookshelf) {
   if (BS.hasOwnProperty(bookshelf)) {
     return BS[bookshelf];
   }
-  return `Search result of: ${bookshelf}`;
+  return bookshelf;
 }
+
+function mapStateToProps(state) {
+  return {
+    selectedBookshelf: state.bookshelf.bookshelf
+  };
+}
+
+export default connect(mapStateToProps)(Bookshelf);

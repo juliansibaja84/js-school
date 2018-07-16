@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Stars from './misc/stars';
 import jss from 'jss';
 import preset from 'jss-preset-default';
 import nested from 'jss-nested';
 import { theme } from '../../../../config';
-
+import { borrowBook } from '../../../../actions/borrow-book-action'
 jss.use(nested(),preset());
 
 const styles = {
@@ -86,9 +87,9 @@ const styles = {
   },
   btn: {
     'background-color': theme.colors.light2,
-    width: '4rem',
+    width: '7rem',
     padding: '0.7rem',
-    'font-size': '0.8em',
+    'font-size': '1em',
     'font-weight': 'bold',
     color: theme.colors.darken,
     'text-decoration': 'none',
@@ -118,24 +119,24 @@ const styles = {
 
 const {classes} = jss.createStyleSheet(styles).attach();
 
-export default class ListBook extends Component {
-  constructor(props) {
-    super(props);
-    this.lendBook = this.lendBook.bind(this);
-  }
-  
-  lendBook(){
-    this.props.apiInstance.put(`/books/${this.props.book._id}/lend/`).then((response) => {
-      this.props.setBook(response.data[0], this.props.index);
-    });
-  }
-
+class ListBook extends Component {
   render() {
     let lent = (!this.props.book.status.lent) 
       ? <span className={classes.available}>Available</span> 
       : <span className={classes.notAvailable}>Lent</span>;
     let button = (!this.props.book.status.lent) 
-      ? <a onClick={() => this.lendBook()} className={classes.btn}>Borrow</a>
+      ? <a 
+          onClick={() => {
+            console.log(this.props.book._id);
+            console.log(this.props.booksList);
+            console.log(this.props.index);
+            console.log(this.props.apiInstance);
+            if (window.confirm("Are you sure about to borrow the book?")) {
+              this.props.dispatch(borrowBook(this.props.book._id,this.props.booksList,this.props.index, this.props.apiInstance));
+            }
+          }}
+          className={classes.btn}
+        >Borrow</a>
       : null;
     const lentDate = (this.props.selectedBookshelf === 'personal-loans')
       ? <p className={classes.borrowDate}>Borrowed at: {this.props.book.status.lentDate.split('T')[0]}</p>
@@ -162,3 +163,15 @@ export default class ListBook extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    booksList: state.bookshelf.booksList,
+    uloading: state.bookshelf.loading,
+    uerror: state.bookshelf.error,
+    apiInstance: state.booksApi.api.apiInstance,
+    selectedBookshelf: state.bookshelf.bookshelf
+  };
+}
+
+export default connect(mapStateToProps) (ListBook)

@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
-// config settings
 import config, { theme } from '../../config';
-
-// Styles
 import jss from 'jss';
 import preset from 'jss-preset-default';
 import nested from 'jss-nested';
-
+import { connect } from 'react-redux';
+import setApiInstance from '../../actions/set-api-instance-action';
 jss.use(nested(),preset());
 
 const styles = {
@@ -67,7 +64,7 @@ const styles = {
 const {classes} = jss.createStyleSheet(styles).attach();
 
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -97,6 +94,16 @@ export default class LoginForm extends Component {
       if (response.status === 200) {
         const token = 'JWT ' + response.data.token;
         sessionStorage.setItem('token', token);
+        this.props.dispatch(
+          setApiInstance(axios.create({
+            baseURL: config.apiBaseUrl,
+            timeout: 1000,
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization' : sessionStorage.getItem('token')
+            }
+          }))
+        );
         callback();
       }
     }).catch((error) => {
@@ -157,3 +164,5 @@ export default class LoginForm extends Component {
     );
   }
 }
+
+export default connect()(LoginForm)
