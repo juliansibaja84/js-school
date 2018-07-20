@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import setApiInstance from '../../actions/set-api-instance-action';
 import { getJWT } from '../../actions/get-jwt';
 import LoginForm from './login-form';
 import { connect } from 'react-redux';

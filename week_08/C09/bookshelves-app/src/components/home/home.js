@@ -32,19 +32,24 @@ const {classes} = jss.createStyleSheet(styles).attach();
 
 class Home extends Component {
   componentDidMount() {
-    this.props.dispatch(getUserInfo(this.props.apiInstance));
+    if (this.props.apiInstance) {
+      this.props.dispatch(getUserInfo(this.props.apiInstance));
+    } 
   }
   
   componentWillUpdate(newProps) {
-    if (BS.hasOwnProperty(newProps.match.params.bookshelf)){
-      if(this.props.selectedBookshelf !== newProps.match.params.bookshelf) {
-        this.props.dispatch(getBookshelfBooks(this.props.match.params.bookshelf, this.props.apiInstance, this.props.userInfo));
-      }
-    } else if (newProps.match.params.bookshelf === 'search') {
-      const str = this.props.history.location.search.split('str=')[1];
-      if (str && (this.props.selectedBookshelf !== `Results for: ${str}`)) {
-        this.props.dispatch(searchBooks(str, this.props.apiInstance));
-      }
+    
+    if (this.props.apiInstance) {
+      if (BS.hasOwnProperty(newProps.match.params.bookshelf)){
+        if(this.props.selectedBookshelf !== newProps.match.params.bookshelf) {
+          this.props.dispatch(getBookshelfBooks(this.props.match.params.bookshelf, this.props.apiInstance, this.props.userInfo));
+        }
+      } else if (newProps.match.params.bookshelf === 'search') {
+        const str = this.props.history.location.search.split('str=')[1];
+        if (str && (this.props.selectedBookshelf !== `Results for: ${str}`)) {
+          this.props.dispatch(searchBooks(str, this.props.apiInstance));
+        }
+      } 
     }
     
   }
@@ -65,7 +70,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    apiInstance: state.booksApi.api.apiInstance,
+    apiInstance: state.booksApi.apiInstance,
     userInfo: state.booksApi.user,
     selectedBookshelf: state.bookshelf.bookshelf,
     booksList: state.bookshelf.booksList

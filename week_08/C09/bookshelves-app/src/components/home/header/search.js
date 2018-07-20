@@ -117,7 +117,7 @@ class Search extends Component {
 
 function mapStateToProps(state) {
   return {
-    apiInstance: state.booksApi.api.apiInstance,
+    apiInstance: state.booksApi.apiInstance,
   };
 }
 

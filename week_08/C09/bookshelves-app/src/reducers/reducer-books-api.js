@@ -14,16 +14,14 @@ const initialState = {
     'digital': 'Digital',
     'personal-loans': 'Personal Loans',
   },
-  api: {
-    apiInstance: axios.create({
-      baseURL: config.apiBaseUrl,
-      timeout: 1000,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization' : sessionStorage.getItem('token')
-      }
-    })
-  },
+  apiInstance: axios.create({
+    baseURL: config.apiBaseUrl,
+    timeout: 1000,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization' : sessionStorage.getItem('token')
+    }
+  }),
   user: {},
   loading: false,
   error: null
@@ -53,7 +51,7 @@ export default function(state = initialState, action) {
     case 'SET_API_INSTANCE':
       return {
         ...state,
-        apiInstance: action.payload.apiInstace
+        apiInstance: action.payload.apiInstance
       };
     default:
       break;

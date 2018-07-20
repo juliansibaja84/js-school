@@ -22,7 +22,7 @@ export function getJWT(email, password) {
     }).catch((error) => {
       const response = error.response;
       if (response) {
-        dispatch(fetchTokenError(error.response.message));
+        dispatch(fetchTokenError(error.response.data.message));
       } else {
         dispatch(fetchTokenError('This Page couldn\'t connect to the database, please try again'));
       }

@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
 import config, { theme } from '../../config';
 import jss from 'jss';
 import preset from 'jss-preset-default';
 import nested from 'jss-nested';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import axios from 'axios';
 import setApiInstance from '../../actions/set-api-instance-action';
 
 jss.use(nested(),preset());
@@ -68,10 +68,23 @@ const styles = {
 const {classes} = jss.createStyleSheet(styles).attach();
 
 
-function LoginForm(props) {
-  const { handleSubmit } = props; 
-  const success = (props.loginSuccessful) ? <Redirect to="/home"/> : null;
-  const errorsList = <li className={classes.error}>{props.loginError}</li>;
+let LoginForm = (props) => {  
+  const { handleSubmit } = props;
+  let success = null;
+  if (sessionStorage.getItem('token')) {
+    props.dispatch(
+      setApiInstance(axios.create({
+        baseURL: config.apiBaseUrl,
+        timeout: 1000,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization' : sessionStorage.getItem('token')
+        }
+      }))
+    );
+    success = <Redirect to="/home"/>
+  }
+  const errorsList = (props.loginError) ? <li className={classes.error}>{props.loginError}</li> : null;
   return (
     <div className={classes.userForm}>
       <div className={classes.errors}>
