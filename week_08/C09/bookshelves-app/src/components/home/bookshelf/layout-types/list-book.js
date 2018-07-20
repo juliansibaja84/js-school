@@ -182,7 +182,7 @@ function mapStateToProps(state) {
     booksList: state.bookshelf.booksList,
     uloading: state.bookshelf.loading,
     uerror: state.bookshelf.error,
-    apiInstance: state.booksApi.api.apiInstance,
+    apiInstance: state.booksApi.apiInstance,
     selectedBookshelf: state.bookshelf.bookshelf
   };
 }
