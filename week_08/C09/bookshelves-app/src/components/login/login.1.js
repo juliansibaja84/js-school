@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import setApiInstance from '../../actions/set-api-instance-action';
-import { getJWT } from '../../actions/get-jwt';
-import LoginForm from './login-form';
-import { connect } from 'react-redux';
+
+// Components
+import LoginForm from './login-form'
+
+// Assets
 import logo from '../../assets/images/logo.svg';
+
+// Styles
 import jss from 'jss';
 import preset from 'jss-preset-default';
 import nested from 'jss-nested';
@@ -16,8 +19,7 @@ const styles = {
     display: 'flex',
     'flex-direction': 'column',
     width: '400px',
-    'min-height': 'fit-content',
-    height: 'fit-content',
+    'min-height': '500px',
     margin: '3% auto 0 auto',
     'background-color': 'white',
     'justify-content': 'center',
@@ -35,23 +37,31 @@ const styles = {
 
 const {classes} = jss.createStyleSheet(styles).attach();
 
-class Login extends Component {
+export default class Login extends Component {
   constructor(props) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      logged: false,
+    };
   }
-  handleSubmit(values) {
-    this.props.dispatch(getJWT(values.email, values.password));
+
+  handleChangeLoginStatus() {
+    this.setState({
+      logged: !this.state.logged,
+    });
   }
+
   render() {
+    if (this.state.logged) {
+      return <Redirect to="/home/" />
+    }
     return (
       <div className={classes.loginBox}>
         <div className={classes.image}><img src={logo} alt=""/></div>
         <h2>Jobsity Login</h2>
-        <LoginForm onSubmit={this.handleSubmit}/>
+        <LoginForm  changeLoginStatus={() => this.handleChangeLoginStatus()}/>
       </div>
     );
   }
 }
 
-export default connect()(Login);

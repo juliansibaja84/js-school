@@ -3,7 +3,7 @@ import Stars from './stars';
 import jss from 'jss';
 import preset from 'jss-preset-default';
 import nested from 'jss-nested';
-import { theme } from '../../../../../config';
+import { theme, applyEllipsis } from '../../../../../config';
 import { connect } from 'react-redux';
 import { borrowBook } from '../../../../../actions/borrow-book-action';
 
@@ -32,12 +32,10 @@ const styles = {
     display: 'grid',
     'grid-template-columns': 'repeat(10, 1fr)',
     'box-shadow': '0 0 50px rgba(0, 0, 0, 0.5)',
-    'text-align': 'justify',
+    'text-align': 'left',
     '@media (max-width: 900px)': {
       'grid-column': '1/11',
-      height: '100%',
-      width: ' 100%',
-      margin: 0,
+      margin: '2% 2%',
     }
   },
   
@@ -63,15 +61,24 @@ const styles = {
       'grid-column': '1/11',
     }
   },
+  titleHeader: {
+    display: 'flex',
+    'align-items': 'center',
+    '&>p': {
+      'font-size': '1em',
+      'flex-basis': '30%',
+      'text-align': 'right',
+      margin: 0,
+      'margin-top': '14.1px',
+    }
+  },
   title: {
-    width: '100%',
+    'flex-basis': '70%',
     'font-size': '1.2em',
     margin: 0,
     'margin-top': '14.1px',
     color: theme.colors.darken,
-    '&>small': {
-      'font-size': '0.6em'
-    }
+    
   },
   authors: {
     color: theme.colors.dark,
@@ -174,12 +181,16 @@ class Popup extends Component {
             style={{backgroundImage: `url(${this.props.book.image})`}}>
           </div>
           <div className={classes.caption}>
-            <p className={classes.title}>{this.props.book.title} <small>{this.props.book.publishedDate}</small></p>
+            <div className={classes.titleHeader}>
+              <h4 className={classes.title}>{this.props.book.title}</h4>
+              <p>{this.props.book.publishedDate}</p>
+            </div>
+            
             <p className={classes.authors}>{this.props.book.authors}</p>
             <p className={classes.pagination}>{this.props.book.pageCount} pages</p>
             <Stars rating={this.props.book.rating} />
             {lentDate || lent}
-            <p className={classes.description}>{this.props.book.description}</p>
+            <p className={classes.description}>{applyEllipsis(this.props.book.description,800)}</p>
             {button}
           </div>
           <a onClick={this.props.closePopup} className={classes.close}>&times;</a>

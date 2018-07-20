@@ -4,7 +4,7 @@ import Stars from './misc/stars';
 import jss from 'jss';
 import preset from 'jss-preset-default';
 import nested from 'jss-nested';
-import { theme } from '../../../../config';
+import { theme, applyEllipsis } from '../../../../config';
 import { borrowBook } from '../../../../actions/borrow-book-action'
 jss.use(nested(),preset());
 
@@ -18,6 +18,8 @@ const styles = {
       'flex-direction': 'column',
       'align-items': 'center',
       'justify-content': 'center',
+      margin: 0,
+      'text-align': 'center'
     }
   },
   imageContainer: {
@@ -43,15 +45,27 @@ const styles = {
       padding: 0,
     },
   },
+  titleHeader: {
+    display: 'flex',
+    'align-items': 'center',
+    '&>p': {
+      'font-size': '1em',
+      'flex-basis': '30%',
+      'text-align': 'right',
+      margin: 0,
+      'margin-top': '14.1px',
+    },
+    '@media (max-width: 700px)': {
+      'flex-direction': 'column',
+    },
+  },
   title: {
-    width: '100%',
+    'flex-basis': '70%',
     'font-size': '1.2em',
     margin: 0,
     'margin-top': '14.1px',
     color: theme.colors.darken,
-    '&>small': {
-      'font-size': '0.6em'
-    }
+    
   },
   authors: {
     color: theme.colors.dark,
@@ -127,10 +141,6 @@ class ListBook extends Component {
     let button = (!this.props.book.status.lent) 
       ? <a 
           onClick={() => {
-            console.log(this.props.book._id);
-            console.log(this.props.booksList);
-            console.log(this.props.index);
-            console.log(this.props.apiInstance);
             if (window.confirm("Are you sure about to borrow the book?")) {
               this.props.dispatch(borrowBook(this.props.book._id,this.props.booksList,this.props.index, this.props.apiInstance));
             }
@@ -151,12 +161,15 @@ class ListBook extends Component {
           <img src={this.props.book.image} alt=""/>
         </div>
         <div className={classes.caption}>
-          <p className={classes.title}>{this.props.book.title} <small>{this.props.book.publishedDate}</small></p>
+          <div className={classes.titleHeader}>
+            <h4 className={classes.title}>{this.props.book.title}</h4>
+            <p>{this.props.book.publishedDate}</p>
+          </div>
           <p className={classes.authors}>{this.props.book.authors}</p>
           <p className={classes.pagination}>{this.props.book.pageCount} pages</p>
           <Stars rating={this.props.book.rating} />
           {lentDate || lent}
-          <p className={classes.description}>{this.props.book.description}</p>
+          <p className={classes.description}>{applyEllipsis(this.props.book.description,200)}</p>
           {button}
         </div>
       </div>

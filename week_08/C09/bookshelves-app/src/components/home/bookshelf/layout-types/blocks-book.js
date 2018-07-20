@@ -5,7 +5,7 @@ import jss from 'jss';
 import preset from 'jss-preset-default';
 import nested from 'jss-nested';
 import classnames from 'classnames';
-import { theme } from '../../../../config';
+import { theme, applyEllipsis } from '../../../../config';
 import available from '../../../../assets/images/Available.svg';
 
 jss.use(nested(),preset());
@@ -117,7 +117,7 @@ export default class BlocksBook extends Component {
         </div>
         {lent}
         <div className={classes.caption}>
-          <p className={classes.title}>{this.props.book.title}</p>
+          <p className={classes.title}>{applyEllipsis(this.props.book.title,20)}</p>
           <p className={classes.authors}>{this.props.book.authors}</p>
           <Stars rating={this.props.book.rating} />
         </div>

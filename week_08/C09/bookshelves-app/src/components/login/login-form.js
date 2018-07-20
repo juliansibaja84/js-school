@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import config, { theme } from '../../config';
 import jss from 'jss';
 import preset from 'jss-preset-default';
 import nested from 'jss-nested';
 import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 import setApiInstance from '../../actions/set-api-instance-action';
+
 jss.use(nested(),preset());
 
 const styles = {
@@ -14,6 +17,7 @@ const styles = {
     'box-shadow': '0 1px 5px rgba(104, 104, 104, 0.8)',
     'border-radius': '5%',
     width: '22rem',
+    'margin-bottom': '1rem',
     '&>form': {
       display: 'flex',
       'flex-direction': 'column',
@@ -64,105 +68,52 @@ const styles = {
 const {classes} = jss.createStyleSheet(styles).attach();
 
 
-class LoginForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      errors: [],
-      password: '',
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.getJWT = this.getJWT.bind(this);
-  }
-
-  getJWT(callback) {
-    axios.post(
-      `${config.apiBaseUrl}/auth/login`, 
-      {
-        "email" : this.state.email,
-        "password" : this.state.password
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      }
-      
-    ).then((response) => {
-      if (response.status === 200) {
-        const token = 'JWT ' + response.data.token;
-        sessionStorage.setItem('token', token);
-        this.props.dispatch(
-          setApiInstance(axios.create({
-            baseURL: config.apiBaseUrl,
-            timeout: 1000,
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization' : sessionStorage.getItem('token')
-            }
-          }))
-        );
-        callback();
-      }
-    }).catch((error) => {
-      if (error.response.status === 401 && this.state.errors.indexOf(error.response.data.message) === -1) {
-        let newErrorsArray = [...this.state.errors];
-        newErrorsArray.push(error.response.data.message)
-        this.setState({errors: newErrorsArray});
-      }
-    });
-    
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.getJWT(() => {
-      this.setState({errors: []});
-      this.props.changeLoginStatus();
-    });
-  }
-
-  handleChange(e) {
-    this.setState({[e.target.name]: e.target.value})
-  }
-
-  render() {
-    const errorsList = this.state.errors.map((error,index) => {
-      return <li key={index} className={classes.error}>{error}</li>
-    });
-    return (
-      <div className={classes.userForm}>
-        <div className={classes.errors}>
-          <ul>
-            {errorsList}
-          </ul>
-        </div>
-        <form onSubmit={this.handleSubmit}>
-          <label>Email</label>
-          <input
-            className={classes.inputField}
-            name="email"
-            type="text"
-            value={this.state.email}
-            onChange={this.handleChange}
-            placeholder="someone@jobsity.com"
-          />
-          <label>Password</label>
-          <input
-            className={classes.inputField}
-            name="password"
-            type="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            placeholder="***********"
-          />
-          <button className={classes.submitButton} type="submit">Submit</button>
-        </form>
+function LoginForm(props) {
+  const { handleSubmit } = props; 
+  const success = (props.loginSuccessful) ? <Redirect to="/home"/> : null;
+  const errorsList = <li className={classes.error}>{props.loginError}</li>;
+  return (
+    <div className={classes.userForm}>
+      <div className={classes.errors}>
+        <ul>
+          {errorsList}
+        </ul>
       </div>
-    );
-  }
+      <form onSubmit={handleSubmit}>
+        <label>Email</label>
+        <Field
+          className={classes.inputField}
+          name="email"
+          component="input"
+          type="text"
+          placeholder="someone@jobsity.com"
+        />
+        <label>Password</label>
+        <Field
+          className={classes.inputField}
+          name="password"
+          component="input"
+          type="password"
+          placeholder="***********"
+        />
+        <button className={classes.submitButton} type="submit">Submit</button>
+        {(props.loginLoading)? <p>loading...</p>:null}
+        {success}
+      </form>
+    </div>
+  );
 }
 
-export default connect()(LoginForm)
+function mapStateToProps(state) {
+  return {
+    loginSuccessful: state.login.successful,
+    loginLoading: state.login.loading,
+    loginError: state.login.error,
+  };
+}
+
+LoginForm = reduxForm({
+  form: 'login'
+})(LoginForm)
+
+export default connect(mapStateToProps)(LoginForm)

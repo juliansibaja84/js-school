@@ -34,16 +34,15 @@ class Home extends Component {
   componentDidMount() {
     this.props.dispatch(getUserInfo(this.props.apiInstance));
   }
-
-  componentWillReceiveProps(newProps) {
+  
+  componentWillUpdate(newProps) {
     if (BS.hasOwnProperty(newProps.match.params.bookshelf)){
       if(this.props.selectedBookshelf !== newProps.match.params.bookshelf) {
         this.props.dispatch(getBookshelfBooks(this.props.match.params.bookshelf, this.props.apiInstance, this.props.userInfo));
       }
     } else if (newProps.match.params.bookshelf === 'search') {
-      const str = this.props.location.search.split('str=')[1];
-      
-      if (str && this.props.location.search.split('str=')[1] !== `Results for: ${str}`) {
+      const str = this.props.history.location.search.split('str=')[1];
+      if (str && (this.props.selectedBookshelf !== `Results for: ${str}`)) {
         this.props.dispatch(searchBooks(str, this.props.apiInstance));
       }
     }
