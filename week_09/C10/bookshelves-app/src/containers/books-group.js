@@ -62,17 +62,20 @@ const BookType = {
 };
 
 class BooksGroup extends Component {
+  
   render() {
     let books = [];
+    let booksList = this.props.booksList;
+    
     let BookStyleToShow = BookType[this.props.layoutMode];
-    if (this.props.booksList) this.props.booksList.forEach( (book,index) => books.push(
+    if (booksList) booksList.forEach( (book,index) => books.push(
       <BookStyleToShow
         key={book._id}
         book={book}
         index={index}
       />
     ));
-    if(this.props.bookList === []) {
+    if(booksList === [] && !this.props.error) {
       return (
         <div className={classes.booksGroup}>
         <div className={classes.loading}>
@@ -97,7 +100,8 @@ function mapStateToProps(state) {
     loading: state.bookshelf.loading,
     error: state.bookshelf.error,
     layoutMode: state.bookshelf.layoutMode,
-    selectedBookshelf: state.bookshelf.bookshelf
+    selectedBookshelf: state.bookshelf.bookshelf,
+    socket: state.realtime.socket,
   };
 }
 

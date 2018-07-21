@@ -23,6 +23,7 @@ export const theme = {
 
 const config = {
   homepage: `http://127.0.0.1:${PORT}/home`,
+  dbBaseUrl: 'http://127.0.0.1:5001',
   apiBaseUrl: 'http://127.0.0.1:5001/api',
 };
 
@@ -30,10 +31,6 @@ export function applyEllipsis(text, maxLength) {
   return (text.length > maxLength)
     ? `${text.substr(0,maxLength)}...`
     : `${text}`;
-}
-
-export function formatText(){
-
 }
 
 export default config;

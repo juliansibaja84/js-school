@@ -175,9 +175,12 @@ app.post('/api/auth/login', (req, res) => {
 io.on('connection', (socket) => {
   console.log('User connected');
 
-  socket.on('change_color', (color) => {
-    console.log('Color Changed to: ', color);
-    io.sockets.emit('change_color', color);
+  socket.on('BORROW_BOOK', (info) => {
+    //console.log(info);
+    //io.sockets.emit('change_color', color);
+    Book.lendBook(info.bookId, info.userId, (err, book) => {
+      io.sockets.emit('CHANGED_BOOK_STATUS', book[0]);
+    });
   });
 
   socket.on('disconnect', () => {

@@ -29,7 +29,6 @@ const styles = {
 
 const {classes} = jss.createStyleSheet(styles).attach();
 
-
 class Home extends Component {
   componentDidMount() {
     if (this.props.apiInstance) {
@@ -41,7 +40,7 @@ class Home extends Component {
     
     if (this.props.apiInstance) {
       if (BS.hasOwnProperty(newProps.match.params.bookshelf)){
-        if(this.props.selectedBookshelf !== newProps.match.params.bookshelf) {
+        if (this.props.selectedBookshelf !== newProps.match.params.bookshelf) {
           this.props.dispatch(getBookshelfBooks(this.props.match.params.bookshelf, this.props.apiInstance, this.props.userInfo));
         }
       } else if (newProps.match.params.bookshelf === 'search') {

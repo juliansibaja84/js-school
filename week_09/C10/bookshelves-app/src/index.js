@@ -36,7 +36,7 @@ class App extends Component {
   }
 }
 
-function PrivateRoute({component: Component, ...rest}) {
+function PrivateRoute({ component: Component, ...rest }) {
   return <Route {...rest} render={ (props) => (
     sessionStorage.getItem('token')
       ? <Component {...props} />
