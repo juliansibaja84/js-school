@@ -176,13 +176,15 @@ io.on('connection', (socket) => {
   console.log('User connected');
 
   socket.on('BORROW_BOOK', (info) => {
-    //console.log(info);
-    //io.sockets.emit('change_color', color);
     Book.lendBook(info.bookId, info.userId, (err, book) => {
       io.sockets.emit('CHANGED_BOOK_STATUS', book[0]);
     });
   });
-
+  socket.on('DELETE_BOOK', (bookInfo) => {
+    Book.deleteBook(bookInfo._id, () => {
+      io.sockets.emit('BOOK_DELETED', bookInfo);
+    });
+  });
   socket.on('disconnect', () => {
     console.log('User disconnected');
   });

@@ -64,7 +64,12 @@ const styles = {
     margin: 0,
     'margin-top': '14.1px',
     color: theme.colors.darken,
-    
+    '&>a': {
+      color: 'red',
+      '&:hover': {
+        cursor: 'pointer',
+      }
+    },
   },
   authors: {
     color: theme.colors.dark,
@@ -155,6 +160,7 @@ class ListBook extends Component {
       lent = null;
       button = <a href={book.downloadLink} className={classes.btn}>Download</a>
     }
+    
     return (
       <div className={classes.bookContainer}>
         <div className={classes.imageContainer}>
@@ -162,7 +168,7 @@ class ListBook extends Component {
         </div>
         <div className={classes.caption}>
           <div className={classes.titleHeader}>
-            <h4 className={classes.title}>{book.title}</h4>
+            <h4 className={classes.title}>{book.title} <a onClick={ () => this.props.socket.emit('DELETE_BOOK', book)}>delete</a></h4>
             <p>{book.publishedDate}</p>
           </div>
           <p className={classes.authors}>{book.authors}</p>

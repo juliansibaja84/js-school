@@ -8,6 +8,7 @@ import nested from 'jss-nested';
 import { theme } from '../config';
 import { connect } from 'react-redux';
 import updateBooksList from '../actions/update-books-list-action';
+import {ToastContainer, ToastStore} from 'react-toasts';
 
 jss.use(nested(),preset());
 
@@ -70,8 +71,14 @@ class BooksGroup extends Component {
           const newBooksList = [...this.props.booksList];
           newBooksList[index] = updatedBook;
           this.props.dispatch(updateBooksList(newBooksList));
+          ToastStore.info(`${updatedBook.title} (${updatedBook.isbn}) has been borrowed`);
         }
       });
+    });
+    this.props.socket.on('BOOK_DELETED', (deletedBook) => {
+      const newBooksList = this.props.booksList.filter( (book) => (book._id !== deletedBook._id));
+      this.props.dispatch(updateBooksList(newBooksList));
+      ToastStore.warning(`${deletedBook.title} (${deletedBook.isbn}) has been removed`);
     });
   }
   render() {
@@ -81,7 +88,6 @@ class BooksGroup extends Component {
     if (booksList !== []) booksList.forEach( (book,index) => books.push(
       <BookStyleToShow
         key={book._id}
-        book={book}
         index={index}
       />
     ));
@@ -98,12 +104,12 @@ class BooksGroup extends Component {
     }
     return (
       <div className={classes.booksGroup}>
-        {(this.props.error) ? <p>{'Oops, something went wrong with the request to the API, please wait until the API is working again, we apologize for the inconveniences caused by this problem'}</p> : books}
+        {(this.props.error) ? <p>{'Oops, something went wrong with the request to the database, please wait until the API is working again, we apologize for the inconveniences caused by this problem'}</p> : books}
+        <ToastContainer store={ToastStore}/>
       </div>
     );
   }
 }
-
 function mapStateToProps(state) {
   return {
     booksList: state.bookshelf.booksList,

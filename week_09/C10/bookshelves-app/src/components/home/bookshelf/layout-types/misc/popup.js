@@ -58,7 +58,7 @@ const styles = {
     padding: '2%',
     '@media (max-width: 900px)': {
       'grid-column': '1/11',
-    }
+    },
   },
   titleHeader: {
     display: 'flex',
@@ -77,7 +77,12 @@ const styles = {
     margin: 0,
     'margin-top': '14.1px',
     color: theme.colors.darken,
-    
+    '&>a': {
+      color: 'red',
+      '&:hover': {
+        cursor: 'pointer',
+      }
+    },
   },
   authors: {
     color: theme.colors.dark,
@@ -182,10 +187,9 @@ class Popup extends Component {
           </div>
           <div className={classes.caption}>
             <div className={classes.titleHeader}>
-              <h4 className={classes.title}>{book.title}</h4>
+              <h4 className={classes.title}>{book.title} <a onClick={ () => this.props.socket.emit('DELETE_BOOK', book)}> delete</a></h4>
               <p>{book.publishedDate}</p>
             </div>
-            
             <p className={classes.authors}>{book.authors}</p>
             <p className={classes.pagination}>{book.pageCount} pages</p>
             <Stars rating={book.rating} />
