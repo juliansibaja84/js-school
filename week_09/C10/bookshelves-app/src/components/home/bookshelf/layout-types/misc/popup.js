@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Stars from './stars';
 import jss from 'jss';
 import preset from 'jss-preset-default';
 import nested from 'jss-nested';
 import { theme, applyEllipsis } from '../../../../../config';
-import { connect } from 'react-redux';
-import { borrowBook } from '../../../../../actions/borrow-book-action';
 
 jss.use(nested(),preset());
 
@@ -153,44 +152,45 @@ const {classes} = jss.createStyleSheet(styles).attach();
 
 class Popup extends Component {
   render() {
-    let lent = (!this.props.book.status.lent) 
+    const book = this.props.booksList[this.props.index];
+    let lent = (!book.status.lent) 
       ? <span className={classes.available}>Available</span> 
       : <span className={classes.notAvailable}>Lent</span>;
-    let button = (!this.props.book.status.lent)
+    let button = (!book.status.lent)
       ? <a
           onClick={() => {
             if (window.confirm("Are you sure about to borrow the book?")) {
-              this.props.dispatch(borrowBook(this.props.book._id,this.props.booksList,this.props.index, this.props.apiInstance));
+              this.props.socket.emit('BORROW_BOOK', { bookId: book._id , userId: this.props.user._id });
             }
           }}
           className={classes.btn}
         >Borrow</a>
       : '';
-    if (this.props.book.bookshelf === 'digital') {
+    if (book.bookshelf === 'digital') {
       lent = null;
-      button = <a href={this.props.book.downloadLink} className={classes.btn}>Download</a>
+      button = <a href={book.downloadLink} className={classes.btn}>Download</a>
     }
     const lentDate = (this.props.selectedBookshelf === 'personal-loans')
-      ? <p>Borrowed at: {this.props.book.status.lentDate.split('T')[0]}</p>
+      ? <p>Borrowed at: {book.status.lentDate.split('T')[0]}</p>
       : null;
     return (
       <div className={classes.popup}>
         <div className={classes.popupInner}>
           <div 
             className={classes.imageContainer} 
-            style={{backgroundImage: `url(${this.props.book.image})`}}>
+            style={{backgroundImage: `url(${book.image})`}}>
           </div>
           <div className={classes.caption}>
             <div className={classes.titleHeader}>
-              <h4 className={classes.title}>{this.props.book.title}</h4>
-              <p>{this.props.book.publishedDate}</p>
+              <h4 className={classes.title}>{book.title}</h4>
+              <p>{book.publishedDate}</p>
             </div>
             
-            <p className={classes.authors}>{this.props.book.authors}</p>
-            <p className={classes.pagination}>{this.props.book.pageCount} pages</p>
-            <Stars rating={this.props.book.rating} />
+            <p className={classes.authors}>{book.authors}</p>
+            <p className={classes.pagination}>{book.pageCount} pages</p>
+            <Stars rating={book.rating} />
             {lentDate || lent}
-            <p className={classes.description}>{applyEllipsis(this.props.book.description,800)}</p>
+            <p className={classes.description}>{applyEllipsis(book.description,800)}</p>
             {button}
           </div>
           <a onClick={this.props.closePopup} className={classes.close}>&times;</a>
@@ -203,10 +203,10 @@ class Popup extends Component {
 function mapStateToProps(state) {
   return {
     booksList: state.bookshelf.booksList,
-    uloading: state.bookshelf.loading,
-    uerror: state.bookshelf.error,
     apiInstance: state.booksApi.apiInstance,
-    selectedBookshelf: state.bookshelf.bookshelf
+    selectedBookshelf: state.bookshelf.bookshelf,
+    socket: state.realtime.socket,
+    user: state.booksApi.user,
   };
 }
 

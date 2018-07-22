@@ -5,7 +5,6 @@ import jss from 'jss';
 import preset from 'jss-preset-default';
 import nested from 'jss-nested';
 import { theme, applyEllipsis } from '../../../../config';
-import { borrowBook } from '../../../../actions/borrow-book-action'
 jss.use(nested(),preset());
 
 const styles = {
@@ -134,54 +133,43 @@ const styles = {
 const {classes} = jss.createStyleSheet(styles).attach();
 
 class ListBook extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {book: this.props.book}
-  }
-
   render() {
-    this.props.socket.on('CHANGED_BOOK_STATUS', (updatedBook) => {
-      if (this.state.book._id === updatedBook._id) {
-        this.setState({book: updatedBook})
-      }
-    });
-
-    let lent = (!this.state.book.status.lent) 
+    const book = this.props.booksList[this.props.index];
+    let lent = (!book.status.lent) 
       ? <span className={classes.available}>Available</span> 
       : <span className={classes.notAvailable}>Lent</span>;
-    let button = (!this.state.book.status.lent) 
+    let button = (!book.status.lent) 
       ? <a 
           onClick={() => {
             if (window.confirm("Are you sure about to borrow the book?")) {
-              //this.props.dispatch(borrowBook(this.state.book._id, this.props.booksList, this.props.index, this.props.apiInstance));
-              this.props.socket.emit('BORROW_BOOK', { bookId: this.state.book._id , userId: this.props.user._id });
+              this.props.socket.emit('BORROW_BOOK', { bookId: book._id , userId: this.props.user._id });
             }
           }}
           className={classes.btn}
         >Borrow</a>
       : null;
     const lentDate = (this.props.selectedBookshelf === 'personal-loans')
-      ? <p className={classes.borrowDate}>Borrowed at: {this.state.book.status.lentDate.split('T')[0]}</p>
+      ? <p className={classes.borrowDate}>Borrowed at: {book.status.lentDate.split('T')[0]}</p>
       : null;
-    if (this.state.book.bookshelf === 'digital') {
+    if (book.bookshelf === 'digital') {
       lent = null;
-      button = <a href={this.state.book.downloadLink} className={classes.btn}>Download</a>
+      button = <a href={book.downloadLink} className={classes.btn}>Download</a>
     }
     return (
       <div className={classes.bookContainer}>
         <div className={classes.imageContainer}>
-          <img src={this.state.book.image} alt=""/>
+          <img src={book.image} alt=""/>
         </div>
         <div className={classes.caption}>
           <div className={classes.titleHeader}>
-            <h4 className={classes.title}>{this.state.book.title}</h4>
-            <p>{this.state.book.publishedDate}</p>
+            <h4 className={classes.title}>{book.title}</h4>
+            <p>{book.publishedDate}</p>
           </div>
-          <p className={classes.authors}>{this.state.book.authors}</p>
-          <p className={classes.pagination}>{this.state.book.pageCount} pages</p>
-          <Stars rating={this.state.book.rating} />
+          <p className={classes.authors}>{book.authors}</p>
+          <p className={classes.pagination}>{book.pageCount} pages</p>
+          <Stars rating={book.rating} />
           {lentDate || lent}
-          <p className={classes.description}>{applyEllipsis(this.state.book.description,200)}</p>
+          <p className={classes.description}>{applyEllipsis(book.description,200)}</p>
           {button}
         </div>
       </div>
@@ -192,9 +180,6 @@ class ListBook extends Component {
 function mapStateToProps(state) {
   return {
     booksList: state.bookshelf.booksList,
-    uloading: state.bookshelf.loading,
-    uerror: state.bookshelf.error,
-    apiInstance: state.booksApi.apiInstance,
     selectedBookshelf: state.bookshelf.bookshelf,
     socket: state.realtime.socket,
     user: state.booksApi.user

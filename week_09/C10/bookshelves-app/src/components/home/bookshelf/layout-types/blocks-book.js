@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Popup from './misc/popup';
 import Stars from './misc/stars';
 import jss from 'jss';
@@ -89,7 +90,7 @@ const styles = {
 const {classes} = jss.createStyleSheet(styles).attach();
 
 
-export default class BlocksBook extends Component {
+class BlocksBook extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -103,27 +104,28 @@ export default class BlocksBook extends Component {
   }
 
   render() {
-    let lent = (this.props.book.status.lent)
+    const book = this.props.booksList[this.props.index];
+    let lent = (book.status.lent)
   ? <div className={classes.lent}><i className={classnames(classes.lentInner, 'fas fa-user-check')}></i></div> 
       : '';
-    if (this.props.book.bookshelf === 'digital') lent = null;
+    if (book.bookshelf === 'digital') lent = null;
     return (
       <div className={classes.bookContainer}>
         <div className={classes.imageContainer}>
           <img 
-            src={this.props.book.image}
+            src={book.image}
             onClick={() => this.togglePopup()}
             alt=""/>
         </div>
         {lent}
         <div className={classes.caption}>
-          <p className={classes.title}>{applyEllipsis(this.props.book.title,20)}</p>
-          <p className={classes.authors}>{this.props.book.authors}</p>
-          <Stars rating={this.props.book.rating} />
+          <p className={classes.title}>{applyEllipsis(book.title,20)}</p>
+          <p className={classes.authors}>{book.authors}</p>
+          <Stars rating={book.rating} />
         </div>
         {this.state.showPopup ? 
           <Popup
-            book={this.props.book}
+            book={book}
             closePopup={() => this.togglePopup()}
             index={this.props.index}
           />
@@ -133,3 +135,11 @@ export default class BlocksBook extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    booksList: state.bookshelf.booksList,
+  };
+}
+
+export default connect(mapStateToProps) (BlocksBook)

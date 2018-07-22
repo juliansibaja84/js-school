@@ -12,7 +12,8 @@ import { connect } from 'react-redux';
 import { getBookshelfBooks } from '../../actions/get-bookshelf-books-action';
 import { searchBooks } from '../../actions/search-books-action';
 import { getUserInfo } from '../../actions/get-user-info-action';
-import { BS } from '../../config'
+import { BS } from '../../config';
+import { withRouter } from 'react-router-dom';
 jss.use(preset(),nested());
 
 const styles = {
@@ -76,4 +77,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Home);
+export default withRouter(connect(mapStateToProps)(Home));

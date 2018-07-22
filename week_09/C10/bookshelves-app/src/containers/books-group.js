@@ -7,6 +7,7 @@ import preset from 'jss-preset-default';
 import nested from 'jss-nested';
 import { theme } from '../config';
 import { connect } from 'react-redux';
+import updateBooksList from '../actions/update-books-list-action';
 
 jss.use(nested(),preset());
 
@@ -62,13 +63,22 @@ const BookType = {
 };
 
 class BooksGroup extends Component {
-  
+  componentDidMount() {
+    this.props.socket.on('CHANGED_BOOK_STATUS', (updatedBook) => {
+      this.props.booksList.forEach( (book,index) => {
+        if (book._id === updatedBook._id) {
+          const newBooksList = [...this.props.booksList];
+          newBooksList[index] = updatedBook;
+          this.props.dispatch(updateBooksList(newBooksList));
+        }
+      });
+    });
+  }
   render() {
     let books = [];
     let booksList = this.props.booksList;
-    
     let BookStyleToShow = BookType[this.props.layoutMode];
-    if (booksList) booksList.forEach( (book,index) => books.push(
+    if (booksList !== []) booksList.forEach( (book,index) => books.push(
       <BookStyleToShow
         key={book._id}
         book={book}

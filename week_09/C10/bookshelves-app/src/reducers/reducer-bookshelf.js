@@ -4,18 +4,10 @@ import {
   FETCH_BOOKS_FAILURE
 } from '../actions/get-bookshelf-books-action';
 
-import {
-  UPDATE_BOOK_BEGIN,
-  UPDATE_BOOK_SUCCESS,
-  UPDATE_BOOK_FAILURE
-} from '../actions/borrow-book-action';
-
 const initialState = {
   booksList: [],
   loading: false,
   error: null,
-  uloading: false,
-  uerror: null,
   bookshelf: '',
   layoutMode: 'blocks',
 };
@@ -48,24 +40,10 @@ export default function(state = initialState, action) {
         ...state,
         layoutMode: action.payload.layout
       };
-    case UPDATE_BOOK_BEGIN:
+    case 'UPDATE_BOOKSLIST':
       return {
         ...state,
-        uloading: true,
-        uerror: null
-      };
-    case UPDATE_BOOK_SUCCESS:
-      return {
-        ...state,
-        uloading: false,
-        booksList: action.payload.books,
-      };
-    case UPDATE_BOOK_FAILURE:
-      return {
-        ...state,
-        uloading: false,
-        uerror: action.payload.error,
-        booksList: []
+        booksList: action.payload.updatedBooksList,
       };
     default:
       break;  
