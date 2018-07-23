@@ -12,6 +12,7 @@ const styles = {
     'grid-column': '1/6',
     width: '100%',
     display: 'flex',
+    'align-items': 'flex-start',
     'margin-bottom': '2.99rem',
     '@media (max-width: 700px)': {
       'flex-direction': 'column',
@@ -38,7 +39,6 @@ const styles = {
     display: 'flex',
     'flex-direction': 'column',
     width: 'auto',
-    height: '250px',
     '@media (max-width: 700px)': {
       'flex-direction': 'column',
       padding: 0,
@@ -89,7 +89,6 @@ const styles = {
     'white-space': 'pre-line',
     overflow: 'hidden',
     'text-overflow': 'ellipsis',
-    'max-height': '60px',
     margin: '0 0 1rem 0',
     '@media (max-width: 700px)': {
       display: 'none',

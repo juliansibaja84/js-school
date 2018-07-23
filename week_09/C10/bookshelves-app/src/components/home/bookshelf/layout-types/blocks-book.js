@@ -20,6 +20,8 @@ const styles = {
     'align-items': 'center',
     'margin-bottom': '2.99rem',
     height: '317.09px',
+    'animation-name': 'zoom',
+    'animation-duration': '0.5s',
   },
   imageContainer: {
     flex: 1,
@@ -30,6 +32,9 @@ const styles = {
       height: '100%',
       margin: '0 auto',
       'border-radius': '2%',
+      '&:hover': {
+        cursor: 'pointer'
+      }
     }
   },
   caption: {
@@ -74,7 +79,9 @@ const styles = {
       display: 'block',
       position: 'absolute',
       color: 'white',
-      'background-image': `url(${available})`
+      'background-image': `url(${available})`,
+      'animation-name': 'fade',
+      'animation-duration': '1s',
     }
   },
   lentInner: {
@@ -83,8 +90,23 @@ const styles = {
     left: '3.82rem',
     top: '-13.24rem',
     color: 'white',
+    'animation-name': 'fade',
+    'animation-duration': '1s',
+  },
+  '@keyframes fade': {
+    from: {opacity: 0},
+    to: {opacity: 1}
+  },
+  '@keyframes zoom': {
+    from: {
+      transform: 'scale(0)',
+      opacity: 0,
+    },
+    to: {
+      transform: 'scale(1)',
+      opacity: 1,
+    }
   }
-
 };
 
 const {classes} = jss.createStyleSheet(styles).attach();

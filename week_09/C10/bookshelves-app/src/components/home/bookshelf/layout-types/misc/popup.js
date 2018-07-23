@@ -19,9 +19,6 @@ const styles = {
     bottom: 0,
     margin: 'auto',
     'z-index': 4,
-    '@media (max-width: 900px)': {
-      position: 'absolute'
-    }
   },
   popupInner: {
     position: 'relative',
@@ -33,9 +30,11 @@ const styles = {
     'box-shadow': '0 0 50px rgba(0, 0, 0, 0.5)',
     'text-align': 'left',
     '@media (max-width: 900px)': {
-      'grid-column': '1/11',
       margin: '2% 2%',
-    }
+      height: '90%',
+    },
+    'animation-name': 'zoom',
+    'animation-duration': '0.5s',
   },
   
   imageContainer: {
@@ -97,7 +96,6 @@ const styles = {
     'white-space': 'pre-line',
     overflow: 'hidden',
     'text-overflow': 'ellipsis',
-    'max-height': '300px',
   },
   available: {
     color: theme.colors.primary,
@@ -136,7 +134,6 @@ const styles = {
     'font-size': '1em',
     'margin-top': '3px',
   },
-  
   close:{
     position: 'absolute',
     width: '1rem',
@@ -151,6 +148,16 @@ const styles = {
     color: theme.colors.dark,
     cursor: 'pointer',
   },
+  '@keyframes zoom': {
+    from: {
+      transform: 'scale(0)',
+      opacity: 0,
+    },
+    to: {
+      transform: 'scale(1)',
+      opacity: 1,
+    }
+  }
 };
 
 const {classes} = jss.createStyleSheet(styles).attach();
