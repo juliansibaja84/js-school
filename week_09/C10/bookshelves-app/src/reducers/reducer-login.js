@@ -2,7 +2,7 @@ import {
   FETCH_TOKEN_BEGIN,
   FETCH_TOKEN_SUCCESS,
   FETCH_TOKEN_FAILURE,
-} from '../actions/get-jwt';
+} from '../epics/get-jwt-epic';
 
 const initialState = {
   successful: false,

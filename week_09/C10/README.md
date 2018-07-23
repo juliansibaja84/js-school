@@ -1,7 +1,6 @@
-# Challenge 9
+# Challenge 10
 
-For this challenge, Redux and JSS are implemented within the application. Next is a
-documentation on how to set up both the rest api and the web application.
+For this challenge, Web sockets and observables were implemented within the application. Next is a documentation on how to set up both the rest api and the web application.
 
 ## REST API
 

@@ -4,7 +4,7 @@ import {
   FETCH_USER_BEGIN,
   FETCH_USER_SUCCESS,
   FETCH_USER_FAILURE,
-} from '../actions/get-user-info-action';
+} from '../epics/get-user-info-epic';
 
 const initialState = {
   BS: {

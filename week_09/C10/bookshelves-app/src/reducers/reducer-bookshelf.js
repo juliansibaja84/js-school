@@ -2,7 +2,7 @@ import {
   FETCH_BOOKS_BEGIN,
   FETCH_BOOKS_SUCCESS,
   FETCH_BOOKS_FAILURE
-} from '../actions/get-bookshelf-books-action';
+} from '../epics/get-bookshelf-books-epic';
 
 const initialState = {
   booksList: [],

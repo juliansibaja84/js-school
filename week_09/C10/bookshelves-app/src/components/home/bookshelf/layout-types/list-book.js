@@ -20,7 +20,9 @@ const styles = {
       'justify-content': 'center',
       margin: 0,
       'text-align': 'center'
-    }
+    },
+    'animation-name': 'zoom',
+    'animation-duration': '0.5s',
   },
   imageContainer: {
     'flex-basis': '20%',
@@ -132,6 +134,16 @@ const styles = {
     'font-size': '0.819rem',
     'margin-top': '3px',
   },
+  '@keyframes zoom': {
+    from: {
+      transform: 'scale(0)',
+      opacity: 0,
+    },
+    to: {
+      transform: 'scale(1)',
+      opacity: 1,
+    }
+  }
 };
 
 const {classes} = jss.createStyleSheet(styles).attach();
