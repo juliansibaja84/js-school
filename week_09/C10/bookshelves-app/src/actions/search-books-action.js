@@ -1,12 +1,7 @@
 export function searchBooks(searchString, apiInstance) {
-  return (dispatch) => {
-    dispatch(fetchBooksBegin());
-    apiInstance.post('/books/all/search', {'searchString': searchString}).then((response) => {
-      dispatch(fetchBooksSuccess(response.data, `Results for: ${searchString}`));
-      return response.data;
-    }).catch((error) => {
-      dispatch(fetchBooksError(error, `Results for: ${searchString}`))
-    });
+  return {
+    type: 'SEARCH_BOOKS',
+    payload: { apiInstance, searchString },
   }
 }
 

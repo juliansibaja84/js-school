@@ -1,12 +1,7 @@
 export function getUserInfo(apiInstance) {
-  return (dispatch) => {
-    dispatch(fetchUserBegin());
-    apiInstance.get('/userInfo').then((response) => {
-      dispatch(fetchUserSuccess(response.data))
-      return response.data;
-    }).catch((error) => {
-      dispatch(fetchUserError(error))
-    });
+  return {
+    type: 'FETCH_USER',
+    payload: { apiInstance },
   }
 }
 

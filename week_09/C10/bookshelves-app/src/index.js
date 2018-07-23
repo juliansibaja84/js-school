@@ -10,16 +10,20 @@ import Home from './components/home/home';
 import Login from './components/login/login';
 import Unauthorized from './components/unauthorized';
 
-import { compose, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import { applyMiddleware } from 'redux';
 import { Provider } from 'react-redux'
-import allReducers from './reducers/index'
+import allReducers from './reducers/index';
+import { createEpicMiddleware } from 'redux-observable';
+import rootEpic from './epics/root-epic';
+
+const epicMiddleware = createEpicMiddleware();
 
 const store = createStore(
   allReducers,
-  compose(applyMiddleware(thunk))
+  applyMiddleware(epicMiddleware),
 );
 
+epicMiddleware.run(rootEpic);
 class App extends Component {
   render() {
     return (

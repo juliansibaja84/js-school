@@ -1,32 +1,7 @@
-import axios from 'axios';
-import config from '../config';
-
 export function getJWT(email, password) {
-  return (dispatch) => {
-    dispatch(fetchTokenBegin());
-    axios.post(
-      `${config.apiBaseUrl}/auth/login`, 
-      {
-        "email" : email,
-        "password" : password
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      }
-    ).then((response) => {
-      const token = 'JWT ' + response.data.token;
-      sessionStorage.setItem('token', token);
-      dispatch(fetchTokenSuccess());
-    }).catch((error) => {
-      const response = error.response;
-      if (response) {
-        dispatch(fetchTokenError(error.response.data.message));
-      } else {
-        dispatch(fetchTokenError('This Page couldn\'t connect to the database, please try again'));
-      }
-    });
+  return {
+    type: 'FETCH_TOKEN',
+    payload: { email, password },
   }
 }
 

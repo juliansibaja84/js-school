@@ -1,15 +1,7 @@
 export function getBookshelfBooks(bookshelf, apiInstance, user) {
-  let endpoint = `/books/all?BS=${bookshelf}`;
-  if ( bookshelf === 'personal-loans') endpoint = `/books/lent?userid=${user._id}`;
-  return (dispatch) => {
-    dispatch(fetchBooksBegin());
-    apiInstance.get(endpoint)
-      .then(res => {
-        dispatch(fetchBooksSuccess(res.data, bookshelf))
-        return res.data;
-      }).catch((error) => {
-        dispatch(fetchBooksError(error, bookshelf))
-      });
+  return {
+    type: 'FETCH_BOOKS',
+    payload: {bookshelf, apiInstance, user},
   }
 }
 
