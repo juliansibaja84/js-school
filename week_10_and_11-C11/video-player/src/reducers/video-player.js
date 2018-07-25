@@ -4,6 +4,10 @@ const initialState = {
     loading: false,
     error: false,
   },
+  video: {
+    duration: 0,
+    currentTime: 0,
+  },
   config: {
     fullscreen: false,
   }
@@ -27,6 +31,22 @@ export default function (state = initialState, action) {
           paused: true,
           loading: false,
           error: state.status.error,
+        }
+      }
+    case 'UPDATE_CURRENT_TIME':
+      return {
+        ...state,
+        video: {
+          duration: state.video.duration,
+          currentTime: action.payload.currentTime
+        }
+      }
+    case 'UPDATE_DURATION':
+      return {
+        ...state,
+        video: {
+          duration: action.payload.duration,
+          currentTime: state.video.currentTime
         }
       }
     default:

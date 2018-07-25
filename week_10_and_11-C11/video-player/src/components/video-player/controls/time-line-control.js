@@ -14,7 +14,10 @@ const styles = (theme) => ({
 function TimeLineControl(props) {
   return(
     <Grid item xs={8}>
-      <LinearProgress variant="buffer" value={10} valueBuffer={25} />
+      <LinearProgress
+        variant="buffer"
+        value={(props.duration !== 0)? props.currentTime/props.duration*100: 0}
+        valueBuffer={0} />
     </Grid>
   );
 }
@@ -25,7 +28,8 @@ TimeLineControl.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    
+    duration: state.videoPlayer.video.duration,
+    currentTime: state.videoPlayer.video.currentTime
   }
 }
 
