@@ -1,8 +1,10 @@
-import { combineReducers } from '../../../../../../.cache/typescript/2.9/node_modules/redux';
-import videoPlayerReducer from './video-player'
+import { combineReducers } from 'redux';
+import videoPlayerReducer from './video-player-reducer';
+import clipsReducer from './clips-reducer';
 
 const allReducers = combineReducers({
   videoPlayer: videoPlayerReducer,
+  clips: clipsReducer,
 });
 
 export default allReducers;

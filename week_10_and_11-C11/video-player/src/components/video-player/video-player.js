@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
 import ControlsBar from './controls/controls-bar';
 import updateCurrentTime from '../../actions/update-current-time-action';
 import updateDuration from '../../actions/update-duration-action';
+import { connect } from 'react-redux';
 
 class VideoPlayer extends Component {
   constructor(props) {
@@ -19,6 +19,7 @@ class VideoPlayer extends Component {
     if(nextProps.videoPlayer.status.paused) {
       this.mediaVideoRef.current.pause();
     }
+    //console.log(this.mediaVideoRef.current.buffered);
   }
   handleOnCanPlay() {
     this.props.dispatch(updateDuration(this.mediaVideoRef.current.duration));
@@ -35,10 +36,9 @@ class VideoPlayer extends Component {
           width="100%"
           onCanPlay={ () => this.handleOnCanPlay() }
           onTimeUpdate={ () => this.handleOnTimeUpdate() }>
-          <source src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+          <source src={this.props.videoPlayer.src}
                   type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'
-                  data-original="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-                  onTimeUpdate={console.log(2)}/>
+                  />
         </video>
         <ControlsBar />
       </div>

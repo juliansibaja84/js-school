@@ -10,7 +10,9 @@ const initialState = {
   },
   config: {
     fullscreen: false,
-  }
+  },
+  originalSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+  src: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4#t=12,25',
 }
 
 export default function (state = initialState, action) {
