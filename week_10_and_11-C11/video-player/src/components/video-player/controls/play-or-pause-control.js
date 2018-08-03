@@ -1,42 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import playVideo from '../../../actions/play-video-action'
-import pauseVideo from '../../../actions/pause-video-action';
+
 // Components
-import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 
-const styles = theme => ({
+import playVideo from '../../../actions/play-video-action';
+import pauseVideo from '../../../actions/pause-video-action';
+
+const styles = () => ({
   button: {
-    margin: theme.spacing.unit,
+    margin: 0,
+    minHeight: '0px',
+    height: '100%',
+    color: 'white',
   },
 });
 
 function PlayOrPauseControl(props) {
-  const { classes } = props;
-  return(
-    <Grid item xs={1}>
-      <IconButton className={classes.button} aria-label="Play">
-        {(props.status.paused)
-          ? <PlayArrowIcon onClick={() => props.dispatch(playVideo())}/>
-          : <PauseIcon onClick={() => props.dispatch(pauseVideo())}/>}
-      </IconButton>
-    </Grid>
+  const { classes, status, dispatch } = props;
+  if (status.paused) {
+    return (
+      <div>
+        <Button className={classes.button} aria-label="Play/Pause" onClick={() => dispatch(playVideo())}>
+          <PlayArrowIcon />
+        </Button>
+      </div>
+    );
+  }
+  return (
+    <div>
+      <Button className={classes.button} aria-label="Play/Pause" onClick={() => dispatch(pauseVideo())}>
+        <PauseIcon />
+      </Button>
+    </div>
   );
 }
 
 PlayOrPauseControl.propTypes = {
   classes: PropTypes.object.isRequired,
+  status: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
   return {
     status: state.videoPlayer.status,
-  }
+  };
 }
 
 export default connect(mapStateToProps)(withStyles(styles)(PlayOrPauseControl));

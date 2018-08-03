@@ -1,42 +1,59 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 
 // Components
-import Grid from '@material-ui/core/Grid';
+import ReactResizeDetector from 'react-resize-detector';
 import PlayOrPauseControl from './play-or-pause-control';
 import TimeLineControl from './time-line-control';
 import VolumeControl from './volume-control';
-import MoreControl from './more-control';
+import TimeDisplay from './time-display';
 import FullscreenControl from './fullscreen-control';
 
-const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit,
+const styles = () => ({
+  bar: {
+    position: 'absolute',
+    bottom: '0.2rem',
+    width: '100%',
+  },
+  barInner: {
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+  controlsContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    flexWrap: 'wrap',
   },
 });
 
 function ControlsBar(props) {
+  const { classes } = props;
   return (
-    <Grid container alignItems="center" spacing={8}>
-      <PlayOrPauseControl />
-      <TimeLineControl />
-      <VolumeControl />
-      <MoreControl />
-      <FullscreenControl />
-    </Grid>
-  )
+    <div className={classes.bar}>
+      <div className={classes.barInner}>
+        <ReactResizeDetector handleWidth>
+          <TimeLineControl />
+        </ReactResizeDetector>
+        <div className={classes.controlsContainer}>
+          <PlayOrPauseControl />
+          <VolumeControl />
+          <TimeDisplay />
+        </div>
+        <div className={classes.controlsContainer}>
+          <FullscreenControl />
+        </div>
+      </div>
+    </div>
+  );
 }
 
 ControlsBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-function mapStateToProps(state) {
-  return {
-    
-  }
-}
-
-export default connect(mapStateToProps)(withStyles(styles)(ControlsBar));
+export default connect()(withStyles(styles)(ControlsBar));

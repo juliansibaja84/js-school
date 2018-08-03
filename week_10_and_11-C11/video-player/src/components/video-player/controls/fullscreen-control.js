@@ -1,38 +1,56 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 
 // Components
-import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
+import FullscreenExitIcon from '@material-ui/icons/FullscreenExit';
 
-const styles = theme => ({
+import toggleFullscreen from '../../../actions/toggle-fullscreen';
+
+const styles = () => ({
   button: {
-    margin: theme.spacing.unit,
+    margin: 0,
+    minHeight: '0px',
+    height: '100%',
+    color: 'white',
   },
 });
 
-function FullscreenControl(props) {
-  const { classes } = props;
-  return(
-    <Grid item xs={1}>
-      <IconButton className={classes.button} aria-label="Full Screen">
-        <FullscreenIcon />
-      </IconButton>
-    </Grid>
-  );
+class FullscreenControl extends Component {
+  handleClick() {
+    const { dispatch } = this.props;
+    dispatch(toggleFullscreen());
+  }
+
+  render() {
+    const { classes, fullscreen } = this.props;
+    return (
+      <div>
+        <Button aria-label="Full Screen" className={classes.button} onClick={() => this.handleClick()}>
+          {(fullscreen) ? <FullscreenExitIcon /> : <FullscreenIcon />}
+        </Button>
+      </div>
+    );
+  }
 }
 
 FullscreenControl.propTypes = {
   classes: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  fullscreen: PropTypes.bool,
+};
+
+FullscreenControl.defaultProps = {
+  fullscreen: false,
 };
 
 function mapStateToProps(state) {
   return {
-    
-  }
+    fullscreen: state.videoPlayer.config.fullscreen,
+  };
 }
 
 export default connect(mapStateToProps)(withStyles(styles)(FullscreenControl));

@@ -1,36 +1,95 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 
 // Components
-import Grid from '@material-ui/core/Grid';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import MarkerIcon from '@material-ui/icons/TransitEnterexit';
+import Tooltip from '@material-ui/core/Tooltip';
+import updatePlayingClip from '../../../actions/update-playing-clip-action';
 
-const styles = (theme) => ({
-  
+const styles = () => ({
+  timeLineContainer: {
+    width: '100%',
+  },
+  MarkerContainer: {
+    position: 'absolute',
+    top: '-23px',
+  },
 });
 
-function TimeLineControl(props) {
-  return(
-    <Grid item xs={8}>
-      <LinearProgress
-        variant="buffer"
-        value={(props.duration !== 0)? props.currentTime/props.duration*100: 0}
-        valueBuffer={0} />
-    </Grid>
-  );
+class TimeLineControl extends Component {
+  handleClickMarker(clip) {
+    const { dispatch } = this.props;
+    dispatch(updatePlayingClip(clip));
+  }
+
+  render() {
+    const {
+      currentTime,
+      fullVideoDuration,
+      classes,
+      width,
+      clipsList,
+      playingClip,
+    } = this.props;
+    const progress = (currentTime / fullVideoDuration * 100);
+    return (
+      <div className={classes.timeLineContainer} ref={this.timeLineRef}>
+        {(playingClip.clipName === 'Full Video')
+          ? clipsList.map(clip => (
+            <div
+              className={classes.MarkerContainer}
+              style={{ left: `${Math.floor(clip.startTime * width / fullVideoDuration)}px` }}
+              role="presentation"
+              onClick={() => this.handleClickMarker(clip)}
+              key={clip.clipName}
+            >
+              <Tooltip title={clip.clipName} placement="top">
+                <MarkerIcon color="primary" />
+              </Tooltip>
+            </div>
+          ))
+          : null}
+        <LinearProgress
+          variant="determinate"
+          value={progress || 0}
+          valueBuffer={0}
+        />
+      </div>
+    );
+  }
 }
 
 TimeLineControl.propTypes = {
   classes: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  currentTime: PropTypes.number,
+  fullVideoDuration: PropTypes.number,
+  clipsList: PropTypes.array,
+  width: PropTypes.number,
+  playingClip: PropTypes.object,
+};
+
+TimeLineControl.defaultProps = {
+  currentTime: 0,
+  fullVideoDuration: 0,
+  width: 0,
+  clipsList: [],
+  playingClip: {},
 };
 
 function mapStateToProps(state) {
   return {
-    duration: state.videoPlayer.video.duration,
-    currentTime: state.videoPlayer.video.currentTime
-  }
+    fullVideoDuration: state.videoPlayer.video.duration,
+    currentTime: state.videoPlayer.video.currentTime,
+    endTime: state.videoPlayer.playingClip.endTime,
+    startTime: state.videoPlayer.playingClip.startTime,
+    clipsList: state.clips.clipsList,
+    playingClip: state.videoPlayer.playingClip,
+    mainVideo: state.videoPlayer.mainVideo,
+  };
 }
 
 export default connect(mapStateToProps)(withStyles(styles)(TimeLineControl));
