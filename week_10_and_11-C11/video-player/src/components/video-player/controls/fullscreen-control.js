@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
 import FullscreenExitIcon from '@material-ui/icons/FullscreenExit';
 
-import toggleFullscreen from '../../../actions/toggle-fullscreen';
+import toggleFullscreen from '../../../actions/toggle-fullscreen-action';
 
 const styles = () => ({
   button: {

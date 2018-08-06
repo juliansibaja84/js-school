@@ -18,8 +18,10 @@ import Tags from './tags';
 
 import addClip from '../../actions/add-clip-action';
 import updateClip from '../../actions/update-clip-action';
+import updatePlayingClip from '../../actions/update-playing-clip-action';
 import inputHandler from '../../adds/input-handler';
 import { validateTag } from '../../adds/validations';
+import { formatTime } from '../../adds/format';
 
 const styles = theme => ({
   container: {
@@ -94,6 +96,7 @@ class ClipCreator extends Component {
     const { dispatch, index, handleClose } = this.props;
     const { values } = this.state;
     dispatch(updateClip(index, values));
+    dispatch(updatePlayingClip(values));
     handleClose();
   }
 
@@ -149,10 +152,7 @@ class ClipCreator extends Component {
   }
 
   render() {
-    const {
-      classes,
-      index,
-    } = this.props;
+    const { classes, index } = this.props;
     const { values, errors } = this.state;
     const {
       clipNameError,
@@ -197,7 +197,7 @@ class ClipCreator extends Component {
                       <InputLabel htmlFor="start-time">
                         Start Time
                       </InputLabel>
-                      <Input name="start-time" type="time" defaultValue="00:00" onChange={e => this.handleChangeInput(e)} />
+                      <Input name="start-time" type="time" defaultValue={(!isNaN(index) && index !== null) ? `0${formatTime(values.startTime)}` : '00:00'} onChange={e => this.handleChangeInput(e)} />
                       <FormHelperText>
                         {startTimeError}
                       </FormHelperText>
@@ -208,7 +208,7 @@ class ClipCreator extends Component {
                       <InputLabel htmlFor="end-time">
                         End Time
                       </InputLabel>
-                      <Input name="end-time" type="time" defaultValue="00:01" onChange={e => this.handleChangeInput(e)} />
+                      <Input name="end-time" type="time" defaultValue={(!isNaN(index) && index !== null) ? `0${formatTime(values.endTime)}` : '00:01'} onChange={e => this.handleChangeInput(e)} />
                       <FormHelperText>
                         {endTimeError}
                       </FormHelperText>

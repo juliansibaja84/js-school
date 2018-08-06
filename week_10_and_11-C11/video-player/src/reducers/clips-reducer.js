@@ -1,6 +1,5 @@
 const initialState = {
   clipsList: [],
-  deleteConfirmationDialogOpen: false,
 };
 
 export default function (state = initialState, action) {
@@ -36,18 +35,6 @@ export default function (state = initialState, action) {
           }
           return clip;
         }),
-      };
-    }
-    case 'OPEN_DELETE_CONFIRMATION_DIALOG': {
-      return {
-        ...state,
-        deleteConfirmationDialogOpen: true,
-      };
-    }
-    case 'CLOSE_DELETE_CONFIRMATION_DIALOG': {
-      return {
-        ...state,
-        deleteConfirmationDialogOpen: false,
       };
     }
     case 'UPDATE_CLIPSLIST':

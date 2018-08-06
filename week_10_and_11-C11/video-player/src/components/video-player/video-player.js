@@ -10,7 +10,13 @@ import updateCurrentTime from '../../actions/update-current-time-action';
 import updateDuration from '../../actions/update-duration-action';
 import requestNextClip from '../../actions/request-next-clip-action';
 import requestPreviousClip from '../../actions/request-previous-clip-action';
-
+import {
+  updateHandler,
+  playerHandler,
+  volumeHandler,
+  mutedHandler,
+  fullscreenHandler,
+} from '../../adds/video-handlers';
 
 const styles = () => ({
   videoPlayerContainer: {
@@ -46,35 +52,34 @@ class VideoPlayer extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    const { videoPlayer } = this.props;
-    if ((nextProps.videoPlayer.clipUpdated
-      && nextProps.videoPlayer.clipUpdated !== videoPlayer.clipUpdated)
-      || nextProps.videoPlayer.playingClip !== videoPlayer.playingClip) {
-      this.mediaVideoRef.current.children[0].setAttribute('src', nextProps.videoPlayer.src);
+    const {
+      playingClip,
+      clipUpdated,
+      paused,
+      muted,
+      volume,
+      fullscreen,
+    } = this.props;
+    const player = {
+      play: () => this.mediaVideoRef.current.play(),
+      pause: () => this.mediaVideoRef.current.pause(),
+    };
+    const fullscreenSwitcher = {
+      on: () => { if (screenfull.enabled) screenfull.request(this.videoContainerRef.current); },
+      off: () => { if (screenfull.enabled) screenfull.exit(); },
+    };
+    updateHandler(clipUpdated, nextProps.clipUpdated, playingClip, nextProps.playingClip, () => {
+      this.mediaVideoRef.current.children[0].setAttribute('src', `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4${nextProps.videoPlayer.mediaFrag}`);
       this.mediaVideoRef.current.currentTime = nextProps.videoPlayer.playingClip.startTime;
-    }
-    if (!nextProps.videoPlayer.status.paused
-      && nextProps.videoPlayer.status.paused !== videoPlayer.status.paused) {
-      this.mediaVideoRef.current.play();
-    }
-    if (nextProps.videoPlayer.status.paused
-      && nextProps.videoPlayer.status.paused !== videoPlayer.status.paused) {
-      this.mediaVideoRef.current.pause();
-    }
-    if (videoPlayer.config.volume !== nextProps.videoPlayer.config.volume) {
-      this.mediaVideoRef.current.volume = nextProps.videoPlayer.config.volume;
-    }
-    if (videoPlayer.config.muted !== nextProps.videoPlayer.config.muted) {
+    });
+    playerHandler(paused, nextProps.paused, player);
+    volumeHandler(volume, nextProps.volume, () => {
+      this.mediaVideoRef.current.volume = nextProps.volume;
+    });
+    mutedHandler(muted, nextProps.muted, () => {
       this.mediaVideoRef.current.muted = nextProps.videoPlayer.config.muted;
-    }
-    if (nextProps.videoPlayer.config.fullscreen
-      && videoPlayer.config.fullscreen !== nextProps.videoPlayer.config.fullscreen) {
-      if (screenfull.enabled) screenfull.request(this.videoContainerRef.current);
-    }
-    if (!nextProps.videoPlayer.config.fullscreen
-      && videoPlayer.config.fullscreen !== nextProps.videoPlayer.config.fullscreen) {
-      if (screenfull.enabled) screenfull.exit();
-    }
+    });
+    fullscreenHandler(fullscreen, nextProps.fullscreen, fullscreenSwitcher);
   }
 
   handleCanPlay() {
@@ -107,15 +112,17 @@ class VideoPlayer extends Component {
     const {
       dispatch,
     } = this.props;
-    switch (e.key) {
-      case 'ArrowLeft':
-        dispatch(requestPreviousClip());
-        break;
-      case 'ArrowRight':
-        dispatch(requestNextClip());
-        break;
-      default:
-        break;
+    if (e.altKey) {
+      switch (e.key) {
+        case 'ArrowLeft':
+          dispatch(requestPreviousClip());
+          break;
+        case 'ArrowRight':
+          dispatch(requestNextClip());
+          break;
+        default:
+          break;
+      }
     }
   }
 
@@ -129,10 +136,11 @@ class VideoPlayer extends Component {
     return (
       <div
         className={classes.videoPlayerContainer}
-        ref={this.videoContainerRef}
-        role="presentation"
+        tabIndex="-1"
         onClick={() => this.handleContainerClick()}
         onKeyUp={e => this.handleKeyPressed(e)}
+        ref={this.videoContainerRef}
+        role="presentation"
       >
         <video
           ref={this.mediaVideoRef}
@@ -142,7 +150,7 @@ class VideoPlayer extends Component {
           onTimeUpdate={() => this.handleTimeUpdate()}
         >
           <source
-            src={videoPlayer.src}
+            src={`https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4${videoPlayer.mediaFrag}`}
             type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'
           />
           <track kind="captions" />
@@ -162,7 +170,7 @@ class VideoPlayer extends Component {
             </Typography>
           )
           : null}
-        <ControlsBar />
+        <ControlsBar onClick={() => this.handleContainerClick()} />
       </div>
     );
   }
@@ -174,16 +182,34 @@ VideoPlayer.propTypes = {
   dispatch: PropTypes.func.isRequired,
   requestingNextClip: PropTypes.bool,
   requestingPreviousClip: PropTypes.bool,
+  playingClip: PropTypes.object,
+  clipUpdated: PropTypes.bool,
+  muted: PropTypes.bool,
+  volume: PropTypes.number,
+  paused: PropTypes.bool,
+  fullscreen: PropTypes.bool,
 };
 
 VideoPlayer.defaultProps = {
   requestingNextClip: false,
   requestingPreviousClip: false,
+  playingClip: {},
+  clipUpdated: true,
+  muted: false,
+  volume: 0,
+  paused: true,
+  fullscreen: false,
 };
 
 function mapStateToProps(state) {
   return {
     videoPlayer: state.videoPlayer,
+    playingClip: state.videoPlayer.playingClip,
+    clipUpdated: state.videoPlayer.clipUpdated,
+    paused: state.videoPlayer.status.paused,
+    muted: state.videoPlayer.config.muted,
+    volume: state.videoPlayer.config.volume,
+    fullscreen: state.videoPlayer.config.fullscreen,
     clipsList: state.clips.clipsList,
     requestingNextClip: state.videoPlayer.status.requestingNextClip,
     requestingPreviousClip: state.videoPlayer.status.requestingPreviousClip,

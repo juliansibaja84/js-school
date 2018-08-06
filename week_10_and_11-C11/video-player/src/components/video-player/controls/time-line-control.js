@@ -32,13 +32,15 @@ class TimeLineControl extends Component {
       classes,
       width,
       clipsList,
+      filteredClipsList,
       playingClip,
     } = this.props;
     const progress = (currentTime / fullVideoDuration * 100);
+    const clipsToShowInTimeLine = filteredClipsList || clipsList;
     return (
       <div className={classes.timeLineContainer} ref={this.timeLineRef}>
         {(playingClip.clipName === 'Full Video')
-          ? clipsList.map(clip => (
+          ? clipsToShowInTimeLine.map(clip => (
             <div
               className={classes.MarkerContainer}
               style={{ left: `${Math.floor(clip.startTime * width / fullVideoDuration)}px` }}
@@ -68,6 +70,7 @@ TimeLineControl.propTypes = {
   currentTime: PropTypes.number,
   fullVideoDuration: PropTypes.number,
   clipsList: PropTypes.array,
+  filteredClipsList: PropTypes.array,
   width: PropTypes.number,
   playingClip: PropTypes.object,
 };
@@ -78,6 +81,7 @@ TimeLineControl.defaultProps = {
   width: 0,
   clipsList: [],
   playingClip: {},
+  filteredClipsList: null,
 };
 
 function mapStateToProps(state) {
@@ -87,6 +91,7 @@ function mapStateToProps(state) {
     endTime: state.videoPlayer.playingClip.endTime,
     startTime: state.videoPlayer.playingClip.startTime,
     clipsList: state.clips.clipsList,
+    filteredClipsList: state.videoPlayer.filteredClipsList,
     playingClip: state.videoPlayer.playingClip,
     mainVideo: state.videoPlayer.mainVideo,
   };

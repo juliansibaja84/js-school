@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withStyles } from '@material-ui/core';
 
 // Components
 import Button from '@material-ui/core/Button';
@@ -12,30 +11,21 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 import deleteClip from '../../actions/delete-clip-action';
-import closeDeleteConfirmationDialog from '../../actions/close-delete-confirmation-action';
-
-const styles = () => ({
-
-});
+import updatePlayingClip from '../../actions/update-playing-clip-action';
 
 class DeleteConfirmationDialog extends Component {
-  handleClose() {
-    const { dispatch } = this.props;
-    dispatch(closeDeleteConfirmationDialog());
-  }
-
   handleDelete() {
-    const { dispatch, index } = this.props;
+    const { dispatch, index, mainVideo } = this.props;
     dispatch(deleteClip(index));
-    dispatch(closeDeleteConfirmationDialog());
+    dispatch(updatePlayingClip(mainVideo));
   }
 
   render() {
-    const { open } = this.props;
+    const { handleClose } = this.props;
     return (
       <Dialog
-        open={open}
-        onClose={() => this.handleClose()}
+        open
+        onClose={() => handleClose()}
         aria-labelledby="form-dialog-title"
       >
         <DialogTitle id="form-dialog-title">
@@ -47,7 +37,7 @@ class DeleteConfirmationDialog extends Component {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => this.handleClose()} color="primary">
+          <Button onClick={() => handleClose()} color="primary">
             Cancel
           </Button>
           <Button onClick={() => this.handleDelete()} color="primary">
@@ -61,19 +51,21 @@ class DeleteConfirmationDialog extends Component {
 
 DeleteConfirmationDialog.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  mainVideo: PropTypes.object,
   index: PropTypes.number,
-  open: PropTypes.bool,
 };
 
 DeleteConfirmationDialog.defaultProps = {
+  mainVideo: {},
   index: null,
-  open: false,
 };
 
 function mapStateToProps(state) {
   return {
     open: state.clips.deleteConfirmationDialogOpen,
+    mainVideo: state.videoPlayer.mainVideo,
   };
 }
 
-export default connect(mapStateToProps)(withStyles(styles)(DeleteConfirmationDialog));
+export default connect(mapStateToProps)(DeleteConfirmationDialog);

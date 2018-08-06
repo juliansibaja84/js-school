@@ -8,7 +8,6 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import IconButton from '@material-ui/core/IconButton';
 import ClipEditor from './clip-creator-editor';
 import DeleteConfirmationDialog from './delete-confirmation-dialog';
-import openDeleteConfirmationDialog from '../../actions/open-delete-confirmation-action';
 import updatePlayingClip from '../../actions/update-playing-clip-action';
 
 const styles = theme => ({
@@ -24,7 +23,8 @@ class ActionButtons extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      openDialog: false,
+      openDeleteDialog: false,
+      openEditDialog: false,
     };
   }
 
@@ -35,24 +35,26 @@ class ActionButtons extends Component {
 
   handleOnClickEdit() {
     this.setState({
-      openDialog: true,
+      openEditDialog: true,
     });
   }
 
   handleCloseDialog() {
     this.setState({
-      openDialog: false,
+      openEditDialog: false,
+      openDeleteDialog: false,
     });
   }
 
   handleOnClickDelete() {
-    const { dispatch } = this.props;
-    dispatch(openDeleteConfirmationDialog());
+    this.setState({
+      openDeleteDialog: true,
+    });
   }
 
   render() {
     const { classes, main, index } = this.props;
-    const { openDialog } = this.state;
+    const { openEditDialog, openDeleteDialog } = this.state;
     if (main) {
       return (
         <div className={classes.controls}>
@@ -73,16 +75,17 @@ class ActionButtons extends Component {
         <IconButton aria-label="Delete">
           <DeleteIcon onClick={() => this.handleOnClickDelete()} />
         </IconButton>
-        {(openDialog)
+        {(openEditDialog)
           ? (
             <ClipEditor
               index={index}
-              open={openDialog}
               handleClose={() => this.handleCloseDialog()}
             />
           )
           : null}
-        <DeleteConfirmationDialog index={index} />
+        {(openDeleteDialog)
+          ? <DeleteConfirmationDialog index={index} handleClose={() => this.handleCloseDialog()} />
+          : null}
       </div>
     );
   }

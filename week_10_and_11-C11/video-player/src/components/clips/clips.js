@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-import Select from '@material-ui/core/Select';
-import Input from '@material-ui/core/Input';
+import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
 import AddIcon from '@material-ui/icons/Add';
 import Clip from './clip';
 import ClipCreator from './clip-creator-editor';
 import updatePlayingClip from '../../actions/update-playing-clip-action';
+import updateFilteredClipsList from '../../actions/update-filtered-clipsList-action';
 import updateClipsList from '../../actions/update-clipsList-action';
 
 
@@ -22,19 +21,20 @@ const styles = () => ({
     height: '100vh',
     padding: '0 2%',
     width: '100%',
+    boxSizing: 'border-box',
   },
   clips: {
     maxHeight: '50%',
-    overflowY: 'scroll',
+    overflowY: 'auto',
     width: '100%',
   },
   mainVideoClip: {
-    marginBottom: '1%',
+    margin: '5% 0',
     padding: '0 1%',
     width: '100%',
   },
   clip: {
-    marginBottom: '1%',
+    margin: '5% 0',
     padding: '0 1%',
   },
   buttonContainer: {
@@ -51,8 +51,7 @@ class Clips extends Component {
     super(props);
     this.state = {
       openDialog: false,
-      clipSearchInputText: 'All',
-      selectedTag: 'All',
+      clipsSearchInputText: '',
     };
     this.sendNextClip = this.sendNextClip.bind(this);
     this.sendPreviousClip = this.sendPreviousClip.bind(this);
@@ -61,6 +60,34 @@ class Clips extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     if (localStorage.getItem('clips')) dispatch(updateClipsList(JSON.parse(localStorage.getItem('clips'))));
+  }
+
+  componentWillUpdate(nextProps) {
+    const { clipsList, dispatch } = this.props;
+    const { clipsSearchInputText } = this.state;
+    if (nextProps.clipsList !== clipsList) {
+      const indexList = [];
+      nextProps.clipsList.forEach((clip, index) => {
+        const re = new RegExp(clipsSearchInputText, 'i');
+        if (clipsSearchInputText === '') {
+          indexList.push(index);
+        } else if (clip.tags.length > 0
+          && clip.tags.reduce((acc, val) => acc + val).search(re) !== -1) {
+          indexList.push(index);
+        }
+      });
+      const filteredClipsList = nextProps.clipsList.map((clip, index) => {
+        let selected = null;
+        indexList.forEach((clipIndex) => {
+          if (clipIndex === index) {
+            selected = clip;
+          }
+        });
+        if (selected === clip) selected.id = index;
+        return selected;
+      }).filter(clip => clip !== null);
+      dispatch(updateFilteredClipsList(filteredClipsList));
+    }
   }
 
   handleOnClickButton() {
@@ -76,41 +103,64 @@ class Clips extends Component {
   }
 
   handleChangeClipSearchInput(e) {
-    this.setState({
-      clipSearchInputText: e.target.value,
-      selectedTag: e.target.value,
+    const { clipsList, dispatch } = this.props;
+    const indexList = [];
+    clipsList.forEach((clip, index) => {
+      const re = new RegExp(e.target.value, 'i');
+      if (e.target.value === '') {
+        indexList.push(index);
+      } else if (clip.tags.length > 0
+        && clip.tags.reduce((acc, val) => acc + val).search(re) !== -1) {
+        indexList.push(index);
+      }
     });
+    const filteredClipsList = clipsList.map((clip, index) => {
+      let selected = null;
+      indexList.forEach((clipIndex) => {
+        if (clipIndex === index) {
+          selected = clip;
+        }
+      });
+      if (selected === clip) selected.id = index;
+      return selected;
+    }).filter(clip => clip !== null);
+    this.setState({ clipsSearchInputText: e.target.value });
+    dispatch(updateFilteredClipsList(filteredClipsList));
   }
 
   sendNextClip() {
     const {
       currentClip,
       clipsList,
+      filteredClipsList,
       mainVideo,
       dispatch,
     } = this.props;
-    const clipIndex = clipsList.findIndex((clip => clip.clipName === currentClip.clipName));
-    if (currentClip === mainVideo || (clipIndex === clipsList.length - 1)) {
+    const clips = filteredClipsList || clipsList;
+    const clipIndex = clips.findIndex((clip => clip.clipName === currentClip.clipName));
+    if (currentClip === mainVideo || (clipIndex === clips.length - 1)) {
       dispatch(updatePlayingClip(null));
     } else {
-      setTimeout(() => dispatch(updatePlayingClip(clipsList[clipIndex + 1])), 3000);
+      setTimeout(() => dispatch(updatePlayingClip(clips[clipIndex + 1])), 3000);
     }
   }
 
   sendPreviousClip() {
     const {
       currentClip,
+      filteredClipsList,
       clipsList,
       mainVideo,
       dispatch,
     } = this.props;
-    const clipIndex = clipsList.findIndex((clip => clip.clipName === currentClip.clipName));
+    const clips = filteredClipsList || clipsList;
+    const clipIndex = clips.findIndex((clip => clip.clipName === currentClip.clipName));
     if (currentClip === mainVideo) {
       dispatch(updatePlayingClip(mainVideo));
     } else if (clipIndex === 0) {
       dispatch(updatePlayingClip(currentClip));
     } else {
-      setTimeout(() => dispatch(updatePlayingClip(clipsList[clipIndex - 1])), 3000);
+      setTimeout(() => dispatch(updatePlayingClip(clips[clipIndex - 1])), 3000);
     }
   }
 
@@ -122,14 +172,13 @@ class Clips extends Component {
       mainVideo,
       requestingNextClip,
       requestingPreviousClip,
+      filteredClipsList,
     } = this.props;
-    const { openDialog, clipSearchInputText, selectedTag } = this.state;
-    const suggestions = Array.from(new Set([].concat([], ...clipsList.map(clip => clip.tags))));
-    const clipsToShow = clipsList.filter((clip) => {
-      if (selectedTag === 'All') return true;
-      if (clip.tags.includes(selectedTag)) return true;
-      return false;
-    });
+    const { openDialog, clipsSearchInputText } = this.state;
+    let clipsToShowInPlaylist = filteredClipsList || clipsList;
+    if (!clipsSearchInputText && clipsToShowInPlaylist.length === 0) {
+      clipsToShowInPlaylist = clipsList;
+    }
     let mainVideoClip = null;
     if (videoDuration) {
       mainVideoClip = (
@@ -146,36 +195,19 @@ class Clips extends Component {
     return (
       <div className={classes.container}>
         <InputLabel htmlFor="tagSelect">
-          Select a tag to search for clips
+          Search for a tag
         </InputLabel>
-        <Select
-          options={suggestions.map(suggestion => ({
-            value: suggestion,
-            label: suggestion,
-          }))}
-          value={clipSearchInputText}
-          onChange={e => this.handleChangeClipSearchInput(e)}
-          placeholder="Search a country (start with a)"
+        <TextField
+          id="tagSelect"
           className={classes.clipInputSearch}
-          input={<Input id="tagSelect" />}
-        >
-          <MenuItem value="All">
-            all
-          </MenuItem>
-          {suggestions.map(tag => (
-            <MenuItem
-              key={tag}
-              value={tag}
-            >
-              {tag}
-            </MenuItem>
-          ))}
-        </Select>
+          onChange={e => this.handleChangeClipSearchInput(e)}
+          margin="normal"
+        />
         {mainVideoClip}
         <div className={classes.clips}>
-          { (clipsList !== []) ? clipsToShow.map((clip, index) => (
+          { (clipsList !== []) ? clipsToShowInPlaylist.map(clip => (
             <div key={clip.clipName} className={classes.clip}>
-              <Clip info={clip} index={index} />
+              <Clip info={clip} index={clip.id} />
             </div>
           )) : null }
         </div>
@@ -193,6 +225,7 @@ class Clips extends Component {
 Clips.propTypes = {
   classes: PropTypes.object.isRequired,
   clipsList: PropTypes.array.isRequired,
+  filteredClipsList: PropTypes.array,
   currentClip: PropTypes.object,
   videoDuration: PropTypes.number,
   mainVideo: PropTypes.object,
@@ -207,14 +240,15 @@ Clips.defaultProps = {
   currentClip: {},
   requestingNextClip: false,
   requestingPreviousClip: false,
+  filteredClipsList: null,
 };
 
 function mapStateToProps(state) {
   return {
     mainVideo: state.videoPlayer.mainVideo,
     videoDuration: state.videoPlayer.video.duration,
-    open: state.clips.clipCreatorOpen,
     clipsList: state.clips.clipsList,
+    filteredClipsList: state.videoPlayer.filteredClipsList,
     currentClip: state.videoPlayer.playingClip,
     requestingNextClip: state.videoPlayer.status.requestingNextClip,
     requestingPreviousClip: state.videoPlayer.status.requestingPreviousClip,

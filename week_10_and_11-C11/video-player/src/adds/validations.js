@@ -33,8 +33,5 @@ export function validateTag(tag, tagsList) {
   if (tagsList.includes(tag)) {
     return 'That tag was added already';
   }
-  if (tag === 'All') {
-    return 'All is not allowed';
-  }
   return '';
 }

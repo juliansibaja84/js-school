@@ -11,8 +11,8 @@ import VolumeMuteIcon from '@material-ui/icons/VolumeMute';
 import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 import Slider from '@material-ui/lab/Slider';
 
-import updateVolume from '../../../actions/update-volume';
-import toggleMute from '../../../actions/toggle-mute';
+import updateVolume from '../../../actions/update-volume-action';
+import toggleMute from '../../../actions/toggle-mute-action';
 
 const styles = () => ({
   container: {

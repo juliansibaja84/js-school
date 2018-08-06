@@ -16,10 +16,10 @@ const initialState = {
     volume: 1,
     muted: false,
   },
-  originalSrc: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
-  src: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+  mediaFrag: '',
   mainVideo: {},
   playingClip: {},
+  filteredClipsList: null,
 };
 
 export default function (state = initialState, action) {
@@ -82,7 +82,7 @@ export default function (state = initialState, action) {
         return {
           ...state,
           playingClip: state.mainVideo,
-          src: state.originalSrc,
+          mediaFrag: '',
           status: {
             ...state.status,
             paused: true,
@@ -100,7 +100,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         playingClip: action.payload.clip,
-        src: `${state.originalSrc}#t=${action.payload.clip.startTime}`,
+        mediaFrag: `#t=${action.payload.clip.startTime}`,
         status: {
           ...state.status,
           paused: false,
@@ -113,6 +113,11 @@ export default function (state = initialState, action) {
           ...state.video,
           currentTime: action.payload.clip.startTime,
         },
+      };
+    case 'UPDATE_FILTERED_CLIPSLIST':
+      return {
+        ...state,
+        filteredClipsList: action.payload.clipsList,
       };
     case 'UPDATE_VOLUME':
       return {
