@@ -1,0 +1,152 @@
+#header-bar {
+  width: 100%;
+  height: 5rem;
+  background-color: #FCF8F3;
+  border-bottom: 1px #6EC1E4 solid;
+  display: flex;
+}
+#header-bar #logo {
+  flex: 240;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+#header-bar #logo img {
+  height: 58%;
+  padding-right: 0.7rem;
+}
+#header-bar #logo p {
+  color: #231F20;
+  font-family: "pluto_h";
+  font-size: 1.68em;
+  padding-top: 0.15rem;
+  margin-right: 0.1rem;
+}
+#header-bar #search {
+  flex: 1160;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#header-bar #search p {
+  font-size: 1.5em;
+  padding-left: 1.4rem;
+  font-family: "pluto";
+  padding-top: 0.1rem;
+}
+#header-bar #search div {
+  position: relative;
+  margin-right: 1.47rem;
+  width: 25.7%;
+  height: 42%;
+  color: #231F20;
+}
+#header-bar #search div i {
+  position: absolute;
+  top: 0.55rem;
+  left: 0.75rem;
+  font-size: 18px;
+  color: #231F20;
+}
+#header-bar #search div input {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  text-indent: 2.27rem;
+  border-radius: 1.3rem 0.98rem 0.98rem 0.98rem;
+  border: 1px #6EC1E4 solid;
+  font-family: "pluto_l";
+  font-size: 0.87em;
+}
+#header-bar #search div input:focus {
+  outline: none;
+}
+#header-bar #search div input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #231F20;
+  opacity: 1;
+  /* Firefox */
+}
+#header-bar #login-container {
+  flex: 240;
+  display: flex;
+  align-items: center;
+}
+#header-bar #login-container #separator {
+  height: 62.5%;
+  width: 1px;
+  background-color: #D8D8D8;
+}
+#header-bar #login-container #login {
+  flex-grow: 1;
+  display: flex;
+  flex-flow: row-reverse;
+  align-items: center;
+  height: 100%;
+}
+#header-bar #login-container #login img {
+  height: 44%;
+  width: 2.25rem;
+  margin-right: 1.2rem;
+  margin-top: 0.13rem;
+  border-radius: 50%;
+  border: 2px #6EC1E4 solid;
+}
+#header-bar #login-container #login i {
+  padding-right: 0.95rem;
+  color: #231F20;
+  font-size: 0.9em;
+}
+#header-bar #login-container #login p {
+  color: #231F20;
+  font-size: 0.77em;
+  padding-top: 0.14rem;
+  padding-right: 0.72rem;
+  font-family: "pluto_l";
+}
+
+@media (max-width: 900px) {
+  #header-bar {
+    margin: 0;
+  }
+  #header-bar #logo p {
+    display: none;
+  }
+  #header-bar #logo img {
+    padding: 0;
+    margin: 0 0.5rem;
+  }
+  #header-bar #search {
+    align-items: center;
+    justify-content: center;
+  }
+  #header-bar #search div {
+    flex-basis: 90%;
+    margin: 0;
+    padding: 0;
+  }
+  #header-bar #search p {
+    display: none;
+  }
+  #header-bar #login-container #separator {
+    display: none;
+  }
+  #header-bar #login p, #header-bar #login i, #header-bar #login div {
+    display: none;
+  }
+}
+
+@media (max-width: 1250px) {
+  #header-bar #login p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 10px;
+  }
+  #header-bar #login {
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+  }
+
+}

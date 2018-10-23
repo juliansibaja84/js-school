@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Jobsity Bookshelves</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header id="header-bar">
+        <div id="logo">
+          <img src="./assets/images/logo.svg" alt="">
+          <p><span>JOBSITY</span></p>
+        </div>
+        <div id="search">
+          <p>Bookshelf</p>
+          <div>
+              <a href=""><i class="fas fa-search"></i></a> 
+              <input type="text" placeholder="Search...">
+          </div>
+        </div>
+        <div id="login-container">
+          <div id="separator"></div>
+          <div id="login">
+            <img src="./assets/images/profile.png" alt=""> 
+            <i class="fas fa-angle-down"></i>
+            <p>Jakob Treml</p> 
+          </div>
+        </div>
+      </header>
+      <div id="content">
+        <div id="sidebar-left">
+            <div>
+              <p>MAIN</p>
+              <ul id="bookshelves-list">
+                <li id="quito"><a href="#"><i class="fas fa-globe"></i><span>Quito</span></a></li>
+                <li id="cartagena"><a href="#"><i class="fas fa-globe"></i><span>Cartagena</span></a></li>
+                <li id="medellin"><a href="#"><i class="fas fa-globe"></i><span>Medellín</span></a></li>
+                <li id="digital"><a href="#"><i class="fas fa-tablet-alt"></i><span>Digital</span></a></li>
+              </ul>
+            </div>
+            <div>
+              <p class="bold">YOUR BOOKS</p>
+              <ul class="nav">
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-book-open"></i><span>Readings</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-history"></i><span>History</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="#"> <i class="fas fa-bookmark"></i><span>Read Later</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-heart"></i><span>favorites</span></a></li>
+              </ul>
+            </div>
+        </div>
+        <div id="content-main">
+          <div id="bookshelf-header">
+            <h4 id="selectedBookshelf">Quito</h4>
+            <div id="layout-modes">
+                <span><i class= "fas fa-th-large" id="block"></i></span>
+                <span><i class= "fas fa-th-list" id="list"></i></span>
+            </div>
+          </div>
+          <div id="bookshelf">
+            <div id="loading" class="book-container">
+              <div class="image-container">
+                <img src="./assets/images/loading.gif" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="sidebar-right">
+          <p>MOST READ BOOKS</p>
+          <ol>
+            <li><a href="#">Hooked: How to Build Habit-</a></li>
+            <li><a href="#">The Inevitable: Understandin…</a></li>
+            <li><a href="#">Lean In: Women, Work, and t…</a></li>
+            <li><a href="#">Building a Business When Th…</a></li>
+            <li><a href="#">How Google Works</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="book-window-overlay" id="popup"></div>
+    <script src="./dist/bundle.js"></script>
+  </body>
+</html>

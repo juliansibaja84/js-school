@@ -1,0 +1,25 @@
+.unauthorized-box {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 3% auto 0 auto;
+  background-color: #FFFFFF;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1%;
+  padding: 3%;
+  text-align: justify;
+}
+
+.login-button {
+  margin: 1% 0 0 0;
+  padding: 8px;
+  background-color: #333;
+  border-radius: 10%;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}

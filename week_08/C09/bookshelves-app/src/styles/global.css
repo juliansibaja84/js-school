@@ -1,0 +1,113 @@
+@font-face {
+  font-family: 'fontawesome_r';
+  src: url('./fonts/Font\ Awesome\ 5\ Free-Regular-400.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'fontawesome_s';
+  src: url('./fonts/Font\ Awesome\ 5\ Free-Solid-900.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'fontawesome_b';
+  src: url('./fonts/Font\ Awesome\ 5\ Brands-Regular-400.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'pluto';
+  src: url('./fonts/HVD\ Fonts\ -\ PlutoSansRegular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'pluto_m';
+  src: url('./fonts/HVD\ Fonts\ -\ PlutoSansMedium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'pluto_b';
+  src: url('./fonts/HVD\ Fonts\ -\ PlutoSansBold.otf') format('opentype');
+}
+
+
+@font-face {
+  font-family: 'pluto_bl';
+  src: url('./fonts/HVD\ Fonts\ -\ PlutoSansBlack.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'pluto_h';
+  src: url('./fonts/HVD\ Fonts\ -\ PlutoSansHeavy.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'pluto_l';
+  src: url('./fonts/HVD\ Fonts\ -\ PlutoSansLight.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'pluto_el';
+  src: url('./fonts/HVD\ Fonts\ -\ PlutoSansExtraLight.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'pluto_t';
+  src: url('./fonts/HVD\ Fonts\ -\ PlutoSansThin.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'plutoc';
+  src: url('./fonts/HVD\ Fonts\ -\ PlutoSansCondRegular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'plutoc_m';
+  src: url('./fonts/HVD\ Fonts\ -\ PlutoSansCondMedium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'plutoc_b';
+  src: url('./fonts/HVD\ Fonts\ -\ PlutoSansCondBold.otf') format('opentype');
+}
+
+
+@font-face {
+  font-family: 'plutoc_bl';
+  src: url('./fonts/HVD\ Fonts\ -\ PlutoSansCondBlack.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'plutoc_h';
+  src: url('./fonts/HVD\ Fonts\ -\ PlutoSansCondHeavy.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'plutoc_l';
+  src: url('./fonts/HVD\ Fonts\ -\ PlutoSansCondLight.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'plutoc_el';
+  src: url('./fonts/HVD\ Fonts\ -\ PlutoSansCondExLight.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'plutoc_t';
+  src: url('./fonts/HVD\ Fonts\ -\ PlutoSansCondThin.otf') format('opentype');
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "pluto";
+  background-color: #231F20;
+}
+
+.fas {
+  font-family: "fontawesome_s";
+}
+.far {
+  font-family: "fontawesome_r";
+}
+.fab {
+  font-family: "fontawesome_b";
+}

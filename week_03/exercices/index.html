@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Execises Example</title>
+    <script src="./storage-01.js"></script>
+    <script src="./arrays-01.js"></script>
+    <script src="./functions-01.js"></script>
+    <script src="./time-01.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Exercises</h1>
+    </header>
+    <article>
+        <section>
+                <p>The output of all the exercises in this html are going to be displayed in the <strong>console</strong>.</p>
+        </section>
+        <section>
+            <h2>Arrays</h2>
+            <p>Insert the array elements separated by semicolons i.e "num_1;...;num_j;...;num_N", do not put any quotation mark. If another syntax for the array is introduced there is no guarantee for this exercise to work well. <br> If no array string is specified it will use the array [1,7,0,34,23,5,2] as default.</p>
+            <div class="i-cointainer">
+                <input id="array" type="text">
+                <button type="button" onclick="arrayFunctionCaller();">Order Numbers</button>
+            </div>
+        </section>
+        <section>
+            <h2>Functions</h2>
+            <p>Insert the array elements separated by semicolons i.e "item_1;...;item_j;...;item_N". If another syntax for the array is introduced there is no guarantee for this exercise to work well. <br> If no array string is specified it will use the array ['school', 'js', 'the', 'is', 'this'] as default.</p>
+            <div class="i-cointainer">
+                <input id="reverse" type="text">
+                <button type="button" onclick="reverseFunctionCaller();">Reverse Array</button>
+            </div>
+        </section>
+        <section>
+            <h2>Time</h2>
+            <div class="i-cointainer">
+                <p>Insert the time in seconds to start the Countdown. <br> If the number is not specified it will start from 300 seconds (5 minutes).</p>
+                <input id="counter" type="number">
+                <button type="button" onclick="counterFunctionCaller();">Start counter</button>
+            </div>
+        </section>
+        <section>
+            <h2>Storage</h2>
+            <div class="i-cointainer">
+                <p>Insert the note you want to store. <br> If the number is not specified it will save "JS Rules."</p>
+                <input id="note" type="text">
+                <button type="button" onclick="notesFunctionCaller();">Save the note</button>
+            </div>
+        </section>
+    </article>
+    <footer>
+
+    </footer>
+</body>
+</html>
